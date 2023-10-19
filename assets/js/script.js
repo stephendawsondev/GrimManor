@@ -1,60 +1,54 @@
-// Get the viewport width and height
-const vw = Math.max(
-  document.documentElement.clientWidth || 0,
-  window.innerWidth || 0
-);
-const vh = Math.max(
-  document.documentElement.clientHeight || 0,
-  window.innerHeight || 0
-);
+const backgroundImage = document.getElementById("background-image");
+const moveButtons = document.querySelectorAll("button");
+const container = document.getElementById("container");
 
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-const isDesktop = !isMobile;
-
-const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-
-const isSmall = vw < 768;
-const isMedium = vw >= 768 && vw < 992;
-const isLarge = vw >= 992 && vw < 1200;
-const isExtraLarge = vw >= 1200;
-
-const isSmallAndPortrait = isSmall && isPortrait;
-const isMediumAndPortrait = isMedium && isPortrait;
-const isLargeAndPortrait = isLarge && isPortrait;
-const isExtraLargeAndPortrait = isExtraLarge && isPortrait;
-
-const imagePath = "assets/images/scary-mansion.png";
-
-// Set the background image to cover the viewport on desktop
-if (vw >= 768) {
-  document.body.style.backgroundImage = "url(" + imagePath + ")";
-  // document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundPosition = "center center";
-  document.body.style.backgroundAttachment = "fixed";
-} else {
-  // Set the background image to fit the viewport on mobile
-  document.body.style.backgroundImage = "url(" + imagePath + ")";
-  document.body.style.backgroundSize = "contain";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundPosition = "center center";
-
-  // Add touch event listeners to allow scrolling on mobile
-  let startingX;
-  let startingY;
-  let movingX;
-  let movingY;
-  document.body.addEventListener("touchstart", function (e) {
-    startingX = e.touches[0].clientX;
-    startingY = e.touches[0].clientY;
+moveButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const direction = event.target.id.replace("move-", "");
+    moveBackground(direction);
   });
-  document.body.addEventListener("touchmove", function (e) {
-    movingX = e.touches[0].clientX;
-    movingY = e.touches[0].clientY;
-    window.scrollBy(startingX - movingX, startingY - movingY);
-    startingX = movingX;
-    startingY = movingY;
-  });
+});
+
+function moveBackground(direction) {
+  let top = backgroundImage.offsetTop;
+  let left = backgroundImage.offsetLeft;
+
+  const step = 20; // Adjust this to change the speed of the movement
+  const containerWidth = container.clientWidth;
+  const containerHeight = container.clientHeight;
+  const imageWidth = backgroundImage.width;
+  const imageHeight = backgroundImage.height;
+
+  switch (direction) {
+    case "up":
+      top = Math.min(top + step, 0);
+      break;
+    case "down":
+      top = Math.max(
+        top - step,
+        containerHeight + containerHeight / 5 - imageHeight
+      );
+      break;
+    case "left":
+      left = Math.min(left + step, 0);
+      break;
+    case "right":
+      left = Math.max(
+        left - step,
+        containerWidth + containerWidth / 4 - imageWidth
+      );
+      break;
+  }
+
+  console.log(direction, top, left);
+  console.log(
+    containerHeight,
+    imageHeight,
+    top - step,
+    containerHeight - imageHeight
+  );
+  //backgroundImage.style.top = top + "px";
+  //backgroundImage.style.left = left + "px";
+  backgroundImage.style.marginTop = top + "px";
+  backgroundImage.style.marginLeft = left + "px";
 }
