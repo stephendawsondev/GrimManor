@@ -5,3 +5,6 @@ const miniGame1 = () => window.location.href = "game1.html";
 
 // This function displays the second mini game
 const miniGame2 = () => window.location.href = "game2.html";
+
+// This function displays the third mini game
+const miniGame3 = () => window.location.href = "game3.html";
