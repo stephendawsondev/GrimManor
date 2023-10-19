@@ -1,5 +1,19 @@
 // jshint esversion: 6
 
+// Get all button elements
+const buttons = document.querySelectorAll("button");
+
+/* This method loops through individual buttons
+*  and listens for a click event
+*  it then calls the displayMiniGames function
+*  and passes the id of the clicked button
+*/
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    displayMiniGames(button.id);
+  });
+});
+
 // This function displays the first mini game
 const miniGame1 = () => window.location.href = "game1.html";
 
