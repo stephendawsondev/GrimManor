@@ -4,92 +4,98 @@ html {
   margin: 0;
 }
 
-#container {
+#container1 {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-button {
+#container {
+  position: relative;
+  float: left;
+  width: 1792px;
+  height: 1024px;
+  overflow: hidden;
+}
+
+.responsive-button {
   display: hidden;
 }
 
-@media screen and (min-width: 769px) {
-  #background-image {
-    width: 100%;
-    height: 100vh; /* 100% of viewport height */
-    overflow: hidden;
-    top: 0;
-    left: 0;
-  }
+.show {
+  opacity: 1 !important;
+}
+
+#button-debug {
+  top: 0;
+  right: 10px;
+  position: fixed;
+  z-index: 1000;
+}
+
+.interactive {
+  opacity: 0;
+  pointer-events: all;
+  background-color: transparent;
+}
+
+#door1 {
+  position: absolute;
+  top: 590px;
+  left: 420px;
+  width: 120px;
+  height: 310px;
+}
+
+#door2 {
+  position: absolute;
+  top: 600px;
+  left: 740px;
+  width: 100px;
+  height: 210px;
+}
+
+#door3 {
+  position: absolute;
+  top: 364px;
+  left: 964px;
+  width: 58px;
+  height: 170px;
+}
+
+#door4 {
+  position: absolute;
+  top: 587px;
+  left: 1354px;
+  width: 110px;
+  height: 320px;
 }
 
 @media (max-width: 768px) {
-  #container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  #container img {
-    position: absolute;
-    left: 0;
-    bottom: -100px;
-    -webkit-transform: translateY(-10%) translateX(-10%);
-  }
-
-  #container {
-    position: relative;
-  }
-
-  button {
+  .responsive-button {
     display: block;
-    position: absolute;
-    z-index: 1;
+    position: fixed;
+    z-index: 1000;
   }
 
-  #move-up {
+  .move-up {
     top: 10px;
     left: 50%;
   }
 
-  #move-right {
+  .move-right {
     right: 10px;
     top: 50%;
   }
 
-  #move-left {
+  .move-left {
     top: 50%;
     left: 10px;
   }
 
-  #move-down {
+  .move-down {
     bottom: 10px;
     left: 50%;
-  }
-
-  .left {
-    left: 10px;
-    top: 50%;
-  }
-
-  .right {
-    right: 0;
-    top: 50%;
-    transform: translate(100%, -50%);
-  }
-
-  .up {
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -100%);
-  }
-
-  .down {
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 100%);
   }
 }
