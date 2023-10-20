@@ -89,3 +89,28 @@ button {
     transform: translate(-50%, 100%);
   }
 }
+
+/*LANDING PAGE */
+
+#haunted-mansion video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .landing-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    color: white;
+  }
+
+  #landing-button {
+    font-size:large;
+    font-family: inherit;
+    border: 0;
+    padding: 0;
+  }
+
