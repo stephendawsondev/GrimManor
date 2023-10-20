@@ -89,3 +89,116 @@ button {
     transform: translate(-50%, 100%);
   }
 }
+/* load captain howdy font from fonts/captain-howdy.ttf */
+@font-face {
+  font-family: "Captain Howdy";
+  src: url("../fonts/captain-howdy.ttf");
+}
+
+.minigame {
+  display: none;
+}
+
+.minigame.active {
+  display: block;
+}
+
+#hangman-game button {
+  border: none;
+  background-color: transparent;
+  font-size: 1.75rem;
+  font-family: "Captain Howdy", sans-serif;
+}
+
+.ouija-board-container {
+  position: relative;
+  max-width: 705px;
+  margin: 0 auto;
+}
+
+.ouija-board-alphabet {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 80%;
+  text-align: center;
+  color: #000;
+}
+
+/* 
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+canvas {
+  color: white;
+  border: white dashed 2px;
+  padding: 15px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  margin: 5px 0;
+}
+h1 {
+  font-size: 2.6em;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+Button {
+  background: #c1d72e;
+  border-radius: 5px;
+  border: solid 1px white;
+  color: white;
+  width: 35px;
+  height: 35px;
+  margin: 0 10px 10px 0;
+  outline: none;
+}
+Button:hover {
+  transition: 0.5s;
+  background: white;
+  border: solid 1px white;
+  color: #c1d72e;
+}
+
+.selected {
+  background: white;
+  border: solid 1px white;
+  color: #c1d72e;
+}
+
+.btn-2 {
+  border-radius: 10px;
+  background: #c1d72e;
+  color: white;
+  border: solid 1px white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 10px 10px;
+  width: 180px;
+  height: 50px;
+  margin: 0 10px 10px 0;
+
+  outline: none;
+}
+.btn-2:hover {
+  transition: 0.5s;
+  background: white;
+  border: solid 1px white;
+  color: #c1d72e;
+} */
