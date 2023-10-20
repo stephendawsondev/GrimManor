@@ -33,11 +33,15 @@ button {
     overflow: hidden;
   }
 
-  #background-image {
+  #container img {
     position: absolute;
-    top: 0;
     left: 0;
+    bottom: -100px;
     -webkit-transform: translateY(-10%) translateX(-10%);
+  }
+
+  #container {
+    position: relative;
   }
 
   button {
