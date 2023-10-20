@@ -1,0 +1,91 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+#container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+button {
+  display: hidden;
+}
+
+@media screen and (min-width: 769px) {
+  #background-image {
+    width: 100%;
+    height: 100vh; /* 100% of viewport height */
+    overflow: hidden;
+    top: 0;
+    left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  #container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: translateY(-10%) translateX(-10%);
+  }
+
+  button {
+    display: block;
+    position: absolute;
+    z-index: 1;
+  }
+
+  #move-up {
+    top: 10px;
+    left: 50%;
+  }
+
+  #move-right {
+    right: 10px;
+    top: 50%;
+  }
+
+  #move-left {
+    top: 50%;
+    left: 10px;
+  }
+
+  #move-down {
+    bottom: 10px;
+    left: 50%;
+  }
+
+  .left {
+    left: 10px;
+    top: 50%;
+  }
+
+  .right {
+    right: 0;
+    top: 50%;
+    transform: translate(100%, -50%);
+  }
+
+  .up {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+  }
+
+  .down {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+  }
+}
