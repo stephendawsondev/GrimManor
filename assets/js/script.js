@@ -2,6 +2,8 @@
 
 import { runHangmanGame } from "./minigames/hangman.js";
 
+const gameContainer = document.getElementById("game-container");
+gameContainer.showModal();
 runHangmanGame();
 
 const backgroundImage = document.getElementById("background-image");
