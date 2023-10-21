@@ -13,3 +13,17 @@ function savePlayerData(playerName, score, gamesPlayed) {
   // Store the JSON string in LocalStorage
   localStorage.setItem("playerData", playerDataJSON);
 }
+
+// Function to load player data from LocalStorage
+function loadPlayerData() {
+  // Get the JSON string from LocalStorage
+  const playerDataJSON = localStorage.getItem("playerData");
+
+  // If there is saved data, parse it back into an object
+  if (playerDataJSON) {
+    const playerData = JSON.parse(playerDataJSON);
+    return playerData;
+  } else {
+    return null; // No player data found in LocalStorage
+  }
+}
