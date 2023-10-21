@@ -297,6 +297,19 @@ section #haunted-mansion {
   color: black;
 }
 
+/* play button styles*/
+#play-button {
+  margin-top: 2rem;
+  background-color: #fafafa;
+  color: black;
+  font-weight: bolder;
+  border-radius: 1.3px black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* quiz container styles */
 .quiz-container {
   position: relative;
