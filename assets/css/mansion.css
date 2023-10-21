@@ -4,14 +4,7 @@ html {
   margin: 0;
 }
 
-#container1 {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-#container {
+#mainson-container {
   position: relative;
   float: left;
   width: 1792px;
