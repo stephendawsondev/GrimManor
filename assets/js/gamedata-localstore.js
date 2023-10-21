@@ -3,8 +3,12 @@ function savePlayerData(playerName, score, gamesPlayed) {
   // Create an object with player data
   const playerData = {
     playerName: playerName,
-    score: score,
-    gamesPlayed: gamesPlayed,
+    firstTimePlaying: true,
+    storyComplete: false,
+    hangmanClueObtained: false,
+    memoryClueObtained: false,
+    quizClueObtained: false,
+    backDoorOpened: true,
   };
 
   // Convert the object to a JSON string
