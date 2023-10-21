@@ -102,7 +102,6 @@ button {
 }
 
 /*LANDING PAGE */
-
 #haunted-mansion video {
   position: relative;
   height: 100%;
@@ -191,6 +190,7 @@ section #haunted-mansion {
   color: #000;
 }
 /* End Hangman game styles */
+
 /* Memory mini-game styles */
 #memory-game {
   display: block;
