@@ -1,64 +1,61 @@
-const generateDialogue = () => {
-  const dialogQueue = [];
-  let dialogIndex = 0;
+let dialogueQueue = [];
+let dialogueIndex = 0;
 
-  const showDialog = (dialogue) => {
-    dialogQueue = dialogue;
-    dialogIndex = 0;
-    updateDialog();
-  };
-
-  const updateDialog = () => {
-    const dialogBox = document.getElementById("dialogue-box");
-    const dialogText = document.getElementById("dialogue-text");
-    const choicesContainer = document.getElementById("choices-container");
-
-    if (dialogIndex < dialogQueue.length) {
-      dialogBox.classList.add("active");
-      dialogText.innerText = dialogQueue[dialogIndex].text;
-
-      choicesContainer.innerHTML = ""; // Clear previous choices
-      if (dialogQueue[dialogIndex].choices) {
-        for (const choice of dialogQueue[dialogIndex].choices) {
-          const choiceButton = document.createElement("button");
-          choiceButton.innerText = choice.text;
-          choiceButton.addEventListener("click", () => {
-            if (choice.action) choice.action();
-            dialogIndex++;
-            updateDialog();
-          });
-          choicesContainer.appendChild(choiceButton);
-        }
-      } else {
-        window.addEventListener("click", continueDialog);
-        window.addEventListener("keypress", continueDialog);
-      }
-    } else {
-      dialogBox.classList.remove("active"); // Hide dialogue when finished
-    }
-  };
-
-  const continueDialog = () => {
-    dialogIndex++;
-    updateDialog();
-    window.removeEventListener("click", continueDialog);
-    window.removeEventListener("keypress", continueDialog);
-  };
+const showDialogue = (dialogue) => {
+  dialogueQueue = dialogue;
+  dialogueIndex = 0;
+  updateDialogue();
 };
 
-export { generateDialogue };
-// Example usage:
-const dialogue = [
-  { text: "Hello, welcome to the haunted mansion." },
-  {
-    text: "Do you want to enter?",
-    choices: [
-      { text: "Yes", action: () => console.log("Entering mansion...") },
-      { text: "No", action: () => console.log("Leaving mansion...") },
-    ],
-  },
-  { text: "You've entered the mansion." },
-  // ... more dialogue
-];
+const updateDialogue = () => {
+  const dialogueBox = document.getElementById("dialogue-box");
+  const dialogueText = document.getElementById("dialogue-text");
+  const choicesContainer = document.getElementById("choices-container");
 
-showDialog(dialogue);
+  if (dialogueIndex < dialogueQueue.length) {
+    dialogueBox.classList.add("active");
+    dialogueText.innerText = dialogueQueue[dialogueIndex].text;
+
+    choicesContainer.innerHTML = ""; // Clear previous choices
+    if (dialogueQueue[dialogueIndex].choices) {
+      for (const choice of dialogueQueue[dialogueIndex].choices) {
+        const choiceButton = document.createElement("button");
+        choiceButton.innerText = choice.text;
+        choiceButton.addEventListener("click", (event) => {
+          event.stopPropagation(); // Stop event bubbling
+          if (choice.action) {
+            choice.action();
+          }
+          dialogueIndex++;
+          updateDialogue();
+          attachContinueListeners();
+        });
+        choicesContainer.appendChild(choiceButton);
+      }
+      detachContinueListeners();
+    } else {
+      attachContinueListeners();
+    }
+  } else {
+    dialogueBox.classList.remove("active");
+  }
+};
+
+const attachContinueListeners = () => {
+  window.addEventListener("click", continueDialogue);
+  window.addEventListener("keypress", continueDialogue);
+  window.addEventListener("touchstart", continueDialogue);
+};
+
+const detachContinueListeners = () => {
+  window.removeEventListener("click", continueDialogue);
+  window.removeEventListener("keypress", continueDialogue);
+  window.removeEventListener("touchstart", continueDialogue);
+};
+
+const continueDialogue = () => {
+  dialogueIndex++;
+  updateDialogue();
+};
+
+export { showDialogue };
