@@ -1,11 +1,108 @@
 // jshint esversion: 6
 
 import { runHangmanGame } from "./minigames/hangman.js";
-import { showDialogue } from "./dialogue.js";
+import { showDialogueAsync } from "./dialogue.js";
 
 const gameContainer = document.getElementById("game-container");
-gameContainer.showModal();
-runHangmanGame();
+// gameContainer.showModal();
+// runHangmanGame();
+
+const introDialogue = [
+  {
+    text: "Hello?",
+    choices: [
+      {
+        text: "Are you a ghost?",
+        action: () => ({
+          newDialogue: { text: "I think... I am" },
+        }),
+      },
+      {
+        text: "Are you okay?",
+        action: () => ({
+          newDialogue: { text: "I think... I am a ghost" },
+        }),
+      },
+    ],
+  },
+  {
+    text: "Okay...",
+    choices: [
+      {
+        text: "Are you a friendly ghost?",
+        action: () => ({
+          newDialogue: { text: "I am, but there are others here..." },
+        }),
+      },
+      {
+        text: "Should I run away screaming?",
+        action: () => ({
+          newDialogue: { text: "Not from me" },
+        }),
+      },
+    ],
+  },
+  {
+    text: "It's very cold outside.",
+    choices: [
+      {
+        text: "Can I stay a while?",
+        action: () => ({
+          newDialogue: {
+            text: "That depends, will you help me with something?",
+          },
+        }),
+      },
+      {
+        text: "Is it safe for me here?",
+        action: () => ({
+          newDialogue: {
+            text: "I can keep you safe, if you help me with something.",
+          },
+        }),
+      },
+    ],
+  },
+  { text: "Please..." },
+  {
+    text: "What do you need help with?",
+    choices: [
+      {
+        text: "I scare easily",
+        action: () => ({
+          newDialogue: {
+            text: "You’ll be fine",
+          },
+        }),
+      },
+      {
+        text: "I can help you",
+        action: () => ({
+          newDialogue: {
+            text: "Thank you",
+          },
+        }),
+      },
+    ],
+  },
+  { text: "Please..." },
+  {
+    text: "I have been trapped in this house for centuries.. able only to be seen by the human realm on Halloween...",
+  },
+  {
+    text: "I do not know why I am trapped, but I am sure that if I knew why I died then I would be able to move on...",
+  },
+  {
+    text: "There are many clues hidden in this house – are you bold enough to find them?",
+  },
+];
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const ghost = document.querySelector(".ghost-image");
+  ghost.classList.add("active");
+  await showDialogueAsync(introDialogue);
+  ghost.classList.remove("active");
+});
 
 const backgroundImage = document.getElementById("background-image");
 const moveButtons = document.querySelectorAll("button");
