@@ -188,3 +188,9 @@ function handleEndQuiz() {
   scoreCard.classList.add("d-none");
   endCard.classList.remove("d-none");
 }
+
+function handleConfirmEnd() {
+  // This function confirms end of quiz with a message
+  endText.textContent = "Thanks for playing!";
+  endCard.classList.remove("d-none");
+}
