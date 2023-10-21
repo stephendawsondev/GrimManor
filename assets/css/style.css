@@ -15,6 +15,9 @@ button {
   display: hidden;
 }
 
+
+
+
 @media screen and (min-width: 769px) {
   #background-image {
     width: 100%;
@@ -89,6 +92,40 @@ button {
     transform: translate(-50%, 100%);
   }
 }
+
+/*LANDING PAGE */
+
+#haunted-mansion video {
+    position: relative;
+    height: 100%;
+    /*top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+  } */}
+
+section #haunted-mansion {
+    position: relative;
+}
+
+.landing-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    color: white;
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%);
+  }
+
+  #landing-button {
+    font-size:large;
+    font-family: inherit;
+    border: 0;
+    padding: 0;
+  }
+
 /* load captain howdy font from fonts/captain-howdy.ttf */
 @font-face {
   font-family: "Captain Howdy";
@@ -125,80 +162,3 @@ button {
   text-align: center;
   color: #000;
 }
-
-/* 
-.wrapper {
-  width: 100%;
-  margin: 0 auto;
-}
-
-canvas {
-  color: white;
-  border: white dashed 2px;
-  padding: 15px;
-}
-
-h1,
-h2,
-h3 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 100;
-  text-transform: uppercase;
-  margin: 5px 0;
-}
-h1 {
-  font-size: 2.6em;
-}
-
-h2 {
-  font-size: 1.2em;
-}
-
-p {
-  font-size: 1.2em;
-}
-
-Button {
-  background: #c1d72e;
-  border-radius: 5px;
-  border: solid 1px white;
-  color: white;
-  width: 35px;
-  height: 35px;
-  margin: 0 10px 10px 0;
-  outline: none;
-}
-Button:hover {
-  transition: 0.5s;
-  background: white;
-  border: solid 1px white;
-  color: #c1d72e;
-}
-
-.selected {
-  background: white;
-  border: solid 1px white;
-  color: #c1d72e;
-}
-
-.btn-2 {
-  border-radius: 10px;
-  background: #c1d72e;
-  color: white;
-  border: solid 1px white;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 1.2em;
-  padding: 10px 10px;
-  width: 180px;
-  height: 50px;
-  margin: 0 10px 10px 0;
-
-  outline: none;
-}
-.btn-2:hover {
-  transition: 0.5s;
-  background: white;
-  border: solid 1px white;
-  color: #c1d72e;
-} */
