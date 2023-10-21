@@ -269,3 +269,20 @@ section #haunted-mansion {
 }
 
 /* End of memory minigame styles */
+
+/* Quiz game styles */
+/* card styles */
+.card {
+  background-color: #1a1a1a;
+  color: white;
+  margin: 20px;
+}
+
+/* card image styles */
+.card-img-top {
+  max-height: 300px;
+  object-fit: contain;
+}
+
+
+
