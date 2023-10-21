@@ -98,18 +98,20 @@ button {
 }
 
 /* DIALOGUE BOX */
-.dialog-box {
+.dialogue-box {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  width: 90%;
+  height: 100px;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
-  padding: 20px;
+  padding: 1em;
   display: none;
 }
 
-.dialog-box.active {
+.dialogue-box.active {
   display: block;
 }
 
