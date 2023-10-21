@@ -72,8 +72,10 @@ document.addEventListener("keydown", function (event) {
       return; // Do nothing if it's not an arrow key
   }
 
-  const containerWidth = window.innerWidth;
-  const containerHeight = window.innerHeight;
+  // const containerWidth = window.innerWidth;
+  // const containerHeight = window.innerHeight;
+  const containerWidth = backgroundImage.width;
+  const containerHeight = backgroundImage.height;
   // Limit the movement so the image doesn't go out of the container
   left = Math.max(0, Math.min(containerWidth - image.width, left));
   top = Math.max(0, Math.min(containerHeight - image.height, top));
@@ -322,5 +324,7 @@ const displayMiniGames = (id) => {
     miniGame2();
   } else if (id == "door3") {
     miniGame3();
+  } else if (id == "door4") {
+    alert(id);
   }
 };
