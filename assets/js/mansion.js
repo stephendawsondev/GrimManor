@@ -1,6 +1,6 @@
 const backgroundImage = document.getElementById("background-image");
 const moveButtons = document.querySelectorAll("button");
-const container = document.getElementById("container");
+const container = document.getElementById("mainson-container");
 const DEBUT = false;
 
 window.onload = function () {
