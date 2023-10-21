@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-#hangman-game {
-  display: hidden;
-}
-
 body,
 html {
   height: 100%;
@@ -100,6 +96,32 @@ button {
     transform: translate(-50%, 100%);
   }
 }
+
+/* DIALOGUE BOX */
+.dialog-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 20px;
+  display: none;
+}
+
+.dialog-box.active {
+  display: block;
+}
+
+.choices-container {
+  margin-top: 20px;
+}
+
+.choice-button {
+  margin-right: 10px;
+}
+
+/* END DIALOGUE BOX */
 
 /*LANDING PAGE */
 #haunted-mansion video {
@@ -194,12 +216,6 @@ section #haunted-mansion {
 /* Memory mini-game styles */
 #memory-game {
   display: block;
-}
-
-body {
-  height: 100vh;
-  display: flex;
-  background: #161e23;
 }
 
 .memory-game {
