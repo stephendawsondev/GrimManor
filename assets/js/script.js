@@ -43,9 +43,11 @@ interactiveButtons.forEach((button) => {
   });
 });
 
+let inColliding; // Variable to check if the background image is colliding with a button
 document.addEventListener("keydown", function (event) {
   const image = document.getElementById("guide");
   const container = document.getElementById("container");
+  const buttons = document.querySelectorAll(".interactive");
   const speed = 10; // Movement speed (you can adjust this)
 
   image.style.display = "block";
@@ -79,7 +81,39 @@ document.addEventListener("keydown", function (event) {
   // Update the image's position
   image.style.left = left + "px";
   image.style.top = top + "px";
+
+  //console.log("inColliding: ", inColliding);
+  // Check for collision or being within the area of a button
+  let newColliding = false;
+  let buttonColliding;
+  buttons.forEach((button) => {
+    if (isColliding(image, button)) {
+      newColliding = true;
+      buttonColliding = button;
+      //   inColliding = true;
+      //   button.click();
+    }
+  });
+  if (newColliding && !inColliding) {
+    inColliding = true;
+    buttonColliding.click();
+  } else if (!newColliding) {
+    inColliding = false;
+  }
 });
+
+// Function to check for collision or being within the area of two elements
+function isColliding(element1, element2) {
+  const rect1 = element1.getBoundingClientRect();
+  const rect2 = element2.getBoundingClientRect();
+
+  return !(
+    rect1.right < rect2.left ||
+    rect1.left > rect2.right ||
+    rect1.bottom < rect2.top ||
+    rect1.top > rect2.bottom
+  );
+}
 
 // Update the position of the buttons when the background image moves
 // This function is called in mobile mode
