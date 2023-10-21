@@ -20,14 +20,6 @@
       <button id="move-down">down</button>
     </div>
 
-    <div class="wrapper hangman-wrapper">
-      <h1>Hangman</h1>
-      <h2>Vanilla Javascript Hangman Game</h2>
-      <p>
-        Use the alphabet below to guess the word, or click hint to get a clue.
-      </p>
-    </div>
-
     <dialog id="game-container">
       <div class="minigame" id="hangman-game">
         <h2>Hangman</h2>
@@ -166,7 +158,6 @@
             src="assets/images/card_back.png"
             alt="Back of Card"
           />
-
         </div>
         <div class="memory-card" data-framework="fool">
           <img
@@ -280,6 +271,10 @@
         </div>
       </div>
     </dialog>
+    <div id="dialogue-box" class="dialogue-box">
+      <p id="dialogue-text" class="dialogue-text"></p>
+      <div id="choices-container" class="choices-container"></div>
+    </div>
   </body>
 
   <script type="module" src="assets/js/script.js"></script>
