@@ -101,7 +101,7 @@ html {
   }
 }
 
-/* End Mainson css styles */
+/* End Mansion css styles */
 
 /* Ghost minigame css */
 
@@ -121,6 +121,11 @@ html {
 
 #game-container {
   position: relative;
+  width: 80%;
+  margin: 0 auto;
+  height: 80%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* DIALOGUE BOX */
@@ -244,10 +249,6 @@ section #haunted-mansion {
 /* End Hangman game styles */
 
 /* Memory mini-game styles */
-#memory-game {
-  display: block;
-}
-
 .memory-game {
   width: 640px;
   height: 640px;

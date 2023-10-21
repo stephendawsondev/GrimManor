@@ -11,7 +11,7 @@ import { flipCard } from "./minigames/memory-game.js";
 
 const backgroundImage = document.getElementById("background-image"); // Select the background image
 const moveButtons = document.querySelectorAll("button"); // Select all buttons with the "move" class
-const container = document.getElementById("mainson-container"); // Select the container with the mainson image
+const container = document.getElementById("mansion-container"); // Select the container with the mansion image
 const DEBUT = false;
 
 // window.onload = function () {
@@ -120,7 +120,7 @@ function moveBackground(direction) {
 // import { showDialogueAsync } from "./dialogue.js";
 
 const gameContainer = document.getElementById("game-container");
-// gameContainer.showModal();
+gameContainer.showModal();
 // runHangmanGame();
 
 const introDialogue = [
