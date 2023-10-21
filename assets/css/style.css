@@ -127,6 +127,7 @@ html {
 .dialogue-box {
   position: absolute;
   width: 90%;
+  max-width: 900px;
   height: 100px;
   bottom: 20%;
   left: 50%;
@@ -155,7 +156,7 @@ html {
 /*LANDING PAGE */
 #haunted-mansion video {
   position: relative;
-  height: 100%;
+  width: 100%;
   /*top: 0;
     left: 0;
     width: 100%;
