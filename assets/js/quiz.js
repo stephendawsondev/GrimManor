@@ -158,3 +158,10 @@ function handleAnswer(answerIndex) {
     displayScore();
   }
 }
+
+// Functions called on button eventlistening
+function handlePlay() {
+  // This function handles the play button
+  displayQuestion(questions[currentQuestionIndex]);
+  playButton.classList.add("d-none");
+}
