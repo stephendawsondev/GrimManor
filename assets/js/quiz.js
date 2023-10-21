@@ -171,3 +171,9 @@ function handleNext() {
   displayQuestion(questions[currentQuestionIndex]);
   nextButton.classList.add("d-none");
 }
+
+function handlePlayAgain() {
+  // This function handles the play again button
+  resetQuiz();
+  handlePlay();
+}
