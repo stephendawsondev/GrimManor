@@ -1,22 +1,49 @@
+const guessedLetters = [];
+
+const checkLetter = (letter) => {
+  guessedLetters.push(letter);
+  const letterSpans = document.querySelectorAll(".hangman-letter");
+  for (const span of letterSpans) {
+    if (guessedLetters.includes(span.dataset.letter)) {
+      span.innerText = span.dataset.letter;
+    }
+  }
+};
+
 const runHangmanGame = () => {
   const gameContainer = document.getElementById("hangman-game");
-
   gameContainer.classList.add("active");
-
   const phraseArr = "Hello World!".split("");
-  const phraseContainer = document.querySelector("hangman-phrase-container");
-  const hangmanPhrase = document.querySelector("hangman-phrase");
+  const hangmanPhrase = document.querySelector(".hangman-phrase");
 
   for (const letter of phraseArr) {
     const letterContainer = document.createElement("div");
     letterContainer.classList.add("hangman-letter-container");
-
     const letterSpan = document.createElement("span");
-    letterSpan.classList.add("hangman-letter");
-    letterSpan.innerText = letter;
+
+    if (letter !== " ") {
+      letterSpan.classList.add("hangman-letter");
+      letterSpan.dataset.letter = letter;
+    } else {
+      letterContainer.classList.add("hangman-letter-space");
+    }
 
     letterContainer.appendChild(letterSpan);
     hangmanPhrase.appendChild(letterContainer);
+  }
+
+  // Add event listeners to letter buttons
+  const letterButtons = document.querySelectorAll(
+    ".ouija-board-alphabet-letter"
+  );
+  for (const button of letterButtons) {
+    if (guessedLetters.includes(button.innerText)) {
+      button.disabled = true;
+      button.classList.add("disabled");
+    }
+    button.addEventListener("click", () => {
+      checkLetter(button.innerText);
+    });
   }
 };
 

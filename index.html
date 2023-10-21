@@ -19,24 +19,15 @@
       <button id="move-down">down</button>
     </div>
 
-    <div class="wrapper hangman-wrapper">
-      <h1>Hangman</h1>
-      <h2>Vanilla Javascript Hangman Game</h2>
-      <p>
-        Use the alphabet below to guess the word, or click hint to get a clue.
-      </p>
-    </div>
-
     <dialog id="game-container">
       <div class="minigame" id="hangman-game">
         <h2>Hangman</h2>
-        <div class="hangman-phrase-container">
-          <p class="hangman-phrase"></p>
-        </div>
-
         <canvas id="stickman">
           Your browser does not support the hangman drawing.
         </canvas>
+        <div class="hangman-phrase-container">
+          <div class="hangman-phrase"></div>
+        </div>
         <div class="ouija-board-container">
           <img
             src="assets/images/ouija-board-blank.png"

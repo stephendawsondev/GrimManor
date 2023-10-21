@@ -127,21 +127,56 @@ button {
   color: #000;
 }
 
+.ouija-board-alphabet-letter.disabled {
+  color: #ccc;
+}
+
+.hangman-phrase-container {
+  width: 90%;
+  margin-bottom: 2em;
+}
+
+.hangman-phrase {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 1%;
+}
+
 .hangman-letter-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  margin: 0 1%;
+}
+
+.hangman-letter {
+  display: block;
+  font-size: 2.25rem;
+  font-family: "Captain Howdy", sans-serif;
+  color: transparent;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.hangman-letter::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+}
+
+.hangman-letter-space {
   position: relative;
   display: inline-block;
   width: 10%;
   margin: 0 1%;
-  border: 1px solid #000;
 }
 
-.hangman-letter {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2.25rem;
-  font-family: "Captain Howdy", sans-serif;
-  color: #000;
-}
 /* End Hangman game styles */
