@@ -53,3 +53,23 @@ const questions = [
 //Quiz questions and score variables
 let currentQuestionIndex = 0;
 let score = 0;
+
+// Quiz card,text and button elements to be manipulated
+const questionCard = document.getElementById("question-card");
+const questionImage = document.getElementById("question-image");
+const questionText = document.getElementById("question-text");
+const answerButtons = document.getElementById("answer-buttons");
+const resultCard = document.getElementById("result-card");
+const resultText = document.getElementById("result-text");
+const correctAnswer = document.getElementById("correct-answer");
+const nextButton = document.getElementById("next-button");
+const scoreCard = document.getElementById("score-card");
+const scoreText = document.getElementById("score-text");
+const giftCard = document.getElementById("gift-card");
+const failureText = document.getElementById("failure-text");
+const playAgainButton = document.getElementById("play-again-button");
+const endQuizButton = document.getElementById("end-quiz-button");
+const endCard = document.getElementById("end-card");
+const endText = document.getElementById("end-text");
+const playButton = document.getElementById("play-button");
+const backButton = document.getElementById("home-button");
