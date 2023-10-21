@@ -194,3 +194,8 @@ function handleConfirmEnd() {
   endText.textContent = "Thanks for playing!";
   endCard.classList.remove("d-none");
 }
+
+function handleBackHome() {
+  // This function handles the back home button
+  window.location.href = "./back.html"; // Redirecting can be modified to suit the project
+}
