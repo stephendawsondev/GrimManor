@@ -1,4 +1,4 @@
-import { showDialogue } from "../dialogue.js";
+import { showDialogueAsync } from "../dialogue.js";
 const runHangmanGame = () => {
   const gameContainer = document.getElementById("hangman-game");
 
@@ -32,7 +32,7 @@ const runHangmanGame = () => {
     { text: "You've entered the mansion." },
   ];
 
-  showDialogue(dialogue, true);
+  showDialogueAsync(dialogue, true);
 };
 
 export { runHangmanGame };
