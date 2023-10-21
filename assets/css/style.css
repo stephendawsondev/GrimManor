@@ -303,7 +303,8 @@ section #haunted-mansion {
   height: 82vh;
   width: 100%;
   background-color: black;
-  background: url(../images/halloween-horror-pumkins.webp) no-repeat center center;
+  background: url(../images/halloween-horror-pumkins.webp) no-repeat center
+    center;
   background-size: cover;
   color: #fafafa;
   animation-name: container-zoom;
@@ -311,5 +312,13 @@ section #haunted-mansion {
   animation-fill-mode: forwards;
 }
 
+/* quiz container image zoom animation */
+@keyframes container-zoom {
+  from {
+    transform: scale(1);
+  }
 
-
+  to {
+    transform: scale(1.1);
+  }
+}
