@@ -1,5 +1,114 @@
 // jshint esversion: 6
 
+// Mansion interaction code
+
+const backgroundImage = document.getElementById("background-image"); // Select the background image
+const moveButtons = document.querySelectorAll("button"); // Select all buttons with the "move" class
+const container = document.getElementById("mainson-container"); // Select the container with the mainson image
+const DEBUT = false;
+
+// window.onload = function () {
+//   backgroundImage.style.bottom = "-100px";
+// };
+
+// Debug actions of button (show/hide buttons)
+if (DEBUT) {
+  document.onmousemove = function (e) {
+    var x = e.pageX;
+    var y = e.pageY;
+    e.target.title = "X is " + x + " and Y is " + y;
+  };
+}
+const buttonDebug = document.getElementById("button-debug");
+buttonDebug.addEventListener("click", function () {
+  const buttons = document.querySelectorAll(".interactive");
+  buttons.forEach((button) => {
+    button.classList.toggle("show");
+  });
+});
+
+// Select all buttons with the "interactive" class
+const interactiveButtons = document.querySelectorAll(".interactive");
+// Add a click event to each button
+interactiveButtons.forEach((button) => {
+  button.addEventListener("click", function () {
+    displayMiniGames(this.id);
+    // alert(`Button ID: ${this.id}`);
+  });
+});
+
+// Update the position of the buttons when the background image moves
+// This function is called in mobile mode
+function updateButtonsPos(top, left) {
+  const buttons = document.querySelectorAll(".interactive");
+  buttons.forEach((button) => {
+    button.style.top = button.offsetTop + top + "px";
+    button.style.left = button.offsetLeft + left + "px";
+  });
+}
+
+// Add a click event to each button to move the background image
+moveButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const direction = event.target.id.replace("move-", "");
+    moveBackground(direction);
+  });
+});
+
+// Move the background image in the specified direction
+function moveBackground(direction) {
+  let top = backgroundImage.offsetTop;
+  let left = backgroundImage.offsetLeft;
+
+  const step = 20; // Adjust this to change the speed of the movement
+  //const containerWidth = container.clientWidth;
+  //const containerHeight = container.clientHeight;
+  const containerWidth = window.innerWidth;
+  const containerHeight = window.innerHeight;
+  const imageWidth = backgroundImage.width;
+  const imageHeight = backgroundImage.height;
+
+  switch (direction) {
+    case "up":
+      top = Math.min(top + step, 0);
+      break;
+    case "down":
+      top = Math.max(
+        top - step,
+        containerHeight + containerHeight / 5 - imageHeight
+      );
+      break;
+    case "left":
+      left = Math.min(left + step, 0);
+      break;
+    case "right":
+      left = Math.max(
+        left - step,
+        containerWidth + containerWidth / 4 - imageWidth
+      );
+      break;
+  }
+
+  console.log(direction, top, left);
+  console.log(
+    containerHeight,
+    imageHeight,
+    top - step,
+    containerHeight - imageHeight
+  );
+  // Update the position of the buttons interactives to follow the background image
+  updateButtonsPos(
+    top - backgroundImage.offsetTop,
+    left - backgroundImage.offsetLeft
+  );
+  //backgroundImage.style.top = top + "px";
+  //backgroundImage.style.left = left + "px";
+  backgroundImage.style.marginTop = top + "px";
+  backgroundImage.style.marginLeft = left + "px";
+}
+
+// Hangman minigame code
+
 import { runHangmanGame } from "./minigames/hangman.js";
 import { showDialogueAsync } from "./dialogue.js";
 
@@ -104,77 +213,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   ghost.classList.remove("active");
 });
 
-const backgroundImage = document.getElementById("background-image");
-const moveButtons = document.querySelectorAll("button");
-const container = document.getElementById("container");
-
-moveButtons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    const direction = event.target.id.replace("move-", "");
-    moveBackground(direction);
-  });
-});
-
-function moveBackground(direction) {
-  let top = backgroundImage.offsetTop;
-  let left = backgroundImage.offsetLeft;
-
-  const step = 20; // Adjust this to change the speed of the movement
-  const containerWidth = container.clientWidth;
-  const containerHeight = container.clientHeight;
-  const imageWidth = backgroundImage.width;
-  const imageHeight = backgroundImage.height;
-
-  switch (direction) {
-    case "up":
-      top = Math.min(top + step, 0);
-      break;
-    case "down":
-      top = Math.max(
-        top - step,
-        containerHeight + containerHeight / 5 - imageHeight
-      );
-      break;
-    case "left":
-      left = Math.min(left + step, 0);
-      break;
-    case "right":
-      left = Math.max(
-        left - step,
-        containerWidth + containerWidth / 4 - imageWidth
-      );
-      break;
-  }
-
-  console.log(direction, top, left);
-  console.log(
-    containerHeight,
-    imageHeight,
-    top - step,
-    containerHeight - imageHeight
-  );
-  //backgroundImage.style.top = top + "px";
-  //backgroundImage.style.left = left + "px";
-  backgroundImage.style.marginTop = top + "px";
-  backgroundImage.style.marginLeft = left + "px";
-}
-
-// Get all button elements
-const buttons = document.querySelectorAll("button");
-
-/* This method loops through individual buttons
- *  and listens for a click event
- *  it then calls the displayMiniGames function
- *  and passes the id of the clicked button
- */
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    displayMiniGames(button.id);
-  });
-});
+// -------- Mini games functions ---------
 
 // This function displays the first mini game
-const miniGame1 = () => (window.location.href = "game1.html");
+const miniGame1 = () => {
+  gameContainer.showModal();
+  runHangmanGame();
+};
+// (window.location.href = "game1.html");
 
 // This function displays the second mini game
 const miniGame2 = () => (window.location.href = "game2.html");
@@ -188,11 +234,11 @@ const miniGame3 = () => (window.location.href = "game3.html");
  * to displays the clicked mini game
  */
 const displayMiniGames = (id) => {
-  if (id == "mini-game1") {
+  if (id == "door1") {
     miniGame1();
-  } else if (id == "mini-game2") {
+  } else if (id == "door2") {
     miniGame2();
-  } else if (id == "mini-game3") {
+  } else if (id == "door3") {
     miniGame3();
   }
 };
