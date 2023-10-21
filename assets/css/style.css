@@ -297,5 +297,19 @@ section #haunted-mansion {
   color: black;
 }
 
+/* quiz container styles */
+.quiz-container {
+  position: relative;
+  height: 82vh;
+  width: 100%;
+  background-color: black;
+  background: url(../images/halloween-horror-pumkins.webp) no-repeat center center;
+  background-size: cover;
+  color: #fafafa;
+  animation-name: container-zoom;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+}
+
 
 
