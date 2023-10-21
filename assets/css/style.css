@@ -1,96 +1,193 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body,
 html {
   height: 100%;
   margin: 0;
 }
 
-#container {
-  position: relative;
-  width: 100%;
-  height: 100%;
+/* Maison container css */
+
+#mansion-container {
+  float: left;
+  height: 1024px;
   overflow: hidden;
+  position: relative;
+  width: 1792px;
 }
 
-button {
+.responsive-button {
   display: hidden;
 }
 
-@media screen and (min-width: 769px) {
-  #background-image {
-    width: 100%;
-    height: 100vh; /* 100% of viewport height */
-    overflow: hidden;
-    top: 0;
-    left: 0;
-  }
+.show {
+  opacity: 1 !important;
+}
+
+#button-debug {
+  top: 0;
+  position: fixed;
+  right: 10px;
+  z-index: 1000;
+}
+
+.interactive {
+  background-color: transparent;
+  opacity: 0;
+  pointer-events: all;
+}
+
+#door1 {
+  position: absolute;
+  top: 590px;
+  left: 420px;
+  width: 120px;
+  height: 310px;
+}
+
+#door2 {
+  position: absolute;
+  top: 600px;
+  left: 740px;
+  width: 100px;
+  height: 210px;
+}
+
+#door3 {
+  position: absolute;
+  top: 364px;
+  left: 964px;
+  width: 58px;
+  height: 170px;
+}
+
+#door4 {
+  position: absolute;
+  top: 587px;
+  left: 1354px;
+  width: 110px;
+  height: 320px;
 }
 
 @media (max-width: 768px) {
-  #container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  #background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-transform: translateY(-10%) translateX(-10%);
-  }
-
-  button {
+  .responsive-button {
     display: block;
-    position: absolute;
-    z-index: 1;
+    position: fixed;
+    z-index: 1000;
   }
 
-  #move-up {
+  .move-up {
     top: 10px;
     left: 50%;
   }
 
-  #move-right {
+  .move-right {
     right: 10px;
     top: 50%;
   }
 
-  #move-left {
+  .move-left {
     top: 50%;
     left: 10px;
   }
 
-  #move-down {
+  .move-down {
     bottom: 10px;
     left: 50%;
   }
+}
 
-  .left {
-    left: 10px;
-    top: 50%;
-  }
+/* End Mainson css styles */
 
-  .right {
-    right: 0;
-    top: 50%;
-    transform: translate(100%, -50%);
-  }
+/* Ghost minigame css */
 
-  .up {
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -100%);
-  }
+.ghost-image {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  width: 150px;
+  bottom: 3%;
+  left: 60%;
+}
 
-  .down {
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 100%);
-  }
+.ghost-image.active {
+  opacity: 0.8;
+}
+
+#game-container {
+  position: relative;
+}
+
+/* DIALOGUE BOX */
+.dialogue-box {
+  position: absolute;
+  width: 90%;
+  max-width: 900px;
+  height: 100px;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 1em;
+  display: none;
+  z-index: 2;
+}
+
+.dialogue-box.active {
+  display: block;
+}
+
+.choices-container {
+  margin-top: 20px;
+}
+
+.choice-button {
+  margin-right: 10px;
+}
+
+/* END DIALOGUE BOX */
+
+/*LANDING PAGE */
+#haunted-mansion video {
+  position: relative;
+  width: 100%;
+  /*top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+  } */
+}
+
+section #haunted-mansion {
+  position: relative;
+}
+
+.landing-text {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: large;
+  color: white;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%);
+}
+
+#landing-button {
+  font-size: large;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
 }
 
 /* Hangman game styles */
+/* load captain howdy font from fonts/captain-howdy.ttf */
 @font-face {
   font-family: "Captain Howdy";
   src: url("../fonts/captain-howdy.ttf");
@@ -180,3 +277,54 @@ button {
 }
 
 /* End Hangman game styles */
+
+/* Memory mini-game styles */
+#memory-game {
+  display: block;
+}
+
+.memory-game {
+  width: 640px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.memory-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: #57615f;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
+
+/* End of memory minigame styles */

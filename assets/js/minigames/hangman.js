@@ -1,3 +1,5 @@
+import { showDialogueAsync } from "../dialogue.js";
+
 const guessedLetters = [];
 
 const checkLetter = (letter) => {
@@ -14,6 +16,7 @@ const runHangmanGame = () => {
   const gameContainer = document.getElementById("hangman-game");
   gameContainer.classList.add("active");
   const phraseArr = "Hello World!".split("");
+  const phraseContainer = document.querySelector(".hangman-phrase-container");
   const hangmanPhrase = document.querySelector(".hangman-phrase");
 
   for (const letter of phraseArr) {
@@ -45,6 +48,20 @@ const runHangmanGame = () => {
       checkLetter(button.innerText);
     });
   }
+  const dialogue = [
+    { text: "Hello, welcome to the haunted mansion." },
+    {
+      text: "Do you want to enter?",
+      choices: [
+        { text: "Yes", action: () => console.log("Yes") },
+        { text: "No", action: () => console.log("Leaving mansion...") },
+      ],
+    },
+    { text: "Thanks for coming in." },
+    { text: "You've entered the mansion." },
+  ];
+
+  showDialogueAsync(dialogue, true);
 };
 
 export { runHangmanGame };
