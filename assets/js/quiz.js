@@ -177,3 +177,14 @@ function handlePlayAgain() {
   resetQuiz();
   handlePlay();
 }
+
+function handleEndQuiz() {
+  /* This function handles the end quiz functionality
+   *  and displays the end game card
+   */
+  endText.textContent = "Comfirm you want to end the quiz?";
+  questionCard.classList.add("d-none");
+  resultCard.classList.add("d-none");
+  scoreCard.classList.add("d-none");
+  endCard.classList.remove("d-none");
+}
