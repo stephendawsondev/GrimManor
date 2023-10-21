@@ -199,3 +199,11 @@ function handleBackHome() {
   // This function handles the back home button
   window.location.href = "./back.html"; // Redirecting can be modified to suit the project
 }
+
+//Event Listeners
+playButton.addEventListener("click", handlePlay);
+nextButton.addEventListener("click", handleNext);
+playAgainButton.addEventListener("click", handlePlayAgain);
+endQuizButton.addEventListener("click", handleEndQuiz);
+endCard.addEventListener("click", handleConfirmEnd);
+backButton.addEventListener("click", handleBackHome);
