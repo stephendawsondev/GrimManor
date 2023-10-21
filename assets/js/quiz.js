@@ -117,3 +117,13 @@ function updateScore() {
   score++;
   scoreText.textContent = `Score: ${score}/${questions.length}`;
 }
+
+function displayScore() {
+  // This function displays the score
+  scoreCard.classList.remove("d-none");
+  if (score >= 4) {
+    giftCard.classList.remove("d-none");
+  } else {
+    failureText.classList.remove("d-none");
+  }
+}
