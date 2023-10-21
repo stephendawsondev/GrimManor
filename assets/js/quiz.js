@@ -76,21 +76,38 @@ const backButton = document.getElementById("home-button");
 
 //Quiz Functions
 function displayQuestion(question) {
-    /* This function displays the question card and answer buttons
-    *  loops through the answers array and creates a button for each answer
-    *  adds an event listener to each button
-    *  and displays the next question card when the button is clicked 
-    */
-    questionImage.src = question.image;
-    questionText.textContent = question.question;
-    answerButtons.innerHTML = "";
-    for (let i = 0; i < question.answers.length; i++) {
-      const button = document.createElement("button");
-      button.textContent = question.answers[i];
-      button.classList.add("btn");
-      button.addEventListener("click", () => handleAnswer(i));
-      answerButtons.appendChild(button);
-    }
-    questionCard.classList.remove("d-none");
-    resultCard.classList.add("d-none");
+  /* This function displays the question card and answer buttons
+   *  loops through the answers array and creates a button for each answer
+   *  adds an event listener to each button
+   *  and displays the next question card when the button is clicked
+   */
+  questionImage.src = question.image;
+  questionText.textContent = question.question;
+  answerButtons.innerHTML = "";
+  for (let i = 0; i < question.answers.length; i++) {
+    const button = document.createElement("button");
+    button.textContent = question.answers[i];
+    button.classList.add("btn");
+    button.addEventListener("click", () => handleAnswer(i));
+    answerButtons.appendChild(button);
   }
+  questionCard.classList.remove("d-none");
+  resultCard.classList.add("d-none");
+}
+
+function displayResult(correct) {
+  // This function displays the result of the answered question
+  if (correct) {
+    resultText.textContent = "Correct!";
+    correctAnswer.textContent = "";
+  } else {
+    resultText.textContent = "Wrong!";
+    correctAnswer.textContent = `The correct answer is: ${
+      questions[currentQuestionIndex].answers[
+        questions[currentQuestionIndex].correctAnswerIndex
+      ]
+    }`;
+  }
+  questionCard.classList.add("d-none");
+  resultCard.classList.remove("d-none");
+}
