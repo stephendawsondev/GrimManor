@@ -42,10 +42,10 @@ function loadPlayerData() {
 // // Load player data later
 // const loadedPlayerData = loadPlayerData();
 
-// if (loadedPlayerData) {
-//   console.log("Player Name: " + loadedPlayerData.playerName);
-//   console.log("Score: " + loadedPlayerData.score);
-//   console.log("Games Played: " + loadedPlayerData.gamesPlayed);
-// } else {
-//   console.log("No player data found.");
-// }
+if (loadPlayerData()) {
+  console.log("Player Name: " + loadedPlayerData.playerName);
+  console.log("Score: " + loadedPlayerData.score);
+  console.log("Games Played: " + loadedPlayerData.gamesPlayed);
+} else {
+  console.log("No player data found.");
+}
