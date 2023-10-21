@@ -73,3 +73,24 @@ const endCard = document.getElementById("end-card");
 const endText = document.getElementById("end-text");
 const playButton = document.getElementById("play-button");
 const backButton = document.getElementById("home-button");
+
+//Quiz Functions
+function displayQuestion(question) {
+    /* This function displays the question card and answer buttons
+    *  loops through the answers array and creates a button for each answer
+    *  adds an event listener to each button
+    *  and displays the next question card when the button is clicked 
+    */
+    questionImage.src = question.image;
+    questionText.textContent = question.question;
+    answerButtons.innerHTML = "";
+    for (let i = 0; i < question.answers.length; i++) {
+      const button = document.createElement("button");
+      button.textContent = question.answers[i];
+      button.classList.add("btn");
+      button.addEventListener("click", () => handleAnswer(i));
+      answerButtons.appendChild(button);
+    }
+    questionCard.classList.remove("d-none");
+    resultCard.classList.add("d-none");
+  }
