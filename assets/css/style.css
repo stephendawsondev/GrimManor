@@ -118,6 +118,7 @@ button {
 .dialogue-box {
   position: absolute;
   width: 90%;
+  max-width: 900px;
   height: 100px;
   bottom: 20%;
   left: 50%;
