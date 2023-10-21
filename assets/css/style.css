@@ -73,6 +73,17 @@ html {
   height: 320px;
 }
 
+#guide {
+  position: absolute;
+  z-index: 1;
+  transition: opacity 2s ease-in-out;
+  width: 150px;
+  bottom: 20%;
+  left: 61%;
+  width: 100px;
+  display: none;
+}
+
 @media (max-width: 768px) {
   .responsive-button {
     display: block;
