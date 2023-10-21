@@ -27,3 +27,25 @@ function loadPlayerData() {
     return null; // No player data found in LocalStorage
   }
 }
+
+// Example usage within your game code:
+
+// Import the GameDataLibrary.js in your game script
+// Example usage:
+// const playerName = "Adams";
+// const playerScore = 1000;
+// const gamesPlayed = 5;
+
+// // Save player data
+// savePlayerData(playerName, playerScore, gamesPlayed);
+
+// // Load player data later
+// const loadedPlayerData = loadPlayerData();
+
+// if (loadedPlayerData) {
+//   console.log("Player Name: " + loadedPlayerData.playerName);
+//   console.log("Score: " + loadedPlayerData.score);
+//   console.log("Games Played: " + loadedPlayerData.gamesPlayed);
+// } else {
+//   console.log("No player data found.");
+// }
