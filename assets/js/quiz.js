@@ -111,3 +111,9 @@ function displayResult(correct) {
   questionCard.classList.add("d-none");
   resultCard.classList.remove("d-none");
 }
+
+function updateScore() {
+  // This function updates the score
+  score++;
+  scoreText.textContent = `Score: ${score}/${questions.length}`;
+}
