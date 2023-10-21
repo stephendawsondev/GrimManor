@@ -3,24 +3,9 @@
 import { runHangmanGame } from "./minigames/hangman.js";
 import { showDialogue } from "./dialogue.js";
 
-const dialogue = [
-  { text: "Hello, welcome to the haunted mansion." },
-  {
-    text: "Do you want to enter?",
-    choices: [
-      { text: "Yes", action: () => console.log("Yes") },
-      { text: "No", action: () => console.log("Leaving mansion...") },
-    ],
-  },
-  { text: "Thanks for coming in." },
-  { text: "You've entered the mansion." },
-];
-
-showDialogue(dialogue);
-
 const gameContainer = document.getElementById("game-container");
-// gameContainer.showModal();
-// runHangmanGame();
+gameContainer.showModal();
+runHangmanGame();
 
 const backgroundImage = document.getElementById("background-image");
 const moveButtons = document.querySelectorAll("button");

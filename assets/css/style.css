@@ -97,9 +97,13 @@ button {
   }
 }
 
+#game-container {
+  position: relative;
+}
+
 /* DIALOGUE BOX */
 .dialogue-box {
-  position: fixed;
+  position: absolute;
   width: 90%;
   height: 100px;
   bottom: 20%;
