@@ -8,7 +8,6 @@ import { showDialogueAsync } from "./dialogue.js";
 import { flipCard } from "./minigames/memory-game.js";
 
 // Mansion interaction code
-
 const backgroundImage = document.getElementById("background-image"); // Select the background image
 const moveButtons = document.querySelectorAll("button"); // Select all buttons with the "move" class
 const container = document.getElementById("mainson-container"); // Select the container with the mainson image
@@ -42,6 +41,44 @@ interactiveButtons.forEach((button) => {
     displayMiniGames(this.id);
     // alert(`Button ID: ${this.id}`);
   });
+});
+
+document.addEventListener("keydown", function (event) {
+  const image = document.getElementById("guide");
+  const container = document.getElementById("container");
+  const speed = 10; // Movement speed (you can adjust this)
+
+  image.style.display = "block";
+
+  let left = parseInt(getComputedStyle(image).left);
+  let top = parseInt(getComputedStyle(image).top);
+
+  switch (event.key) {
+    case "ArrowUp":
+      top -= speed;
+      break;
+    case "ArrowDown":
+      top += speed;
+      break;
+    case "ArrowLeft":
+      left -= speed;
+      break;
+    case "ArrowRight":
+      left += speed;
+      break;
+    default:
+      return; // Do nothing if it's not an arrow key
+  }
+
+  const containerWidth = window.innerWidth;
+  const containerHeight = window.innerHeight;
+  // Limit the movement so the image doesn't go out of the container
+  left = Math.max(0, Math.min(containerWidth - image.width, left));
+  top = Math.max(0, Math.min(containerHeight - image.height, top));
+
+  // Update the image's position
+  image.style.left = left + "px";
+  image.style.top = top + "px";
 });
 
 // Update the position of the buttons when the background image moves
