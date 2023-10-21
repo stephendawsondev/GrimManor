@@ -1,3 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#hangman-game {
+  display: hidden;
+}
+
 body,
 html {
   height: 100%;
@@ -18,7 +28,8 @@ button {
 @media screen and (min-width: 769px) {
   #background-image {
     width: 100%;
-    height: 100vh; /* 100% of viewport height */
+    height: 100vh;
+    /* 100% of viewport height */
     overflow: hidden;
     top: 0;
     left: 0;
@@ -90,7 +101,42 @@ button {
   }
 }
 
+/*LANDING PAGE */
+
+#haunted-mansion video {
+  position: relative;
+  height: 100%;
+  /*top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+  } */
+}
+
+section #haunted-mansion {
+  position: relative;
+}
+
+.landing-text {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: large;
+  color: white;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%);
+}
+
+#landing-button {
+  font-size: large;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+}
+
 /* Hangman game styles */
+/* load captain howdy font from fonts/captain-howdy.ttf */
 @font-face {
   font-family: "Captain Howdy";
   src: url("../fonts/captain-howdy.ttf");
@@ -145,3 +191,59 @@ button {
   color: #000;
 }
 /* End Hangman game styles */
+/* Memory mini-game styles */
+#memory-game {
+  display: block;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  background: #161e23;
+}
+
+.memory-game {
+  width: 640px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.memory-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: #57615f;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
+
+/* End of memory minigame styles */
