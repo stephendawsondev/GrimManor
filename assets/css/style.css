@@ -284,5 +284,18 @@ section #haunted-mansion {
   object-fit: contain;
 }
 
+/* button styles */
+.btn {
+  background-color: #ff6600;
+  color: black;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.btn:hover {
+  background-color: #ff8533;
+  color: black;
+}
+
 
 
