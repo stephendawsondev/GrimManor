@@ -165,3 +165,9 @@ function handlePlay() {
   displayQuestion(questions[currentQuestionIndex]);
   playButton.classList.add("d-none");
 }
+
+function handleNext() {
+  // This function handles the next button
+  displayQuestion(questions[currentQuestionIndex]);
+  nextButton.classList.add("d-none");
+}
