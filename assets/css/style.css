@@ -15,6 +15,9 @@ button {
   display: hidden;
 }
 
+
+
+
 @media screen and (min-width: 769px) {
   #background-image {
     width: 100%;
@@ -92,19 +95,24 @@ button {
 
 /*LANDING PAGE */
 
-#haunted-mansion video {
+/*#haunted-mansion video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+  } */
 
-  .landing-text {
+  div.landing-text {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: large;
     color: white;
+    position: relative;
+    z-index: 2;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%);
   }
 
   #landing-button {
@@ -113,4 +121,3 @@ button {
     border: 0;
     padding: 0;
   }
-
