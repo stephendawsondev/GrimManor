@@ -1,96 +1,104 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#hangman-game {
+    display: hidden;
+}
+
 body,
 html {
-  height: 100%;
-  margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
 #container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-button {
-  display: hidden;
-}
-
-
-
-
-@media screen and (min-width: 769px) {
-  #background-image {
-    width: 100%;
-    height: 100vh; /* 100% of viewport height */
-    overflow: hidden;
-    top: 0;
-    left: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  #container {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
-  }
+}
 
-  #background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-transform: translateY(-10%) translateX(-10%);
-  }
+button {
+    display: hidden;
+}
 
-  button {
-    display: block;
-    position: absolute;
-    z-index: 1;
-  }
+@media screen and (min-width: 769px) {
+    #background-image {
+        width: 100%;
+        height: 100vh;
+        /* 100% of viewport height */
+        overflow: hidden;
+        top: 0;
+        left: 0;
+    }
+}
 
-  #move-up {
-    top: 10px;
-    left: 50%;
-  }
+@media (max-width: 768px) {
+    #container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
 
-  #move-right {
-    right: 10px;
-    top: 50%;
-  }
+    #background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-transform: translateY(-10%) translateX(-10%);
+    }
 
-  #move-left {
-    top: 50%;
-    left: 10px;
-  }
+    button {
+        display: block;
+        position: absolute;
+        z-index: 1;
+    }
 
-  #move-down {
-    bottom: 10px;
-    left: 50%;
-  }
+    #move-up {
+        top: 10px;
+        left: 50%;
+    }
 
-  .left {
-    left: 10px;
-    top: 50%;
-  }
+    #move-right {
+        right: 10px;
+        top: 50%;
+    }
 
-  .right {
-    right: 0;
-    top: 50%;
-    transform: translate(100%, -50%);
-  }
+    #move-left {
+        top: 50%;
+        left: 10px;
+    }
 
-  .up {
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -100%);
-  }
+    #move-down {
+        bottom: 10px;
+        left: 50%;
+    }
 
-  .down {
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 100%);
-  }
+    .left {
+        left: 10px;
+        top: 50%;
+    }
+
+    .right {
+        right: 0;
+        top: 50%;
+        transform: translate(100%, -50%);
+    }
+
+    .up {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -100%);
+    }
+
+    .down {
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 100%);
+    }
 }
 
 /*LANDING PAGE */
@@ -128,37 +136,94 @@ section #haunted-mansion {
 
 /* load captain howdy font from fonts/captain-howdy.ttf */
 @font-face {
-  font-family: "Captain Howdy";
-  src: url("../fonts/captain-howdy.ttf");
+    font-family: "Captain Howdy";
+    src: url("../fonts/captain-howdy.ttf");
 }
 
 .minigame {
-  display: none;
+    display: none;
 }
 
 .minigame.active {
-  display: block;
+    display: block;
 }
 
 #hangman-game button {
-  border: none;
-  background-color: transparent;
-  font-size: 1.75rem;
-  font-family: "Captain Howdy", sans-serif;
+    border: none;
+    background-color: transparent;
+    font-size: 1.75rem;
+    font-family: "Captain Howdy", sans-serif;
 }
 
 .ouija-board-container {
-  position: relative;
-  max-width: 705px;
-  margin: 0 auto;
+    position: relative;
+    max-width: 705px;
+    margin: 0 auto;
 }
 
 .ouija-board-alphabet {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%);
-  width: 80%;
-  text-align: center;
-  color: #000;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 80%;
+    text-align: center;
+    color: #000;
 }
+
+/* Memory mini-game styles */
+#memory-game {
+    display: block;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    background: #161e23;
+}
+
+.memory-game {
+    width: 640px;
+    height: 640px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+}
+
+.memory-card {
+    width: calc(25% - 10px);
+    height: calc(33.333% - 10px);
+    margin: 5px;
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+
+.memory-card:active {
+    transform: scale(0.97);
+    transition: transform .2s;
+}
+
+.memory-card.flip {
+    transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: absolute;
+    border-radius: 5px;
+    background: #57615f;
+    backface-visibility: hidden;
+}
+
+.front-face {
+    transform: rotateY(180deg);
+}
+
+/* End of memory minigame styles */
