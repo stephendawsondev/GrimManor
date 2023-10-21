@@ -138,3 +138,23 @@ function resetQuiz() {
   endCard.classList.add("d-none");
   playButton.classList.remove("d-none");
 }
+
+function handleAnswer(answerIndex) {
+  /* This function handles the answer
+   * Checks if the answer is correct
+   * Updates the score
+   * and displays the result
+   */
+  if (answerIndex === questions[currentQuestionIndex].correctAnswerIndex) {
+    updateScore();
+    displayResult(true);
+  } else {
+    displayResult(false);
+  }
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    nextButton.classList.remove("d-none");
+  } else {
+    displayScore();
+  }
+}
