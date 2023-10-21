@@ -1,5 +1,12 @@
 // jshint esversion: 6
 
+// Hangman minigame code
+import { runHangmanGame } from "./minigames/hangman.js";
+import { showDialogueAsync } from "./dialogue.js";
+
+// Memory minigame code
+import { flipCard } from "./minigames/memory-game.js";
+
 // Mansion interaction code
 
 const backgroundImage = document.getElementById("background-image"); // Select the background image
@@ -109,8 +116,8 @@ function moveBackground(direction) {
 
 // Hangman minigame code
 
-import { runHangmanGame } from "./minigames/hangman.js";
-import { showDialogueAsync } from "./dialogue.js";
+// import { runHangmanGame } from "./minigames/hangman.js";
+// import { showDialogueAsync } from "./dialogue.js";
 
 const gameContainer = document.getElementById("game-container");
 // gameContainer.showModal();
@@ -223,10 +230,14 @@ const miniGame1 = () => {
 // (window.location.href = "game1.html");
 
 // This function displays the second mini game
-const miniGame2 = () => (window.location.href = "game2.html");
+const miniGame2 = () => {
+  alert("waiting for Jorgen to init the game in the 2nd door...");
+  // flipCard();
+};
 
 // This function displays the third mini game
-const miniGame3 = () => (window.location.href = "game3.html");
+const miniGame3 = () =>
+  alert("waiting for Sam to init the game in the 3th door...");
 
 /*This function finds the id of the clicked button
  * passed from the event listener
