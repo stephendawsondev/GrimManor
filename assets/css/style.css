@@ -125,3 +125,40 @@ section #haunted-mansion {
     border: 0;
     padding: 0;
   }
+
+/* load captain howdy font from fonts/captain-howdy.ttf */
+@font-face {
+  font-family: "Captain Howdy";
+  src: url("../fonts/captain-howdy.ttf");
+}
+
+.minigame {
+  display: none;
+}
+
+.minigame.active {
+  display: block;
+}
+
+#hangman-game button {
+  border: none;
+  background-color: transparent;
+  font-size: 1.75rem;
+  font-family: "Captain Howdy", sans-serif;
+}
+
+.ouija-board-container {
+  position: relative;
+  max-width: 705px;
+  margin: 0 auto;
+}
+
+.ouija-board-alphabet {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 80%;
+  text-align: center;
+  color: #000;
+}
