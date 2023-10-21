@@ -127,3 +127,14 @@ function displayScore() {
     failureText.classList.remove("d-none");
   }
 }
+
+function resetQuiz() {
+  // This function resets the quiz
+  currentQuestionIndex = 0;
+  score = 0;
+  questionCard.classList.add("d-none");
+  resultCard.classList.add("d-none");
+  scoreCard.classList.add("d-none");
+  endCard.classList.add("d-none");
+  playButton.classList.remove("d-none");
+}
