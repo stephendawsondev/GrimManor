@@ -1,0 +1,94 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+#mainson-container {
+  float: left;
+  height: 1024px;
+  overflow: hidden;
+  position: relative;
+  width: 1792px;
+}
+
+.responsive-button {
+  display: hidden;
+}
+
+.show {
+  opacity: 1 !important;
+}
+
+#button-debug {
+  top: 0;
+  position: fixed;
+  right: 10px;
+  z-index: 1000;
+}
+
+.interactive {
+  background-color: transparent;
+  opacity: 0;
+  pointer-events: all;
+}
+
+#door1 {
+  position: absolute;
+  top: 590px;
+  left: 420px;
+  width: 120px;
+  height: 310px;
+}
+
+#door2 {
+  position: absolute;
+  top: 600px;
+  left: 740px;
+  width: 100px;
+  height: 210px;
+}
+
+#door3 {
+  position: absolute;
+  top: 364px;
+  left: 964px;
+  width: 58px;
+  height: 170px;
+}
+
+#door4 {
+  position: absolute;
+  top: 587px;
+  left: 1354px;
+  width: 110px;
+  height: 320px;
+}
+
+@media (max-width: 768px) {
+  .responsive-button {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+  }
+
+  .move-up {
+    top: 10px;
+    left: 50%;
+  }
+
+  .move-right {
+    right: 10px;
+    top: 50%;
+  }
+
+  .move-left {
+    top: 50%;
+    left: 10px;
+  }
+
+  .move-down {
+    bottom: 10px;
+    left: 50%;
+  }
+}

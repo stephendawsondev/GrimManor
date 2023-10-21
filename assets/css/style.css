@@ -1,229 +1,249 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 #hangman-game {
-    display: hidden;
+  display: hidden;
 }
 
 body,
 html {
-    height: 100%;
-    margin: 0;
+  height: 100%;
+  margin: 0;
 }
 
 #container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+button {
+  display: hidden;
+}
+
+@media screen and (min-width: 769px) {
+  #background-image {
+    width: 100%;
+    height: 100vh;
+    /* 100% of viewport height */
+    overflow: hidden;
+    top: 0;
+    left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  #container {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
-}
+  }
 
-button {
-    display: hidden;
-}
+  #background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: translateY(-10%) translateX(-10%);
+  }
 
-@media screen and (min-width: 769px) {
-    #background-image {
-        width: 100%;
-        height: 100vh;
-        /* 100% of viewport height */
-        overflow: hidden;
-        top: 0;
-        left: 0;
-    }
-}
+  button {
+    display: block;
+    position: absolute;
+    z-index: 1;
+  }
 
-@media (max-width: 768px) {
-    #container {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
+  #move-up {
+    top: 10px;
+    left: 50%;
+  }
 
-    #background-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        -webkit-transform: translateY(-10%) translateX(-10%);
-    }
+  #move-right {
+    right: 10px;
+    top: 50%;
+  }
 
-    button {
-        display: block;
-        position: absolute;
-        z-index: 1;
-    }
+  #move-left {
+    top: 50%;
+    left: 10px;
+  }
 
-    #move-up {
-        top: 10px;
-        left: 50%;
-    }
+  #move-down {
+    bottom: 10px;
+    left: 50%;
+  }
 
-    #move-right {
-        right: 10px;
-        top: 50%;
-    }
+  .left {
+    left: 10px;
+    top: 50%;
+  }
 
-    #move-left {
-        top: 50%;
-        left: 10px;
-    }
+  .right {
+    right: 0;
+    top: 50%;
+    transform: translate(100%, -50%);
+  }
 
-    #move-down {
-        bottom: 10px;
-        left: 50%;
-    }
+  .up {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+  }
 
-    .left {
-        left: 10px;
-        top: 50%;
-    }
-
-    .right {
-        right: 0;
-        top: 50%;
-        transform: translate(100%, -50%);
-    }
-
-    .up {
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, -100%);
-    }
-
-    .down {
-        bottom: 0;
-        left: 50%;
-        transform: translate(-50%, 100%);
-    }
+  .down {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+  }
 }
 
 /*LANDING PAGE */
-
 #haunted-mansion video {
-    position: relative;
-    height: 100%;
-    /*top: 0;
+  position: relative;
+  height: 100%;
+  /*top: 0;
     left: 0;
     width: 100%;
     object-fit: cover;
-  } */}
+  } */
+}
 
 section #haunted-mansion {
-    position: relative;
+  position: relative;
 }
 
 .landing-text {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: large;
-    color: white;
-    position: absolute;
-    z-index: 2;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%);
-  }
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: large;
+  color: white;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%);
+}
 
-  #landing-button {
-    font-size:large;
-    font-family: inherit;
-    border: 0;
-    padding: 0;
-  }
+#landing-button {
+  font-size: large;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+}
 
+/* Hangman game styles */
 /* load captain howdy font from fonts/captain-howdy.ttf */
 @font-face {
-    font-family: "Captain Howdy";
-    src: url("../fonts/captain-howdy.ttf");
+  font-family: "Captain Howdy";
+  src: url("../fonts/captain-howdy.ttf");
 }
 
 .minigame {
-    display: none;
+  display: none;
 }
 
 .minigame.active {
-    display: block;
+  display: block;
 }
 
 #hangman-game button {
-    border: none;
-    background-color: transparent;
-    font-size: 1.75rem;
-    font-family: "Captain Howdy", sans-serif;
+  border: none;
+  background-color: transparent;
+  font-size: 2.25rem;
+  font-family: "Captain Howdy", sans-serif;
 }
 
 .ouija-board-container {
-    position: relative;
-    max-width: 705px;
-    margin: 0 auto;
+  position: relative;
+  max-width: 705px;
+  margin: 0 auto;
 }
 
 .ouija-board-alphabet {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%);
-    width: 80%;
-    text-align: center;
-    color: #000;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 80%;
+  text-align: center;
+  color: #000;
 }
+
+.hangman-letter-container {
+  position: relative;
+  display: inline-block;
+  width: 10%;
+  margin: 0 1%;
+  border: 1px solid #000;
+}
+
+.hangman-letter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.25rem;
+  font-family: "Captain Howdy", sans-serif;
+  color: #000;
+}
+/* End Hangman game styles */
 
 /* Memory mini-game styles */
 #memory-game {
-    display: block;
+  display: block;
 }
 
 body {
-    height: 100vh;
-    display: flex;
-    background: #161e23;
+  height: 100vh;
+  display: flex;
+  background: #161e23;
 }
 
 .memory-game {
-    width: 640px;
-    height: 640px;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    perspective: 1000px;
+  width: 640px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
 }
 
 .memory-card {
-    width: calc(25% - 10px);
-    height: calc(33.333% - 10px);
-    margin: 5px;
-    position: relative;
-    transform: scale(1);
-    transform-style: preserve-3d;
-    transition: transform .5s;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .memory-card:active {
-    transform: scale(0.97);
-    transition: transform .2s;
+  transform: scale(0.97);
+  transition: transform 0.2s;
 }
 
 .memory-card.flip {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .front-face,
 .back-face {
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    position: absolute;
-    border-radius: 5px;
-    background: #57615f;
-    backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: #57615f;
+  backface-visibility: hidden;
 }
 
 .front-face {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 /* End of memory minigame styles */

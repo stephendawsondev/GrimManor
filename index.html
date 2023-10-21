@@ -30,6 +30,14 @@
 
     <dialog id="game-container">
       <div class="minigame" id="hangman-game">
+        <h2>Hangman</h2>
+        <div class="hangman-phrase-container">
+          <p class="hangman-phrase"></p>
+        </div>
+
+        <canvas id="stickman">
+          Your browser does not support the hangman drawing.
+        </canvas>
         <div class="ouija-board-container">
           <img
             src="assets/images/ouija-board-blank.png"
@@ -121,21 +129,6 @@
             </div>
           </div>
         </div>
-
-        <div class="wrapper">
-          <div class="alphabetButton" id="alphabetButtons"></div>
-          <p id="categoryName"></p>
-          <div id="hold"></div>
-          <p id="mylives"></p>
-          <p id="clue">Clue -</p>
-          <canvas id="stickman">
-            This Text will show if the Browser does NOT support HTML5 Canvas tag
-          </canvas>
-          <div class="container">
-            <button class="btn-2" id="hint">Hint</button>
-            <button class="btn-2" id="reset">Play again</button>
-          </div>
-        </div>
       </div>
       <div class="minigame" id="memory-game">
         <div class="memory-card" data-framework="death">
@@ -162,7 +155,6 @@
             alt="Back of Card"
           />
         </div>
-
         <div class="memory-card" data-framework="fool">
           <img
             class="front-face"
@@ -174,6 +166,7 @@
             src="assets/images/card_back.png"
             alt="Back of Card"
           />
+
         </div>
         <div class="memory-card" data-framework="fool">
           <img
@@ -187,7 +180,6 @@
             alt="Back of Card"
           />
         </div>
-
         <div class="memory-card" data-framework="hanged-man">
           <img
             class="front-face"
@@ -212,7 +204,6 @@
             alt="Back of Card"
           />
         </div>
-
         <div class="memory-card" data-framework="justice">
           <img
             class="front-face"
