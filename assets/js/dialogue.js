@@ -16,6 +16,10 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
         ? document.getElementById("game-container")
         : document.body;
       const dialogueBox = document.getElementById("dialogue-box");
+      // console.log("dialogueBox: " + dialogueBox);
+      if (!dialogueBox) {
+        return;
+      }
 
       if (dialogueIndex < dialogueQueue.length) {
         dialogueBox.classList.add("active");

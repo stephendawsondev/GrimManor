@@ -10,91 +10,118 @@ html {
   margin: 0;
 }
 
-#container {
-  position: relative;
-  width: 100%;
-  height: 100%;
+/* Maison container css */
+
+#mansion-container {
+  float: left;
+  height: 1024px;
   overflow: hidden;
+  position: relative;
+  width: 1792px;
 }
 
-button {
+.responsive-button {
   display: hidden;
 }
 
-@media screen and (min-width: 769px) {
-  #background-image {
-    height: 100vh;
-    /* 100% of viewport height */
-    overflow: hidden;
-    top: 0;
-    left: 0;
-  }
+.show {
+  opacity: 1 !important;
+}
+
+.door-help {
+  width: 50px;
+}
+
+#button-debug {
+  top: 0;
+  position: fixed;
+  right: 10px;
+  z-index: 1000;
+  background-color: transparent;
+  opacity: 0.5;
+  pointer-events: all;
+}
+
+.interactive {
+  background-color: transparent;
+  opacity: 0;
+  pointer-events: all;
+  border: none;
+}
+
+#door1 {
+  position: absolute;
+  top: 590px;
+  left: 420px;
+  width: 120px;
+  height: 310px;
+}
+
+#door2 {
+  position: absolute;
+  top: 600px;
+  left: 740px;
+  width: 100px;
+  height: 210px;
+}
+
+#door3 {
+  position: absolute;
+  top: 364px;
+  left: 964px;
+  width: 58px;
+  height: 170px;
+}
+
+#door4 {
+  position: absolute;
+  top: 587px;
+  left: 1354px;
+  width: 110px;
+  height: 320px;
+}
+
+#guide {
+  position: absolute;
+  z-index: 1;
+  transition: opacity 2s ease-in-out;
+  bottom: 20%;
+  left: 61%;
+  width: 100px;
+  display: none;
 }
 
 @media (max-width: 768px) {
-  #container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  #background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-transform: translateY(-10%) translateX(-10%);
-  }
-
-  button {
+  .responsive-button {
     display: block;
-    position: absolute;
-    z-index: 1;
+    position: fixed;
+    z-index: 1000;
   }
 
-  #move-up {
+  .move-up {
     top: 10px;
     left: 50%;
   }
 
-  #move-right {
+  .move-right {
     right: 10px;
     top: 50%;
   }
 
-  #move-left {
+  .move-left {
     top: 50%;
     left: 10px;
   }
 
-  #move-down {
+  .move-down {
     bottom: 10px;
     left: 50%;
   }
-
-  .left {
-    left: 10px;
-    top: 50%;
-  }
-
-  .right {
-    right: 0;
-    top: 50%;
-    transform: translate(100%, -50%);
-  }
-
-  .up {
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -100%);
-  }
-
-  .down {
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 100%);
-  }
 }
+
+/* End Mansion css styles */
+
+/* Ghost minigame css */
 
 .ghost-image {
   position: absolute;
@@ -112,12 +139,18 @@ button {
 
 #game-container {
   position: relative;
+  width: 80%;
+  margin: 0 auto;
+  height: 80%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* DIALOGUE BOX */
 .dialogue-box {
   position: absolute;
   width: 90%;
+  max-width: 900px;
   height: 100px;
   bottom: 20%;
   left: 50%;
@@ -146,7 +179,7 @@ button {
 /*LANDING PAGE */
 #haunted-mansion video {
   position: relative;
-  height: 100%;
+  width: 100%;
   /*top: 0;
   left: 0;
   object-fit: cover; */
@@ -212,30 +245,67 @@ section #haunted-mansion {
   color: #000;
 }
 
+.ouija-board-alphabet-letter.disabled {
+  opacity: 0.85;
+}
+
+.hangman-phrase-container {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 2em;
+}
+
+.hangman-phrase {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 1%;
+}
+
 .hangman-letter-container {
   position: relative;
-  display: inline-block;
-  width: 10%;
+  display: flex;
+  justify-content: center;
+  width: 20px;
   margin: 0 1%;
-  border: 1px solid #000;
 }
 
 .hangman-letter {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2.25rem;
+  display: block;
+  height: 3rem;
+  font-size: 2rem;
   font-family: "Captain Howdy", sans-serif;
+  color: transparent;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.hangman-letter.revealed {
   color: #000;
 }
+
+.hangman-letter::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 110%;
+  height: 2px;
+  background-color: #000;
+}
+
+.hangman-letter-space {
+  position: relative;
+  display: inline-block;
+  width: 1%;
+  margin: 0 1%;
+}
+
 /* End Hangman game styles */
 
 /* Memory mini-game styles */
-#memory-game {
-  display: block;
-}
-
 .memory-game {
   width: 640px;
   height: 640px;
@@ -281,3 +351,69 @@ section #haunted-mansion {
 }
 
 /* End of memory minigame styles */
+
+/* Quiz game styles */
+/* card styles */
+.card {
+  background-color: #1a1a1a;
+  color: white;
+  margin: 20px;
+}
+
+/* card image styles */
+.card-img-top {
+  max-height: 300px;
+  object-fit: contain;
+}
+
+/* button styles */
+.btn {
+  background-color: #ff6600;
+  color: black;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.btn:hover {
+  background-color: #ff8533;
+  color: black;
+}
+
+/* play button styles*/
+#play-button {
+  margin-top: 2rem;
+  background-color: #fafafa;
+  color: black;
+  font-weight: bolder;
+  border-radius: 1.3px black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* quiz container styles */
+.quiz-container {
+  position: relative;
+  height: 82vh;
+  width: 100%;
+  background-color: black;
+  background: url(../images/halloween-horror-pumkins.webp) no-repeat center
+    center;
+  background-size: cover;
+  color: #fafafa;
+  animation-name: container-zoom;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+}
+
+/* quiz container image zoom animation */
+@keyframes container-zoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
+}

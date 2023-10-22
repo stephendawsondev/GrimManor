@@ -10,6 +10,7 @@ const totalPairs = cards.length / 2;
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
+  alert("Memory game 2");
 
   this.classList.add("flip");
 
@@ -70,3 +71,5 @@ function resetBoard() {
 })();
 
 cards.forEach((card) => card.addEventListener("click", flipCard));
+
+export { flipCard };
