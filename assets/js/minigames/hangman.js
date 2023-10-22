@@ -113,7 +113,26 @@ const checkLetter = (letter, buttonElement, phraseArr) => {
       span.classList.add("revealed");
     }
   }
-  console.log(guessedLetters);
+  const status = checkGameStatus(phraseArr);
+  if (status !== "ongoing") {
+    console.log("Game over!");
+  }
+};
+
+const checkGameStatus = (phraseArr) => {
+  // Check if won
+  const letterSpans = document.querySelectorAll(".hangman-letter");
+  const revealedSpans = document.querySelectorAll(".hangman-letter.revealed");
+  if (letterSpans.length === revealedSpans.length) {
+    console.log("Game Won!");
+  }
+
+  // Check if lost
+  if (incorrectGuessCount >= 6) {
+    console.log("Game Over!");
+  }
+
+  return "ongoing";
 };
 
 const runHangmanGame = () => {
