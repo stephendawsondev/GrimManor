@@ -210,6 +210,7 @@ const resetGame = () => {
 const runHangmanGame = async () => {
   // if esc key is pressed, loop through
   // minigames and remove active class
+
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       const minigames = document.querySelectorAll(".minigame");

@@ -6,6 +6,7 @@ import { startMemoryGame } from "./minigames/memory-game.js";
 import { handlePlay } from "./minigames/quiz.js";
 import { initLastQuizGame } from "./minigames/lastquiz.js";
 import { showDialogueAsync } from "./dialogue.js";
+import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
 // import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
 // let loadedPlayerData = loadPlayerData();
 
@@ -132,7 +133,33 @@ document.addEventListener("keydown", function (event) {
   });
   if (newColliding && !inColliding) {
     inColliding = true;
-    buttonColliding.click();
+    let loadedPlayerData = loadPlayerData();
+    if (buttonColliding.id == "door2") {
+      if (
+        loadedPlayerData.hangmanClueObtained &&
+        loadedPlayerData.memoryClubObtained &&
+        loadedPlayerData.quizClueObtained
+      ) {
+        buttonColliding.click();
+      }
+    } else {
+      if (
+        buttonColliding.id == "door1" &&
+        !loadedPlayerData.hangmanClueObtained
+      ) {
+        buttonColliding.click();
+      } else if (
+        buttonColliding.id == "door3" &&
+        !loadedPlayerData.memoryClubObtained
+      ) {
+        buttonColliding.click();
+      } else if (
+        buttonColliding.id == "door4" &&
+        !loadedPlayerData.quizClueObtained
+      ) {
+        buttonColliding.click();
+      }
+    }
   } else if (!newColliding) {
     inColliding = false;
   }
@@ -203,13 +230,13 @@ function moveBackground(direction) {
       break;
   }
 
-  console.log(direction, top, left);
-  console.log(
-    containerHeight,
-    imageHeight,
-    top - step,
-    containerHeight - imageHeight
-  );
+  // console.log(direction, top, left);
+  // console.log(
+  //   containerHeight,
+  //   imageHeight,
+  //   top - step,
+  //   containerHeight - imageHeight
+  // );
   // Update the position of the buttons interactives to follow the background image
   updateButtonsPos(
     top - backgroundImage.offsetTop,
@@ -390,6 +417,15 @@ const miniGame3 = async () => {
 
 // This function displays the lastquiz mini game
 const miniGame2 = () => {
+  let loadedPlayerData = loadPlayerData();
+  if (
+    !loadedPlayerData.hangmanClueObtained &&
+    !loadedPlayerData.memoryClubObtained &&
+    !loadedPlayerData.quizClueObtained
+  ) {
+    // alert("You need to complete the three games first!");
+    return;
+  }
   gameContainer.showModal();
   initLastQuizGame();
 };

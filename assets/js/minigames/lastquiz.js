@@ -1,3 +1,4 @@
+import { savePlayerData, loadPlayerData } from "../gamedata-localstore.js";
 import { showDialogueAsync } from "../dialogue.js";
 const gameContainer = document.getElementById("game-container");
 const lastquizContainer = document.getElementById("game-lastquiz");
@@ -121,21 +122,30 @@ async function gameLastQuiz_over() {
 }
 
 async function initLastQuizGame() {
-  score = 0;
-  number_test = 0;
-  // const gameLastQuizElement = document.getElementById("game-lastquiz");
-  // gameLastQuizElement.style.display = "block";
-  const dialogue = [
-    {
-      text: "Have you managed to discover what happened to me?",
-    },
-  ];
+  let loadedPlayerData = loadPlayerData();
+  if (
+    !loadedPlayerData.hangmanClueObtained &&
+    !loadedPlayerData.memoryClubObtained &&
+    !loadedPlayerData.quizClueObtained
+  ) {
+    return;
+  } else {
+    score = 0;
+    number_test = 0;
+    // const gameLastQuizElement = document.getElementById("game-lastquiz");
+    // gameLastQuizElement.style.display = "block";
+    const dialogue = [
+      {
+        text: "Have you managed to discover what happened to me?",
+      },
+    ];
 
-  gameContainer.classList.add("lastquiz-table");
-  await showDialogueAsync(dialogue, true);
-  document.getElementById("game-lastquiz").classList.add("active");
+    gameContainer.classList.add("lastquiz-table");
+    await showDialogueAsync(dialogue, true);
+    document.getElementById("game-lastquiz").classList.add("active");
 
-  lastquizContainer.classList.add("active");
+    lastquizContainer.classList.add("active");
+  }
 }
 
 //initLastQuizGame();
