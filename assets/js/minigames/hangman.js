@@ -1,6 +1,8 @@
 import { showDialogueAsync } from "../dialogue.js";
 
 const guessedLetters = [];
+const gameContainer = document.getElementById("game-container");
+const hangmanContainer = document.getElementById("hangman-game");
 
 const drawInitialScene = () => {
   const canvas = document.getElementById("stickman");
@@ -115,29 +117,100 @@ const checkLetter = (letter, buttonElement, phraseArr) => {
   }
   const status = checkGameStatus(phraseArr);
   if (status !== "ongoing") {
-    console.log("Game over!");
   }
 };
 
-const checkGameStatus = (phraseArr) => {
+const checkGameStatus = async (phraseArr) => {
   // Check if won
   const letterSpans = document.querySelectorAll(".hangman-letter");
   const revealedSpans = document.querySelectorAll(".hangman-letter.revealed");
   if (letterSpans.length === revealedSpans.length) {
-    console.log("Game Won!");
+    const winDialogue = [
+      {
+        text: "The man who owned this house hung himself many years ago... they say his spirit still haunts these halls but I have never seen him",
+        choices: [
+          {
+            text: "Thank you... I'll be going...",
+            action: () => {
+              gameContainer.classList.remove("wooden-table");
+              gameContainer.close();
+            },
+          },
+        ],
+      },
+    ];
+
+    hangmanContainer.classList.remove("active");
+    gameContainer.classList.add("old-woman");
+    await showDialogueAsync(winDialogue, true);
+    return "won";
   }
 
   // Check if lost
   if (incorrectGuessCount >= 6) {
-    console.log("Game Over!");
+    const dialogue = [
+      {
+        text: "I'm sorry, dear... not this time...",
+        choices: [
+          {
+            text: "Close",
+            action: () => {
+              gameContainer.classList.remove("old-woman");
+              gameContainer.close();
+            },
+          },
+        ],
+      },
+    ];
+
+    hangmanContainer.classList.remove("active");
+    gameContainer.classList.add("old-woman");
+    await showDialogueAsync(dialogue, true);
   }
 
   return "ongoing";
 };
 
-const runHangmanGame = () => {
-  const hangmanContainer = document.getElementById("hangman-game");
+const resetGame = () => {
+  guessedLetters.length = 0;
+  incorrectGuessCount = 0;
+  // reset canvas
+  const canvas = document.getElementById("stickman");
+  const context = canvas.getContext("2d");
+  context.clearRect(0, 0, canvas.width, canvas.height);
 
+  // reset letter buttons
+  const letterButtons = document.querySelectorAll(
+    ".ouija-board-alphabet-letter"
+  );
+  for (const button of letterButtons) {
+    button.disabled = false;
+    button.classList.remove("disabled");
+    button.setAttribute("aria-disabled", "false");
+  }
+};
+
+const runHangmanGame = async () => {
+  // reset the game
+  resetGame();
+
+  const dialogue = [
+    {
+      text: "You try the door on the left and enter a cluttered, dimly lit room.",
+    },
+    {
+      text: "The smell of damp and incense hangs heavy in the air.",
+    },
+    {
+      text: "A wizened old woman sits at a table in the centre of the room, surrounded my many dusty trinkets and books.",
+    },
+    { text: "In front of her she has a Ouija board..." },
+  ];
+
+  gameContainer.classList.add("old-woman");
+  await showDialogueAsync(dialogue, true);
+  gameContainer.classList.remove("old-woman");
+  gameContainer.classList.add("wooden-table");
   hangmanContainer.classList.add("active");
 
   drawInitialScene();
@@ -182,21 +255,6 @@ const runHangmanGame = () => {
       checkLetter(button.innerText, button, phraseArr);
     });
   }
-
-  const dialogue = [
-    { text: "Hello, welcome to the haunted mansion." },
-    {
-      text: "Do you want to enter?",
-      choices: [
-        { text: "Yes", action: () => console.log("Yes") },
-        { text: "No", action: () => console.log("Leaving mansion...") },
-      ],
-    },
-    { text: "Thanks for coming in." },
-    { text: "You've entered the mansion." },
-  ];
-
-  // showDialogueAsync(dialogue, true);
 };
 
 export { runHangmanGame };

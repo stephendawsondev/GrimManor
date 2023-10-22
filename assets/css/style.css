@@ -221,6 +221,25 @@ section #haunted-mansion {
   display: block;
 }
 
+.wooden-table {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.55),
+      rgba(255, 255, 255, 0.55)
+    ),
+    url("../../assets/images/wooden-table.webp");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.old-woman {
+  background-image: url("../../assets/images/lonely-old-woman.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 #stickman {
   margin: 0 auto;
   display: block;
