@@ -80,8 +80,8 @@ img {
 
 #door3 {
   position: absolute;
-  top: 364px;
-  left: 964px;
+  top: 578px;
+  left: 1083px;
   width: 58px;
   height: 170px;
 }
@@ -98,7 +98,7 @@ img {
   position: absolute;
   z-index: 1;
   transition: opacity 2s ease-in-out;
-  bottom: 20%;
+  bottom: 10%;
   left: 61%;
   width: 100px;
   display: none;
