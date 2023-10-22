@@ -1,4 +1,5 @@
 //jshint esversion:6
+import { showDialogueAsync } from "../dialogue.js";
 
 // Array of quiz Questions, Answers and realated images
 const questions = [
