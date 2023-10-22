@@ -7,6 +7,11 @@ import { handlePlay } from "./minigames/quiz.js";
 
 import { showDialogueAsync } from "./dialogue.js";
 
+const doorOpenAudio = new Audio("../../assets/audio/door-creak-open.mp3");
+const doorShutAudio = new Audio("../../assets/audio/door-shut.mp3");
+const creepyWhistlyMusicAudio = new Audio(
+  "../../assets/audio/creepy-whistly-music.mp3"
+);
 // Mansion interaction code
 const backgroundImage = document.getElementById("background-image"); // Select the background image
 const moveButtons = document.querySelectorAll("button"); // Select all buttons with the "move" class
@@ -297,8 +302,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 // -------- Mini games functions ---------
 
 // This function displays the first mini game
-const miniGame1 = () => {
-  gameContainer.showModal();
+const miniGame1 = async () => {
+  // play door open audio
+
+  doorOpenAudio.play();
+  setTimeout(() => {
+    doorShutAudio.play();
+  }, 1300);
+  creepyWhistlyMusicAudio.play();
+
+  await gameContainer.showModal();
+
   runHangmanGame();
 };
 // (window.location.href = "game1.html");
