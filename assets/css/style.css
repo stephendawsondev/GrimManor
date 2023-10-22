@@ -104,6 +104,15 @@ img {
   display: none;
 }
 
+@media (min-width: 1792px) {
+  #button-debug {
+    top: 0;
+    position: fixed;
+    left: 1720px;
+    width: 50px;
+  }
+}
+
 @media (max-width: 768px) {
   .responsive-button {
     display: block;
@@ -577,6 +586,13 @@ section #haunted-mansion {
 
 .lastquiz-table {
   background: url("../../assets/images/lastquiz.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.quiz-table {
+  background: url("../../assets/images/tree-now.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
