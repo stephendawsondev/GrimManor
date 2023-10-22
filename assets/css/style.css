@@ -181,11 +181,10 @@ html {
   position: relative;
   width: 100%;
   /*top: 0;
-    left: 0;
-    width: 100%;
-    object-fit: cover;
-  } */
-}
+  left: 0;
+  object-fit: cover; */
+  } 
+
 
 section #haunted-mansion {
   position: relative;
@@ -194,20 +193,19 @@ section #haunted-mansion {
 .landing-text {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: large;
-  color: white;
+  color: #acbfb9;
   position: absolute;
   z-index: 2;
-  left: 50%;
-  top: 40%;
-  transform: translate(-50%);
+  left: 10%;
+  top: 20%;
 }
 
-#landing-button {
+#landing-enter {
   font-size: large;
   font-family: inherit;
-  border: 0;
-  padding: 0;
+  color: #acbfb9;
 }
+/*End landing page styles*/
 
 /* Hangman game styles */
 /* load captain howdy font from fonts/captain-howdy.ttf */
