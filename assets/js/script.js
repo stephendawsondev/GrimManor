@@ -3,7 +3,7 @@
 // Minigames code
 import { runHangmanGame } from "./minigames/hangman.js";
 import { startMemoryGame } from "./minigames/memory-game.js";
-// import { handlePlay } from "./minigames/quiz.js";
+import { handlePlay } from "./minigames/quiz.js";
 
 import { showDialogueAsync } from "./dialogue.js";
 
@@ -310,8 +310,8 @@ const miniGame2 = () => {
 
 // This function displays the third mini game
 const miniGame3 = () => {
-gameContainer.showModal();
-  startQuizGame();
+  gameContainer.showModal();
+  handlePlay();
 };
 
 /*This function finds the id of the clicked button
