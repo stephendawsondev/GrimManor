@@ -207,3 +207,5 @@ playAgainButton.addEventListener("click", handlePlayAgain);
 endQuizButton.addEventListener("click", handleEndQuiz);
 endCard.addEventListener("click", handleConfirmEnd);
 backButton.addEventListener("click", handleBackHome);
+
+export { handlePlay };

@@ -1,12 +1,11 @@
 // jshint esversion: 6
 
-// Hangman minigame code
+// Minigames code
 import { runHangmanGame } from "./minigames/hangman.js";
 import { startMemoryGame } from "./minigames/memory-game.js";
-import { showDialogueAsync } from "./dialogue.js";
+// import { handlePlay } from "./minigames/quiz.js";
 
-// Memory minigame code
-import { flipCard } from "./minigames/memory-game.js";
+import { showDialogueAsync } from "./dialogue.js";
 
 // Mansion interaction code
 const backgroundImage = document.getElementById("background-image"); // Select the background image
@@ -311,7 +310,7 @@ const miniGame2 = () => {
 
 // This function displays the third mini game
 const miniGame3 = () => {
-  gameContainer.showModal();
+gameContainer.showModal();
   startQuizGame();
 };
 
