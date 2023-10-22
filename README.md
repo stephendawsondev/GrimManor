@@ -96,9 +96,18 @@ In the tech section, we provide information about the technology stack, dependen
 ## Credits
 <ul>
 <li><a href="https://openai.com/dall-e-2">Dall-E</a> for AI generated images </li>
-<li><a href="FontsBlogs.com">FontsBlogs.com for Ouija Font in Hangman game</li>
-<li><a href="Balsamiq.com">Balsamiq</a> for wireframes</li>
-<li><a href="Freesound.org">Freesound.org</a> for audio clips</li>
+<li><a href="https:/FontsBlogs.com">FontsBlogs.com for Ouija Font in Hangman game</li>
+<li><a href="https:/Balsamiq.com">Balsamiq</a> for wireframes</li>
+<li><a href="https://Freesound.org">Freesound.org</a> for audio clips</li>
 <li><a href-"https://fonts.google.com/">Google Fonts</a> for base font ‘Risque’</li>
 <li><a href="https://obsproject.com/welcome">OBS</a> for screen recording software</li>
+</ul>
 
+## The Team 
+<ul>
+<li><b>Samuel Anderson - Front-end development</b> <p> GitHub = samuelandersoncodes <a href="">LinkedIn</a></li>
+<li><b>Armando Urquiola Cabrera - Front-end development</b> <p> GitHub = patchamama <a href="https://www.linkedin.com/in/urquioladev/">LinkedIn</a></li>
+<li><b>Stephen Dawson - Scrum Master, Front-end development</b> <p> GitHub = stephendawsondev <a href="https://www.linkedin.com/in/sdstephendawson/">LinkedIn</a></li>
+<li><b>Emma Lamont - Storytelling, documentation, presentation</b> <p> GitHub = elamont174 <a href="https://www.linkedin.com/in/emma-lamont/">LinkedIn</a></li>
+<li><b>Jorgen Lovbakke - Front-end development</b> <p> GitHub = JL-14 <a href="">LinkedIn</a></li>
+</ul>
