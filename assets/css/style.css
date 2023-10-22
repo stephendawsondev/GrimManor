@@ -512,20 +512,6 @@ section #haunted-mansion {
     center;
   background-size: cover;
   color: #fafafa;
-  animation-name: container-zoom;
-  animation-duration: 4s;
-  animation-fill-mode: forwards;
-}
-
-/* quiz container image zoom animation */
-@keyframes container-zoom {
-  from {
-    transform: scale(1);
-  }
-
-  to {
-    transform: scale(1.1);
-  }
 }
 
 /* dialogue background style */
