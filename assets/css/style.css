@@ -221,6 +221,12 @@ section #haunted-mansion {
   display: block;
 }
 
+#stickman {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 2em;
+}
+
 #hangman-game button {
   border: none;
   background-color: transparent;
