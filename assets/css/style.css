@@ -478,15 +478,17 @@ section #haunted-mansion {
 
 /* button styles */
 .btn {
-  background-color: #ff6600;
+  background-color: #fafafa;
   color: black;
   font-weight: bold;
+  font-size: 120%;
   margin: 5px;
 }
 
 .btn:hover {
-  background-color: #ff8533;
-  color: black;
+  background-color: #1a2227;
+  color: #fafafa;
+  font-size: 125%;
 }
 
 /* play button styles*/
