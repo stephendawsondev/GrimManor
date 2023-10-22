@@ -31,12 +31,20 @@
       <button class="responsive-button move-left" id="move-left">left</button>
       <button class="responsive-button move-down" id="move-down">down</button>
 
-      <button id="button-debug">debug</button>
+      <button id="button-debug">
+        <img class="door-help" src="assets/images/golden-magic.png" />
+      </button>
 
-      <button class="interactive" id="door1">door 1</button>
-      <button class="interactive" id="door2">door 2</button>
-      <button class="interactive" id="door3">door 3</button>
-      <button class="interactive" id="door4">door 4</button>
+      <button class="interactive" id="door1">
+        <img class="door-help" src="assets/images/golden-magic.png" />
+      </button>
+      <button class="interactive" id="door2">
+        <img class="door-help" src="assets/images/golden-magic.png" />
+      </button>
+      <button class="interactive" id="door3"></button>
+      <button class="interactive" id="door4">
+        <img class="door-help" src="assets/images/golden-magic.png" />
+      </button>
       <img
         src="assets/images/ghostly-man-image.png"
         alt="male ghost in olden-day clothes"
@@ -47,14 +55,12 @@
 
     <dialog id="game-container">
       <div class="minigame" id="hangman-game">
-        <h2>Hangman</h2>
-        <div class="hangman-phrase-container">
-          <p class="hangman-phrase"></p>
-        </div>
-
         <canvas id="stickman">
           Your browser does not support the hangman drawing.
         </canvas>
+        <div class="hangman-phrase-container">
+          <div class="hangman-phrase"></div>
+        </div>
         <div class="ouija-board-container">
           <img
             src="assets/images/ouija-board-blank.png"
@@ -147,7 +153,7 @@
           </div>
         </div>
       </div>
-      <div class="minigame active" id="memory-game">
+      <div class="minigame" id="memory-game">
         <div class="memory-card" data-framework="death">
           <img
             class="front-face"

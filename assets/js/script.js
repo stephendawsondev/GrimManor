@@ -193,7 +193,7 @@ function moveBackground(direction) {
 // import { showDialogueAsync } from "./dialogue.js";
 
 const gameContainer = document.getElementById("game-container");
-gameContainer.showModal();
+// gameContainer.showModal();
 // runHangmanGame();
 
 const introDialogue = [
@@ -323,8 +323,8 @@ const displayMiniGames = (id) => {
   } else if (id == "door2") {
     miniGame2();
   } else if (id == "door3") {
-    miniGame3();
+    // miniGame3();
   } else if (id == "door4") {
-    alert(id);
+    miniGame3();
   }
 };
