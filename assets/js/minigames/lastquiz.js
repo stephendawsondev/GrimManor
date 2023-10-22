@@ -1,3 +1,7 @@
+import { showDialogueAsync } from "../dialogue.js";
+const gameContainer = document.getElementById("game-container");
+const lastquizContainer = document.getElementById("game-lastquiz");
+
 const lastquiz = {
   form1: {
     question: "What is your name?",
@@ -37,6 +41,7 @@ let score = 0;
 
 function nextQuestion() {
   number_test++;
+  console.log("nextQuestion", number_test);
   if (number_test === 4) {
     gameLastQuiz_over();
     // return;
@@ -73,7 +78,6 @@ quizButtons.forEach((button) => {
     if (button.classList.contains("selected")) {
       score++;
       evaluationElement.textContent = `Correct`;
-
       // alert("Correct");
     } else {
       evaluationElement.textContent = `False`;
@@ -87,16 +91,57 @@ quizButtons.forEach((button) => {
 
 nextQuestion();
 
-function gameLastQuiz_over() {
+async function gameLastQuiz_over() {
   quizButtons.forEach((button) => {
     button.removeEventListener("click", () => {});
   });
+  document.getElementById("game-lastquiz").classList.remove("active");
+  console.log("gameLastQuiz_over", score);
+
+  const dialogue = [
+    {
+      text: "",
+    },
+    {
+      text: "That’s right I remember now… She said she loved me… But she betrayed me.",
+    },
+    {
+      text: "I have wandered these halls for centuries filled with pain and anger but the memories left me long ago.",
+    },
+    {
+      text: "Thank you for your assistance, I feel that I can move on now. I am forever in your debt!",
+    },
+  ];
+
+  gameContainer.classList.add("lastquiz-table");
+  await showDialogueAsync(dialogue, true);
+
+  const minigames = document.querySelectorAll(".minigame");
+  for (const minigame of minigames) {
+    minigame.classList.remove("active");
+  }
+  gameContainer.close();
 }
 
-function initLastQuizGame() {
+async function initLastQuizGame() {
   score = 0;
-  const gameLastQuizElement = document.getElementById("game-lastquiz");
-  gameLastQuizElement.style.display = "block";
+  number_test = 0;
+  // const gameLastQuizElement = document.getElementById("game-lastquiz");
+  // gameLastQuizElement.style.display = "block";
+  const dialogue = [
+    {
+      text: "",
+    },
+    {
+      text: "Have you managed to discover what happened to me?",
+    },
+  ];
+
+  gameContainer.classList.add("lastquiz-table");
+  await showDialogueAsync(dialogue, true);
+  document.getElementById("game-lastquiz").classList.add("active");
+
+  lastquizContainer.classList.add("active");
 }
 
 //initLastQuizGame();

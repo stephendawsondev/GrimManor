@@ -59,6 +59,7 @@ function loadPlayerData() {
 // const loadedPlayerData = loadPlayerData();
 
 if (loadPlayerData()) {
+  let loadedPlayerData = loadPlayerData();
   console.log("Player Name: " + loadedPlayerData.playerName);
   console.log("Score: " + loadedPlayerData.score);
   console.log("Games Played: " + loadedPlayerData.gamesPlayed);

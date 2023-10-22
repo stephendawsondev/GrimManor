@@ -530,22 +530,18 @@ section #haunted-mansion {
 
 /* lastquiz game css */
 #game-lastquiz {
-  background-image: url("../../assets/images/lastquiz.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: block;
-  text-align: center;
-  width: 700px;
-  height: 400px;
-  display: none;
+  /* display: none; */
+}
+
+.game-area-lastquiz {
+  padding: 120px;
 }
 
 .button-lastquiz {
   background-color: #080300;
   border: none;
   color: #ebdddd;
-  padding: 10px 20px;
+  padding: 20px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -555,6 +551,11 @@ section #haunted-mansion {
   width: 200px;
   height: 200px;
   opacity: 0.8;
+}
+
+#question,
+#evaluation {
+  text-align: center;
 }
 
 #question {
@@ -572,4 +573,11 @@ section #haunted-mansion {
   align-items: center;
   margin: 20px;
   position: relative;
+}
+
+.lastquiz-table {
+  background: url("../../assets/images/lastquiz.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
