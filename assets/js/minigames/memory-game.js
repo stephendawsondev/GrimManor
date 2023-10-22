@@ -10,6 +10,7 @@ const totalPairs = cards.length / 2;
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
+  alert("Memory game 2");
 
   this.classList.add("flip");
 
@@ -62,11 +63,21 @@ function resetBoard() {
   [firstCard, secondCard] = [null, null];
 }
 
-(function shuffle() {
+function shuffleCards() {
   cards.forEach((card) => {
     let randomPos = Math.floor(Math.random() * 12);
     card.style.order = randomPos;
   });
-})();
+}
 
 cards.forEach((card) => card.addEventListener("click", flipCard));
+
+export { flipCard };
+
+function startMemoryGame() {
+  shuffleCards();
+  cards.forEach((card) => card.addEventListener("click", flipCard));
+  document.getElementById("memory-game").classList.add("active");
+}
+
+export { startMemoryGame };
