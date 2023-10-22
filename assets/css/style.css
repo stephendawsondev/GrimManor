@@ -527,3 +527,11 @@ section #haunted-mansion {
     transform: scale(1.1);
   }
 }
+
+/* dialogue background style */
+.quiz-foreground {
+  background-color: #36454f;
+  background: url(../../assets/images/horror-eat-up.webp) no-repeat center
+    center;
+  background-size: cover;
+}
