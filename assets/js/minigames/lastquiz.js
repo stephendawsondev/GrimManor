@@ -100,9 +100,6 @@ async function gameLastQuiz_over() {
 
   const dialogue = [
     {
-      text: "",
-    },
-    {
       text: "That’s right I remember now… She said she loved me… But she betrayed me.",
     },
     {
@@ -129,9 +126,6 @@ async function initLastQuizGame() {
   // const gameLastQuizElement = document.getElementById("game-lastquiz");
   // gameLastQuizElement.style.display = "block";
   const dialogue = [
-    {
-      text: "",
-    },
     {
       text: "Have you managed to discover what happened to me?",
     },
