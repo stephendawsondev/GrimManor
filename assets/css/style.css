@@ -529,7 +529,7 @@ section #haunted-mansion {
 }
 
 /* lastquiz game css */
-.game-lastquiz {
+#game-lastquiz {
   background-image: url("../../assets/images/lastquiz.jpg");
   background-size: cover;
   background-position: center;

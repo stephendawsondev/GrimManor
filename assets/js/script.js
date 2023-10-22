@@ -342,7 +342,7 @@ const miniGame1 = async () => {
 // (window.location.href = "game1.html");
 
 // This function displays the second mini game
-const miniGame2 = async () => {
+const miniGame3 = async () => {
   gameContainer.showModal();
   gameContainer.classList.add("boy-ghost");
   const dialogue = [
@@ -364,8 +364,14 @@ const miniGame2 = async () => {
   startMemoryGame();
 };
 
+// This function displays the lastquiz mini game
+const miniGame2 = () => {
+  gameContainer.showModal();
+  initLastQuizGame();
+};
+
 // This function displays the third mini game
-const miniGame3 = () => {
+const miniGame4 = () => {
   gameContainer.showModal();
   handlePlay();
 };
@@ -381,8 +387,8 @@ const displayMiniGames = (id) => {
   } else if (id == "door2") {
     miniGame2();
   } else if (id == "door3") {
-    // miniGame3();
-  } else if (id == "door4") {
     miniGame3();
+  } else if (id == "door4") {
+    miniGame4();
   }
 };

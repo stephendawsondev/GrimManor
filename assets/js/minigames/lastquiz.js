@@ -50,10 +50,10 @@ function nextQuestion() {
       let button;
       temp++;
       if (temp !== number_test) continue;
-      console.log(`${key}: ${value}`);
+      // console.log(`${key}: ${value}`);
       questionElement.textContent = value.question;
       for (const [key2, value2] of Object.entries(value.answers)) {
-        console.log(`${value.correctAnswer} - ${key2}: ${value2}`);
+        // console.log(`${value.correctAnswer} - ${key2}: ${value2}`);
         button = document.getElementById(`${key2}`);
         button.textContent = value2;
         button.removeEventListener("click", () => {});
