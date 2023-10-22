@@ -7,6 +7,9 @@ import { showDialogueAsync } from "./dialogue.js";
 // Memory minigame code
 import { flipCard } from "./minigames/memory-game.js";
 
+// Memory minigame quiz code
+//import { handlePlay } from "./minigames/quiz.js";
+
 // Mansion interaction code
 const backgroundImage = document.getElementById("background-image"); // Select the background image
 const moveButtons = document.querySelectorAll("button"); // Select all buttons with the "move" class
@@ -304,13 +307,12 @@ const miniGame1 = () => {
 
 // This function displays the second mini game
 const miniGame2 = () => {
-  alert("waiting for Jorgen to init the game in the 2nd door...");
-  // flipCard();
+  handlePlay();
 };
 
 // This function displays the third mini game
 const miniGame3 = () =>
-  alert("waiting for Sam to init the game in the 3th door...");
+  alert("waiting for Jorgen to init the game in the 2nd door...");
 
 /*This function finds the id of the clicked button
  * passed from the event listener
