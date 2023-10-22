@@ -163,6 +163,23 @@ function handleAnswer(answerIndex) {
 // Functions called on button eventlistening
 function handlePlay() {
   // This function handles the play button
+
+  const dialogue = [
+    {
+      text: "Welcome to the Halloween quiz Hahaa!",
+    },
+    {
+      text: "What is your purpose here?",
+    },
+    {
+      text: "What happened to the young man who used to live here? He says he is only able to walk the mortal plane on Halloween",
+    },
+    {
+      text: "We don’t know how he ended up there... but we can show you his burial place. All you have to do is answer our questions first...",
+    },
+  ];
+
+  showDialogueAsync(dialogue, true);
   document.getElementById("quiz-game").classList.add("active");
   displayQuestion(questions[currentQuestionIndex]);
   playButton.classList.add("d-none");
@@ -182,9 +199,10 @@ function handlePlayAgain() {
 
 function handleEndQuiz() {
   /* This function handles the end quiz functionality
-   *  and displays the end game card
+   *  and displays the end game card with clue for the final stage quiz
    */
-  endText.textContent = "Comfirm you want to end the quiz?";
+  endText.textContent =
+    "The young man is buried under the trees next to the mansion";
   questionCard.classList.add("d-none");
   resultCard.classList.add("d-none");
   scoreCard.classList.add("d-none");
@@ -193,7 +211,7 @@ function handleEndQuiz() {
 
 function handleConfirmEnd() {
   // This function confirms end of quiz with a message
-  endText.textContent = "Thanks for playing!";
+  endText.textContent = "I wish you well in the next stage!";
   endCard.classList.remove("d-none");
 }
 
