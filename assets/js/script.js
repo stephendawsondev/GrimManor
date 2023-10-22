@@ -6,7 +6,20 @@ import { startMemoryGame } from "./minigames/memory-game.js";
 import { handlePlay } from "./minigames/quiz.js";
 import { initLastQuizGame } from "./minigames/lastquiz.js";
 import { showDialogueAsync } from "./dialogue.js";
+// import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
+// let loadedPlayerData = loadPlayerData();
 
+// const landingEnter = document?.getElementById("landing-enter");
+// landingEnter?.addEventListener("click", (e) => {
+//   e.preventDefault();
+
+//   savePlayerData({ ...loadedPlayerData, firstTimePlaying: false });
+//   // window.location.href = "index.html";
+// });
+
+// if (loadedPlayerData.firstTimePlaying) {
+//   window.location.href = "landing.html";
+// }
 // Audio code
 const classicScareAudio = new Audio("../../assets/audio/classic-scare.mp3");
 const evilLaughAudio = new Audio("../../assets/audio/evil-laugh.mp3");
@@ -267,7 +280,6 @@ const introDialogue = [
       },
     ],
   },
-  { text: "Please..." },
   {
     text: "What do you need help with?",
     choices: [
@@ -289,7 +301,6 @@ const introDialogue = [
       },
     ],
   },
-  { text: "Please..." },
   {
     text: "I have been trapped in this house for centuries.. able only to be seen by the human realm on Halloween...",
   },
@@ -310,12 +321,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       for (const minigame of minigames) {
         minigame.classList.remove("active");
       }
+      gameContainer.className = "";
       gameContainer.close();
     }
   });
   const ghost = document.querySelector(".ghost-image");
   ghost.classList.add("active");
+  // loop through 'interactive' and disable
+  const interactiveButtons = document.querySelectorAll(".interactive");
+  for (const button of interactiveButtons) {
+    button.disabled = true;
+    button.classList.add("disabled");
+    button.setAttribute("aria-disabled", "true");
+  }
   await showDialogueAsync(introDialogue);
+  // loop through 'interactive' and enable
+  for (const button of interactiveButtons) {
+    button.disabled = false;
+    button.classList.remove("disabled");
+    button.setAttribute("aria-disabled", "false");
+  }
   ghost.classList.remove("active");
 });
 
@@ -346,7 +371,6 @@ const miniGame3 = async () => {
   gameContainer.showModal();
   gameContainer.classList.add("boy-ghost");
   const dialogue = [
-    {},
     {
       text: "You walk to the stairs, where a young boy is sitting and playing a card game. His clothing is old, from another time. ",
     },
