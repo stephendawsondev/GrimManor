@@ -193,7 +193,7 @@ function moveBackground(direction) {
 // import { showDialogueAsync } from "./dialogue.js";
 
 const gameContainer = document.getElementById("game-container");
-gameContainer.showModal();
+// gameContainer.showModal();
 // runHangmanGame();
 
 const introDialogue = [
