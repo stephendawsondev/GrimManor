@@ -2,6 +2,7 @@
 
 // Hangman minigame code
 import { runHangmanGame } from "./minigames/hangman.js";
+import { startMemoryGame } from "./minigames/memory-game.js";
 import { showDialogueAsync } from "./dialogue.js";
 
 // Memory minigame code
@@ -304,8 +305,8 @@ const miniGame1 = () => {
 
 // This function displays the second mini game
 const miniGame2 = () => {
-  alert("waiting for Jorgen to init the game in the 2nd door...");
-  // flipCard();
+  gameContainer.showModal();
+  startMemoryGame();
 };
 
 // This function displays the third mini game
