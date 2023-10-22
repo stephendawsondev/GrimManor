@@ -241,11 +241,12 @@ section #haunted-mansion {
 }
 
 .ouija-board-alphabet-letter.disabled {
-  color: #ccc;
+  opacity: 0.85;
 }
 
 .hangman-phrase-container {
   width: 90%;
+  margin: 0 auto;
   margin-bottom: 2em;
 }
 
@@ -267,7 +268,8 @@ section #haunted-mansion {
 
 .hangman-letter {
   display: block;
-  font-size: 2.25rem;
+  height: 3rem;
+  font-size: 2rem;
   font-family: "Captain Howdy", sans-serif;
   color: transparent;
   width: 100%;
@@ -275,12 +277,16 @@ section #haunted-mansion {
   position: relative;
 }
 
+.hangman-letter.revealed {
+  color: #000;
+}
+
 .hangman-letter::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 110%;
   height: 2px;
   background-color: #000;
 }
@@ -288,7 +294,7 @@ section #haunted-mansion {
 .hangman-letter-space {
   position: relative;
   display: inline-block;
-  width: 10%;
+  width: 1%;
   margin: 0 1%;
 }
 
