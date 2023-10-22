@@ -28,17 +28,25 @@ html {
   opacity: 1 !important;
 }
 
+.door-help {
+  width: 50px;
+}
+
 #button-debug {
   top: 0;
   position: fixed;
   right: 10px;
   z-index: 1000;
+  background-color: transparent;
+  opacity: 0.5;
+  pointer-events: all;
 }
 
 .interactive {
   background-color: transparent;
   opacity: 0;
   pointer-events: all;
+  border: none;
 }
 
 #door1 {
@@ -77,7 +85,6 @@ html {
   position: absolute;
   z-index: 1;
   transition: opacity 2s ease-in-out;
-  width: 150px;
   bottom: 20%;
   left: 61%;
   width: 100px;
@@ -240,23 +247,64 @@ section #haunted-mansion {
   color: #000;
 }
 
+.ouija-board-alphabet-letter.disabled {
+  opacity: 0.85;
+}
+
+.hangman-phrase-container {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 2em;
+}
+
+.hangman-phrase {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 1%;
+}
+
 .hangman-letter-container {
   position: relative;
-  display: inline-block;
-  width: 10%;
+  display: flex;
+  justify-content: center;
+  width: 20px;
   margin: 0 1%;
-  border: 1px solid #000;
 }
 
 .hangman-letter {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2.25rem;
+  display: block;
+  height: 3rem;
+  font-size: 2rem;
   font-family: "Captain Howdy", sans-serif;
+  color: transparent;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.hangman-letter.revealed {
   color: #000;
 }
+
+.hangman-letter::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 110%;
+  height: 2px;
+  background-color: #000;
+}
+
+.hangman-letter-space {
+  position: relative;
+  display: inline-block;
+  width: 1%;
+  margin: 0 1%;
+}
+
 /* End Hangman game styles */
 
 /* Memory mini-game styles */
