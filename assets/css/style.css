@@ -452,7 +452,11 @@ section #haunted-mansion {
 
 @media screen and (min-width: 768px) {
   #memory-game {
-    width: 50%;
+    width: 80%;
+    height: 90%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 
   .memory-card {

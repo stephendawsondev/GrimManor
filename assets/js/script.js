@@ -6,7 +6,20 @@ import { startMemoryGame } from "./minigames/memory-game.js";
 import { handlePlay } from "./minigames/quiz.js";
 import { initLastQuizGame } from "./minigames/lastquiz.js";
 import { showDialogueAsync } from "./dialogue.js";
+// import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
+// let loadedPlayerData = loadPlayerData();
 
+// const landingEnter = document?.getElementById("landing-enter");
+// landingEnter?.addEventListener("click", (e) => {
+//   e.preventDefault();
+
+//   savePlayerData({ ...loadedPlayerData, firstTimePlaying: false });
+//   // window.location.href = "index.html";
+// });
+
+// if (loadedPlayerData.firstTimePlaying) {
+//   window.location.href = "landing.html";
+// }
 // Audio code
 const classicScareAudio = new Audio("../../assets/audio/classic-scare.mp3");
 const evilLaughAudio = new Audio("../../assets/audio/evil-laugh.mp3");

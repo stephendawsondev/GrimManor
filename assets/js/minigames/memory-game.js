@@ -1,4 +1,7 @@
 import { showDialogueAsync } from "../dialogue.js";
+import { savePlayerData, loadPlayerData } from "../gamedata-localstore.js";
+let loadedPlayerData = loadPlayerData();
+
 const cards = document.querySelectorAll(".memory-card");
 
 let hasFlippedCard = false;
@@ -49,6 +52,7 @@ async function disableCards() {
     await showDialogueAsync(dialogue, true);
     const gameContainer = document.getElementById("game-container");
     gameContainer.classList.remove("boy-ghost");
+    savePlayerData({ ...loadedPlayerData, memoryClueObtained: true });
     gameContainer.close();
   }
 

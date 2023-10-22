@@ -26,7 +26,6 @@ function loadPlayerData() {
   const playerDataJSON = localStorage.getItem(keystore);
 
   // If there is saved data, parse it back into an object
-  console.log(playerDataJSON);
   if (playerDataJSON) {
     const playerData = JSON.parse(playerDataJSON);
     return playerData;
@@ -56,7 +55,7 @@ function loadPlayerData() {
 // savePlayerData(playerName, playerScore, gamesPlayed);
 
 // // Load player data later
-// const loadedPlayerData = loadPlayerData();
+const loadedPlayerData = loadPlayerData();
 
 if (loadPlayerData()) {
   console.log("Player Name: " + loadedPlayerData.playerName);
@@ -70,3 +69,5 @@ if (loadPlayerData()) {
 // let loadedPlayerData = loadPlayerData(); savePlayerData({ ...loadedPlayerData, hangmanClueObtained: true });
 // let loadedPlayerData = loadPlayerData(); savePlayerData({ ...loadedPlayerData, memoryClueObtained: true });
 // let loadedPlayerData = loadPlayerData(); savePlayerData({ ...loadedPlayerData, quizClueObtained: true });
+
+export { savePlayerData, loadPlayerData };
