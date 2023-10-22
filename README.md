@@ -79,6 +79,8 @@ Create a website which fits the theme of Halloween; is responsive and accessible
 <p>On laptop/desktop, users will be able to click on the doors/stairs and access the mini-games. </p>
 <p>On tablet/mobile screens, simply shrinking the image would make it too small and give a poor user experience so users will be able to pan left and right within the mansion to be able to see the doors and then access the mini-games in the same way. </p>  
 
+<p><i>Responsiveness</i></p>
+
 - ➡️ Target Audience
 
 <p>We decided that our project would be spooky but not ‘scary’. This means that the website has a distinct Halloween feel but is accessible across a wider range of ages and temperaments. </p>
