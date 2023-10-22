@@ -161,7 +161,7 @@ function handleAnswer(answerIndex) {
 }
 
 // Functions called on button eventlistening
-function handlePlay() {
+async function handlePlay() {
   // This function handles the play button
 
   const dialogue = [
@@ -179,7 +179,7 @@ function handlePlay() {
     },
   ];
 
-  showDialogueAsync(dialogue, true);
+  await showDialogueAsync(dialogue, true);
   document.getElementById("quiz-game").classList.add("active");
   displayQuestion(questions[currentQuestionIndex]);
   playButton.classList.add("d-none");
