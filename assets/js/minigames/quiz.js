@@ -11,7 +11,7 @@ const questions = [
       "Leatherface",
     ],
     correctAnswerIndex: 0,
-    image: (src = "./assets/images/horror-little-girl.webp"),
+    image: "./assets/images/horror-little-girl.webp",
   },
   {
     question: "Which phobia means you have an intense fear of Halloween?",
@@ -22,14 +22,14 @@ const questions = [
       "Arachnophobia",
     ],
     correctAnswerIndex: 2,
-    image: (src = "./assets/images/horror-face.webp"),
+    image: "./assets/images/horror-face.webp",
   },
   {
     question:
       "Halloween is also known as All Hallows Eve but what is another name for Hallows?",
     answers: [" Ghouls", "Ghosts", "Saints", "Howls"],
     correctAnswerIndex: 2,
-    image: (src = "./assets/images/horror-bride.webp"),
+    image: "./assets/images/horror-bride.webp",
   },
   {
     question: "Which famous magician died on Halloween in 1926?",
@@ -40,13 +40,13 @@ const questions = [
       "Derren Brown",
     ],
     correctAnswerIndex: 0,
-    image: (src = "./assets/images/horror-skeleton.webp"),
+    image: "./assets/images/horror-skeleton.webp",
   },
   {
     question: "If you were born on Halloween, what star sign would you be?",
     answers: ["Scorpio", "Libra", "Virgo", "Leo"],
     correctAnswerIndex: 0,
-    image: (src = "./assets/images/horror-house.webp"),
+    image: "./assets/images/horror-house.webp",
   },
 ];
 
@@ -162,6 +162,7 @@ function handleAnswer(answerIndex) {
 // Functions called on button eventlistening
 function handlePlay() {
   // This function handles the play button
+  document.getElementById("quiz-game").classList.add("active");
   displayQuestion(questions[currentQuestionIndex]);
   playButton.classList.add("d-none");
 }

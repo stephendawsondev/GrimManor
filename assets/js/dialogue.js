@@ -8,6 +8,7 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
       dialogueQueue = dialogue;
       dialogueIndex = 0;
       appendToGameContainer = appendToContainer;
+
       updateDialogue(onComplete);
     };
 
@@ -16,11 +17,11 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
         ? document.getElementById("game-container")
         : document.body;
       const dialogueBox = document.getElementById("dialogue-box");
-      // console.log("dialogueBox: " + dialogueBox);
       if (!dialogueBox) {
         return;
       }
 
+      dialogueBox.classList.add("active");
       if (dialogueIndex < dialogueQueue.length) {
         dialogueBox.classList.add("active");
         const dialogueText = dialogueBox.querySelector("#dialogue-text");
@@ -60,9 +61,9 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
         parentElement.appendChild(dialogueBox);
       } else {
         dialogueBox.classList.remove("active");
-        if (dialogueBox.parentElement) {
-          dialogueBox.parentElement.removeChild(dialogueBox);
-        }
+        // if (dialogueBox.parentElement) {
+        //   dialogueBox.parentElement.removeChild(dialogueBox);
+        // }
         if (onComplete) {
           onComplete(); // Resolve the promise when the dialogue is completed
         }

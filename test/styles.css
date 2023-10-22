@@ -1,0 +1,31 @@
+body {
+  text-align: center;
+  background-color: #000;
+  color: white;
+}
+
+#game-spot {
+  display: none;
+}
+
+.game-area-spot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  position: relative;
+}
+
+.image-diff {
+  border: 1px solid #823838;
+}
+.image-ingame {
+  width: 100px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+#score,
+#timer {
+  font-size: 20px;
+}
