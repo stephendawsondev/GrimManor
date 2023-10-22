@@ -148,11 +148,11 @@ html {
 
 /* DIALOGUE BOX */
 .dialogue-box {
-  position: absolute;
+  position: fixed;
   width: 90%;
   max-width: 900px;
   height: 100px;
-  bottom: 20%;
+  bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.8);
@@ -183,8 +183,7 @@ html {
   /*top: 0;
   left: 0;
   object-fit: cover; */
-  } 
-
+}
 
 section #haunted-mansion {
   position: relative;
