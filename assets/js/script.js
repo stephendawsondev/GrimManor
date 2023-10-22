@@ -310,8 +310,10 @@ const miniGame2 = () => {
 };
 
 // This function displays the third mini game
-const miniGame3 = () =>
-  alert("waiting for Sam to init the game in the 3th door...");
+const miniGame3 = () => {
+  gameContainer.showModal();
+  startQuizGame();
+};
 
 /*This function finds the id of the clicked button
  * passed from the event listener
