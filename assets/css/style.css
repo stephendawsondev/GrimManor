@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Risque";
+  src: url("../fonts/risque-regular.ttf");
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -8,6 +13,10 @@ body,
 html {
   height: 100%;
   margin: 0;
+}
+
+body {
+  font-family: "Risque", sans-serif;
 }
 
 /* Maison container css */
@@ -167,11 +176,20 @@ html {
 }
 
 .choices-container {
-  margin-top: 20px;
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .choice-button {
-  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+
+.choice-button ~ .choice-button {
+  margin-left: 0.5em;
 }
 
 /* END DIALOGUE BOX */
@@ -203,6 +221,15 @@ section #haunted-mansion {
   font-size: large;
   font-family: inherit;
   color: #acbfb9;
+}
+
+@media screen and (min-width: 768px) {
+  .choices-container {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 /*End landing page styles*/
 
@@ -241,9 +268,8 @@ section #haunted-mansion {
 }
 
 #stickman {
-  margin: 0 auto;
+  margin: 2em auto;
   display: block;
-  margin-bottom: 2em;
 }
 
 #hangman-game button {

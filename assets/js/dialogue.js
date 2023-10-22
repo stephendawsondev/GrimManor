@@ -36,6 +36,7 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
           for (const choice of dialogueQueue[dialogueIndex].choices) {
             const choiceButton = document.createElement("button");
             choiceButton.innerText = choice.text;
+            choiceButton.classList.add("choice-button");
             choiceButton.addEventListener("click", (event) => {
               event.stopPropagation();
               if (choice.action) {

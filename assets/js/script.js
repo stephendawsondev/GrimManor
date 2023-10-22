@@ -198,7 +198,7 @@ const gameContainer = document.getElementById("game-container");
 
 const introDialogue = [
   {
-    text: "Hello?",
+    text: "Pale man: Hello?",
     choices: [
       {
         text: "Are you a ghost?",
