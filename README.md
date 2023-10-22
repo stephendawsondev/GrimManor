@@ -95,7 +95,7 @@ In the tech section, we provide information about the technology stack, dependen
 
 ## Credits
 <ul>
-<li><a href="https://openai.com/dall-e-2">Dall-E</a> for AI generated images</li>
+<li><a href="https://openai.com/dall-e-2">Dall-E</a> for AI generated images </li>
 <li><a href="FontsBlogs.com">FontsBlogs.com for Ouija Font in Hangman game</li>
 <li><a href="Balsamiq.com">Balsamiq</a> for wireframes</li>
 <li><a href="Freesound.org">Freesound.org</a> for audio clips</li>
