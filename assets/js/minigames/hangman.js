@@ -10,15 +10,23 @@ const checkLetter = (letter) => {
       span.innerText = span.dataset.letter;
     }
   }
+  console.log(guessedLetters);
 };
 
 const runHangmanGame = () => {
-  const gameContainer = document.getElementById("hangman-game");
-  gameContainer.classList.add("active");
-  const phraseArr = "Hello World!".split("");
+  const hangmanContainer = document.getElementById("hangman-game");
+
+  hangmanContainer.classList.add("active");
+
+  const phraseArr = "Hello World".split("");
+
   const phraseContainer = document.querySelector(".hangman-phrase-container");
   const hangmanPhrase = document.querySelector(".hangman-phrase");
 
+  // check if letters letterContainer is empty
+  if (hangmanPhrase.hasChildNodes()) {
+    hangmanPhrase.innerHTML = "";
+  }
   for (const letter of phraseArr) {
     const letterContainer = document.createElement("div");
     letterContainer.classList.add("hangman-letter-container");
@@ -61,7 +69,7 @@ const runHangmanGame = () => {
     { text: "You've entered the mansion." },
   ];
 
-  showDialogueAsync(dialogue, true);
+  // showDialogueAsync(dialogue, true);
 };
 
 export { runHangmanGame };
