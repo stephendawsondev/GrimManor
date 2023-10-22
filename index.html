@@ -18,16 +18,31 @@
   </head>
 
   <body>
-    <div id="container">
+    <div id="mansion-container">
       <img
         id="background-image"
         src="assets/images/scary-mansion.png"
         alt="scary mansion image"
       />
-      <button id="move-up">up</button>
-      <button id="move-right">right</button>
-      <button id="move-left">left</button>
-      <button id="move-down">down</button>
+      <button class="responsive-button move-up" id="move-up">up</button>
+      <button class="responsive-button move-right" id="move-right">
+        right
+      </button>
+      <button class="responsive-button move-left" id="move-left">left</button>
+      <button class="responsive-button move-down" id="move-down">down</button>
+
+      <button id="button-debug">debug</button>
+
+      <button class="interactive" id="door1">door 1</button>
+      <button class="interactive" id="door2">door 2</button>
+      <button class="interactive" id="door3">door 3</button>
+      <button class="interactive" id="door4">door 4</button>
+      <img
+        src="assets/images/ghostly-man-image.png"
+        alt="male ghost in olden-day clothes"
+        class="ghost-image"
+      />
+      <img id="guide" src="assets/images/guide.png" alt="Guide image" />
     </div>
 
     <dialog id="game-container">
@@ -132,7 +147,7 @@
           </div>
         </div>
       </div>
-      <div class="minigame" id="memory-game">
+      <div class="minigame active" id="memory-game">
         <div class="memory-card" data-framework="death">
           <img
             class="front-face"
@@ -345,18 +360,14 @@
     </div>
   </body>
 
-  <!-- JQuery JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <!-- Popper JS -->
   <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
     integrity="sha384-6qzv5yZz+JZJfQJ7zJQJzZgJ5yJvJZ4z5JvzvJ6tJ6vLQJzJZ4z5JvzvJ6tJ6vLQJzJZ4z5JvzvJ6tJ6vLQJzJZ4z5JvzvJ6tJ6vLQ=="
     crossorigin="anonymous"
   ></script>
-  <!-- Bootstrap JS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!-- Custom JS -->
+  <script type="module" src="assets/js/gamedata-localstore.js"></script>
   <script type="module" src="assets/js/script.js"></script>
-  <script type="module" src="assets/js/memory-game.js"></script>
+  <script type="module" src="assets/js/minigames/memory-game.js"></script>
 </html>
