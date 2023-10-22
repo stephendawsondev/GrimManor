@@ -527,3 +527,49 @@ section #haunted-mansion {
     transform: scale(1.1);
   }
 }
+
+/* lastquiz game css */
+#game-lastquiz {
+  background-image: url("../../assets/images/lastquiz.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  text-align: center;
+  width: 700px;
+  height: 400px;
+  display: none;
+}
+
+.button-lastquiz {
+  background-color: #080300;
+  border: none;
+  color: #ebdddd;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 20px;
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  opacity: 0.8;
+}
+
+#question {
+  font-size: 25px;
+  color: #fff;
+  margin: 20px;
+  background-color: #080300;
+  opacity: 0.5;
+  padding: 10px;
+}
+
+.game-area-lastquiz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  position: relative;
+}

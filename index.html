@@ -24,12 +24,10 @@
         src="assets/images/scary-mansion.webp"
         alt="scary mansion image"
       />
-      <button class="responsive-button move-up" id="move-up">up</button>
-      <button class="responsive-button move-right" id="move-right">
-        right
-      </button>
-      <button class="responsive-button move-left" id="move-left">left</button>
-      <button class="responsive-button move-down" id="move-down">down</button>
+      <button class="responsive-button move-up" id="move-up">↑</button>
+      <button class="responsive-button move-right" id="move-right">→</button>
+      <button class="responsive-button move-left" id="move-left">←</button>
+      <button class="responsive-button move-down" id="move-down">↓</button>
 
       <button id="button-debug">
         <img class="door-help" src="assets/images/golden-magic.png" />
@@ -361,6 +359,16 @@
         </div>
       </div>
       <!-- end of quiz game -->
+
+      <div class="minigame" id="game-lastquiz">
+        <div class="game-area-lastquiz">
+          <button id="a" class="button-lastquiz"></button>
+          <button id="b" class="button-lastquiz"></button>
+          <button id="c" class="button-lastquiz"></button>
+        </div>
+        <h5 id="question"></h5>
+        <p id="evaluation"></p>
+      </div>
     </dialog>
     <div id="dialogue-box" class="dialogue-box">
       <p id="dialogue-text" class="dialogue-text"></p>
