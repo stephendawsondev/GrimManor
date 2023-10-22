@@ -198,7 +198,7 @@ function handleConfirmEnd() {
 
 function handleBackHome() {
   // This function handles the back home button
-  window.location.href = "./back.html"; // Redirecting can be modified to suit the project
+  window.location.href = "./index.html"; // Redirecting can be modified to suit the project
 }
 
 //Event Listeners
