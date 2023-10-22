@@ -47,14 +47,12 @@
 
     <dialog id="game-container">
       <div class="minigame" id="hangman-game">
-        <h2>Hangman</h2>
-        <div class="hangman-phrase-container">
-          <p class="hangman-phrase"></p>
-        </div>
-
         <canvas id="stickman">
           Your browser does not support the hangman drawing.
         </canvas>
+        <div class="hangman-phrase-container">
+          <div class="hangman-phrase"></div>
+        </div>
         <div class="ouija-board-container">
           <img
             src="assets/images/ouija-board-blank.png"
@@ -147,7 +145,7 @@
           </div>
         </div>
       </div>
-      <div class="minigame active" id="memory-game">
+      <div class="minigame" id="memory-game">
         <div class="memory-card" data-framework="death">
           <img
             class="front-face"
