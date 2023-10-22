@@ -1,27 +1,31 @@
 let dialogueQueue = [];
 let dialogueIndex = 0;
-let appendToGameContainer = false;
 
 const showDialogueAsync = (dialogue, appendToContainer = false) => {
   return new Promise((resolve) => {
-    const showDialogue = (dialogue, appendToContainer = false, onComplete) => {
-      dialogueQueue = dialogue;
-      dialogueIndex = 0;
-      appendToGameContainer = appendToContainer;
+    const parentElement = appendToContainer
+      ? document.getElementById("game-container")
+      : document.body;
 
-      updateDialogue(onComplete);
-    };
+    let dialogueBox = parentElement.querySelector("#dialogue-box");
 
-    const updateDialogue = (onComplete) => {
-      const parentElement = appendToGameContainer
-        ? document.getElementById("game-container")
-        : document.body;
-      const dialogueBox = document.getElementById("dialogue-box");
-      if (!dialogueBox) {
-        return;
-      }
+    if (!dialogueBox) {
+      dialogueBox = document.createElement("div");
+      dialogueBox.id = "dialogue-box";
+      dialogueBox.classList.add("dialogue-box");
+      let dialogueText = document.createElement("p");
+      dialogueText.id = "dialogue-text";
+      dialogueBox.appendChild(dialogueText);
+      let choicesContainer = document.createElement("div");
+      choicesContainer.id = "choices-container";
+      dialogueBox.appendChild(choicesContainer);
+      parentElement.appendChild(dialogueBox);
+    }
 
-      dialogueBox.classList.add("active");
+    dialogueQueue = dialogue;
+    dialogueIndex = 0;
+
+    const updateDialogue = () => {
       if (dialogueIndex < dialogueQueue.length) {
         dialogueBox.classList.add("active");
         const dialogueText = dialogueBox.querySelector("#dialogue-text");
@@ -29,15 +33,13 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
           dialogueBox.querySelector("#choices-container");
 
         dialogueText.innerText = dialogueQueue[dialogueIndex].text;
-
         choicesContainer.innerHTML = "";
 
         if (dialogueQueue[dialogueIndex].choices) {
           for (const choice of dialogueQueue[dialogueIndex].choices) {
             const choiceButton = document.createElement("button");
             choiceButton.innerText = choice.text;
-            choiceButton.addEventListener("click", (event) => {
-              event.stopPropagation();
+            choiceButton.addEventListener("click", () => {
               if (choice.action) {
                 const actionResult = choice.action();
                 if (actionResult && actionResult.newDialogue) {
@@ -45,49 +47,25 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
                 }
               }
               dialogueIndex++;
-              updateDialogue(onComplete);
-              attachContinueListeners();
+              updateDialogue();
             });
             choicesContainer.appendChild(choiceButton);
           }
-          detachContinueListeners();
         } else {
-          attachContinueListeners();
+          window.addEventListener("click", continueDialogue, { once: true });
         }
-
-        if (dialogueBox.parentElement) {
-          dialogueBox.parentElement.removeChild(dialogueBox);
-        }
-        parentElement.appendChild(dialogueBox);
       } else {
         dialogueBox.classList.remove("active");
-        // if (dialogueBox.parentElement) {
-        //   dialogueBox.parentElement.removeChild(dialogueBox);
-        // }
-        if (onComplete) {
-          onComplete(); // Resolve the promise when the dialogue is completed
-        }
+        resolve();
       }
-    };
-
-    const attachContinueListeners = () => {
-      window.addEventListener("click", continueDialogue);
-      window.addEventListener("keypress", continueDialogue);
-      window.addEventListener("touchstart", continueDialogue);
-    };
-
-    const detachContinueListeners = () => {
-      window.removeEventListener("click", continueDialogue);
-      window.removeEventListener("keypress", continueDialogue);
-      window.removeEventListener("touchstart", continueDialogue);
     };
 
     const continueDialogue = () => {
       dialogueIndex++;
-      updateDialogue(resolve);
+      updateDialogue();
     };
 
-    showDialogue(dialogue, appendToContainer, resolve);
+    updateDialogue();
   });
 };
 
