@@ -310,7 +310,8 @@ const miniGame2 = () => {
 
 // This function displays the third mini game
 const miniGame3 = () => {
-  // handlePlay();
+gameContainer.showModal();
+  startQuizGame();
 };
 
 /*This function finds the id of the clicked button
