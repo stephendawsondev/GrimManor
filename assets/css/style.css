@@ -19,6 +19,10 @@ body {
   font-family: "Risque", sans-serif;
 }
 
+img {
+  pointer-events: none;
+}
+
 /* Maison container css */
 
 #mansion-container {
@@ -208,7 +212,7 @@ section #haunted-mansion {
 }
 
 .landing-text {
-  font-family: 'Risque', serif;
+  font-family: "Risque", serif;
   font-size: large;
   color: #acbfb9;
   position: absolute;
@@ -387,13 +391,16 @@ section #haunted-mansion {
 /* End Hangman game styles */
 
 /* Memory mini-game styles */
-.memory-game {
-  width: 640px;
-  height: 640px;
-  margin: auto;
-  display: flex;
+#memory-game {
+  width: 50%;
+  height: 90%;
+  margin: 0 auto;
   flex-wrap: wrap;
-  perspective: 1000px;
+  justify-content: space-around;
+}
+
+#memory-game.active {
+  display: flex;
 }
 
 .memory-card {
@@ -407,6 +414,11 @@ section #haunted-mansion {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
+.memory-card {
+  width: calc(22% - 10px);
+  max-height: 190px;
+}
+
 .memory-card:active {
   transform: scale(0.97);
   transition: transform 0.2s;
@@ -414,6 +426,13 @@ section #haunted-mansion {
 
 .memory-card.flip {
   transform: rotateY(180deg);
+}
+
+.boy-ghost {
+  background-image: url("../../assets/images/boy-ghost.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .front-face,

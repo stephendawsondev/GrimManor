@@ -13,10 +13,6 @@ const moveButtons = document.querySelectorAll("button"); // Select all buttons w
 const container = document.getElementById("mansion-container"); // Select the container with the mansion image
 const DEBUT = false;
 
-// window.onload = function () {
-//   backgroundImage.style.bottom = "-100px";
-// };
-
 // Debug actions of button (show/hide buttons)
 if (DEBUT) {
   document.onmousemove = function (e) {
@@ -188,13 +184,7 @@ function moveBackground(direction) {
 }
 
 // Hangman minigame code
-
-// import { runHangmanGame } from "./minigames/hangman.js";
-// import { showDialogueAsync } from "./dialogue.js";
-
 const gameContainer = document.getElementById("game-container");
-// gameContainer.showModal();
-// runHangmanGame();
 
 const introDialogue = [
   {
@@ -287,6 +277,17 @@ const introDialogue = [
 ];
 
 document.addEventListener("DOMContentLoaded", async () => {
+  // if esc key is pressed, loop through
+  // minigames and remove active class
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const minigames = document.querySelectorAll(".minigame");
+      for (const minigame of minigames) {
+        minigame.classList.remove("active");
+      }
+      gameContainer.close();
+    }
+  });
   const ghost = document.querySelector(".ghost-image");
   ghost.classList.add("active");
   await showDialogueAsync(introDialogue);
@@ -303,8 +304,25 @@ const miniGame1 = () => {
 // (window.location.href = "game1.html");
 
 // This function displays the second mini game
-const miniGame2 = () => {
+const miniGame2 = async () => {
   gameContainer.showModal();
+  gameContainer.classList.add("boy-ghost");
+  const dialogue = [
+    {},
+    {
+      text: "You walk to the stairs, where a young boy is sitting and playing a card game. His clothing is old, from another time. ",
+    },
+    {
+      text: "He is not transparent as the first young man you encountered was, but there is a translucence to his skin.",
+    },
+    {
+      text: "He looks at you with haunted eyes.",
+    },
+    {
+      text: "“To discover the secrets of this house, choose the correct cards but you must remember where they lie...”",
+    },
+  ];
+  await showDialogueAsync(dialogue, true);
   startMemoryGame();
 };
 
