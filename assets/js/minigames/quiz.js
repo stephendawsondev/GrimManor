@@ -1,4 +1,5 @@
 //jshint esversion:6
+import { showDialogueAsync } from "../dialogue.js";
 
 // Array of quiz Questions, Answers and realated images
 const questions = [
@@ -198,7 +199,7 @@ function handleConfirmEnd() {
 
 function handleBackHome() {
   // This function handles the back home button
-  window.location.href = "./back.html"; // Redirecting can be modified to suit the project
+  window.location.href = "./index.html"; // Redirecting can be modified to suit the project
 }
 
 //Event Listeners
