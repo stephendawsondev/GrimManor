@@ -73,3 +73,10 @@ function resetBoard() {
 cards.forEach((card) => card.addEventListener("click", flipCard));
 
 export { flipCard };
+
+function startMemoryGame() {
+    shuffleCards();
+    cards.forEach((card) => card.addEventListener("click", flipCard));
+  }
+  
+  export { startMemoryGame };
