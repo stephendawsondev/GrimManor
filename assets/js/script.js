@@ -7,6 +7,26 @@ import { handlePlay } from "./minigames/quiz.js";
 
 import { showDialogueAsync } from "./dialogue.js";
 
+// Audio code
+const classicScareAudio = new Audio("../../assets/audio/classic-scare.mp3");
+const evilLaughAudio = new Audio("../../assets/audio/evil-laugh.mp3");
+const ghostScreamAudio = new Audio("../../assets/audio/ghost-scream.mp3");
+const highPitchedScreamAudio = new Audio(
+  "../../assets/audio/high-pitched-scream.mp3"
+);
+const spookyGhostWindAudio = new Audio(
+  "../../assets/audio/spooky-ghost-wind.mp3"
+);
+const stairsAudio = new Audio("../../assets/audio/stairs.mp3");
+const thunderstormAudio = new Audio("../../assets/audio/thunderstorm.mp3");
+const windAndDreadAudio = new Audio("../../assets/audio/wind-and-dread.mp3");
+const darkAmbientMusicAudio = new Audio(
+  "../../assets/audio/dark-ambient-music.mp3"
+);
+
+let userAllowsSounds = true;
+let userAllowsMusic = true;
+
 const doorOpenAudio = new Audio("../../assets/audio/door-creak-open.mp3");
 const doorShutAudio = new Audio("../../assets/audio/door-shut.mp3");
 const creepyWhistlyMusicAudio = new Audio(
@@ -305,11 +325,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 const miniGame1 = async () => {
   // play door open audio
 
-  doorOpenAudio.play();
-  setTimeout(() => {
-    doorShutAudio.play();
-  }, 1300);
-  creepyWhistlyMusicAudio.play();
+  if (userAllowsSounds) {
+    doorOpenAudio.play();
+    setTimeout(() => {
+      doorShutAudio.play();
+    }, 1300);
+  }
+  if (userAllowsMusic) {
+    creepyWhistlyMusicAudio.play();
+  }
 
   await gameContainer.showModal();
 
