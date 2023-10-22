@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Risque";
+  src: url("../fonts/risque-regular.ttf");
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -8,6 +13,14 @@ body,
 html {
   height: 100%;
   margin: 0;
+}
+
+body {
+  font-family: "Risque", sans-serif;
+}
+
+img {
+  pointer-events: none;
 }
 
 /* Maison container css */
@@ -141,7 +154,7 @@ html {
   position: relative;
   width: 80%;
   margin: 0 auto;
-  height: 80%;
+  height: 90%;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -167,11 +180,20 @@ html {
 }
 
 .choices-container {
-  margin-top: 20px;
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .choice-button {
-  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+
+.choice-button ~ .choice-button {
+  margin-left: 0.5em;
 }
 
 /* END DIALOGUE BOX */
@@ -190,7 +212,7 @@ section #haunted-mansion {
 }
 
 .landing-text {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Risque", serif;
   font-size: large;
   color: #acbfb9;
   position: absolute;
@@ -203,6 +225,15 @@ section #haunted-mansion {
   font-size: large;
   font-family: inherit;
   color: #acbfb9;
+}
+
+@media screen and (min-width: 768px) {
+  .choices-container {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 /*End landing page styles*/
 
@@ -241,16 +272,20 @@ section #haunted-mansion {
 }
 
 #stickman {
-  margin: 0 auto;
+  margin: 2em auto;
   display: block;
-  margin-bottom: 2em;
 }
 
 #hangman-game button {
   border: none;
   background-color: transparent;
-  font-size: 2.25rem;
+  font-size: 2rem;
+  margin-left: 0.2em;
   font-family: "Captain Howdy", sans-serif;
+}
+
+.ouija-board-image {
+  display: none;
 }
 
 .ouija-board-container {
@@ -282,6 +317,7 @@ section #haunted-mansion {
 .hangman-phrase {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   width: 100%;
   margin: 0 1%;
@@ -297,8 +333,8 @@ section #haunted-mansion {
 
 .hangman-letter {
   display: block;
-  height: 3rem;
-  font-size: 2rem;
+  height: 2rem;
+  font-size: 1.25rem;
   font-family: "Captain Howdy", sans-serif;
   color: transparent;
   width: 100%;
@@ -323,20 +359,48 @@ section #haunted-mansion {
 .hangman-letter-space {
   position: relative;
   display: inline-block;
-  width: 1%;
+  width: 4%;
   margin: 0 1%;
 }
 
+@media screen and (min-width: 768px) {
+  .ouija-board-image {
+    display: block;
+  }
+
+  .hangman-letter {
+    height: 3rem;
+    font-size: 2.25rem;
+  }
+
+  #hangman-game button {
+    border: none;
+    background-color: transparent;
+    font-size: 2.25rem;
+    font-family: "Captain Howdy", sans-serif;
+  }
+
+  .hangman-letter-space {
+    width: 1%;
+  }
+
+  .hangman-phrase {
+    flex-wrap: nowrap;
+  }
+}
 /* End Hangman game styles */
 
 /* Memory mini-game styles */
-.memory-game {
-  width: 640px;
-  height: 640px;
-  margin: auto;
-  display: flex;
+#memory-game {
+  width: 100%;
+  height: 90%;
+  margin: 0 auto;
   flex-wrap: wrap;
-  perspective: 1000px;
+  justify-content: space-around;
+}
+
+#memory-game.active {
+  display: flex;
 }
 
 .memory-card {
@@ -350,6 +414,11 @@ section #haunted-mansion {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
+.memory-card {
+  width: calc(33% - 10px);
+  max-height: 190px;
+}
+
 .memory-card:active {
   transform: scale(0.97);
   transition: transform 0.2s;
@@ -357,6 +426,13 @@ section #haunted-mansion {
 
 .memory-card.flip {
   transform: rotateY(180deg);
+}
+
+.boy-ghost {
+  background-image: url("../../assets/images/boy-ghost.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .front-face,
@@ -372,6 +448,16 @@ section #haunted-mansion {
 
 .front-face {
   transform: rotateY(180deg);
+}
+
+@media screen and (min-width: 768px) {
+  #memory-game {
+    width: 50%;
+  }
+
+  .memory-card {
+    width: calc(22% - 10px);
+  }
 }
 
 /* End of memory minigame styles */
