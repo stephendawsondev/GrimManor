@@ -55,6 +55,8 @@ if (currentPath.includes("github")) {
 const classicScareAudio = new Audio(
   url_audios_deploy + "assets/audio/classic-scare.mp3"
 );
+console.log(url_audios_deploy + "assets/audio/classic-scare.mp3");
+
 const evilLaughAudio = new Audio(
   url_audios_deploy + "assets/audio/evil-laugh.mp3"
 );
