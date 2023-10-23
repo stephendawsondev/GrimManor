@@ -229,6 +229,8 @@ function handleBackHome() {
     minigame.classList.remove("active");
   }
 
+  const quizContainer = document.getElementById("game-container");
+  quizContainer.classList.remove("quiz-container");
   gameContainer.close();
 }
 
