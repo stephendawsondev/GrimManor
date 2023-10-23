@@ -58,9 +58,11 @@ function loadPlayerData() {
 const loadedPlayerData = loadPlayerData();
 
 if (loadPlayerData()) {
-  console.log("Player Name: " + loadedPlayerData.playerName);
-  console.log("Score: " + loadedPlayerData.score);
-  console.log("Games Played: " + loadedPlayerData.gamesPlayed);
+  let loadedPlayerData = loadPlayerData();
+  console.log("hangmanClueObtained: " + loadedPlayerData.hangmanClueObtained);
+  console.log("memoryClueObtained: " + loadedPlayerData.memoryClueObtained);
+  console.log("quizClueObtained: " + loadedPlayerData.quizClueObtained);
+  console.log("backDoorOpened: " + loadedPlayerData.backDoorOpened);
 } else {
   console.log("No player data found.");
 }
