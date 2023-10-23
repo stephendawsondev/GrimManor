@@ -57,7 +57,7 @@ For the minigames, we made sure that these work on both mobile and desktop, so t
 
 
 <p><i>Future improvements</i></p>
-If we were to take this website further, we would add more mini-games to upstairs doors and windows. The paintings and skylights, when clicked, would produce jumpscares where ghosts popped out. Music would be added and apparitions of the pale young man would appear at random to give more of an eerie feel. Local storage would be utilised more so that, instead of an exit quiz which you had to click on, when you completed all of the mini-games the game would automatically generate the exit questions allowing you to be freed from the house. The games would then be replayable but with more general answers rather than story specific answers.  
+If we were to take this website further, we would add more mini-games to upstairs doors and windows. The paintings and skylights, when clicked, would produce jumpscares where ghosts popped out. Apparitions of the pale young man would appear at random to give more of an eerie feel. Local storage would be utilised more so that, instead of an exit quiz which you had to click on, when you completed all of the mini-games the game would automatically generate the exit questions allowing you to be freed from the house. The games would then be replayable but with more general answers rather than story specific answers.  
 
 - ➡️ Target Audience
 
@@ -79,6 +79,7 @@ If we were to take this website further, we would add more mini-games to upstair
 <li>JavaScript</li>
 <li>Bootstrap 4</li>
 <li>Hover.css</li>
+<li>jQuery</li>
 </ul>
 We leveraged the browser APIs for locale storage and audio (for music/sounds).
 
