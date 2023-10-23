@@ -38,7 +38,7 @@ const questions = [
     answers: [
       "Harry Houdini",
       "David Copperfield",
-      "David Balaine",
+      "David Blaine",
       "Derren Brown",
     ],
     correctAnswerIndex: 0,
@@ -170,9 +170,6 @@ async function handlePlay() {
   const dialogue = [
     {
       text: "Welcome to the Halloween quiz Hahaa!",
-    },
-    {
-      text: "What is your purpose here?",
     },
     {
       text: "What happened to the young man who used to live here? He says he is only able to walk the mortal plane on Halloween",
