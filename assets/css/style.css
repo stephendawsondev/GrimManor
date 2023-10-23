@@ -472,6 +472,9 @@ section #haunted-mansion {
   .memory-card {
     width: calc(22% - 10px);
   }
+  .memory-card {
+    max-height: 300px;
+  }
 }
 
 /* End of memory minigame styles */
