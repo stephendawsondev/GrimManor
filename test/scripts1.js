@@ -7,7 +7,7 @@ import { handlePlay } from "./minigames/quiz.js";
 import { initLastQuizGame } from "./minigames/lastquiz.js";
 import { showDialogueAsync } from "./dialogue.js";
 import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
-
+// import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
 // let loadedPlayerData = loadPlayerData();
 
 // const landingEnter = document?.getElementById("landing-enter");
@@ -28,37 +28,11 @@ const currentPath = window.location.pathname;
 let userAllowsSounds, userAllowsMusic;
 
 const loadPlayerSettings = () => {
-    if (currentPath.includes("landing.html")) {
-        userAllowsSounds = false;
-        userAllowsMusic = false;
-    } else {
-        const loadedData = loadPlayerData();
-        if (loadedData) {
-            userAllowsSounds = loadedData.playerAllowsSound;
-            userAllowsMusic = loadedData.playerAllowsMusic;
-        }
-        if (userAllowsMusic && userAllowsSound) {
-            loadPlayerSettings();
-        }
-    }
-};
-
-
-const showConsoleStatus = () => {
-  // const loadedPlayerData2 = loadPlayerData();
-  // if (loadedPlayerData2) {
-  //   console.log(
-  //     "-landingPageComplete: " + loadedPlayerData2?.landingPageComplete
-  //   );
-  //   console.log(
-  //     "hangmanClueObtained: " + loadedPlayerData2?.hangmanClueObtained
-  //   );
-  //   console.log("memoryClueObtained: " + loadedPlayerData2?.memoryClueObtained);
-  //   console.log("quizClueObtained: " + loadedPlayerData2?.quizClueObtained);
-  //   console.log("backDoorOpened: " + loadedPlayerData2?.backDoorOpened);
-  // } else {
-  //   console.log("No player data found.");
-  // }
+  const loadedData = loadPlayerData();
+  if (loadedData) {
+    userAllowsSounds = loadedData.playerAllowsSound;
+    userAllowsMusic = loadedData.playerAllowsMusic;
+  }
 };
 
 if (currentPath.includes("landing.html")) {
@@ -67,6 +41,7 @@ if (currentPath.includes("landing.html")) {
 } else {
   loadPlayerSettings();
 }
+
 // Audio code
 const classicScareAudio = new Audio("../../assets/audio/classic-scare.mp3");
 const evilLaughAudio = new Audio("../../assets/audio/evil-laugh.mp3");
@@ -293,7 +268,6 @@ function moveBackground(direction) {
   backgroundImage.style.marginLeft = left + "px";
 }
 
-
 // Check if the webpage is being refreshed or reset
 window.addEventListener("beforeunload", function (event) {
   // event.preventDefault();
@@ -301,12 +275,11 @@ window.addEventListener("beforeunload", function (event) {
   // const confirmation = window.confirm("Do you want to restart the game?");
   // if (confirmation) {
   localStorage.clear();
-  let loadedPlayerData = loadPlayerData();
+  loadedPlayerData = loadPlayerData();
   savePlayerData({
     ...loadedPlayerData,
     landingPageComplete: false,
   });
-
   // }
 });
 
@@ -325,7 +298,6 @@ if (!loadedPlayerData.landingPageComplete) {
     ...loadedPlayerData,
     landingPageComplete: true,
   });
-  showConsoleStatus();
 
   // alert(loadedPlayerData.landingPageComplete);
   location.href = "landing.html";
@@ -345,13 +317,13 @@ const introDialogue = [
     text: "Pale man: Hello?",
     choices: [
       {
-        text: "You: Are you a ghost?",
+        text: "Are you a ghost?",
         action: () => ({
           newDialogue: { text: "I think... I am" },
         }),
       },
       {
-        text: "You: Are you okay?",
+        text: "Are you okay?",
         action: () => ({
           newDialogue: { text: "I think... I am a ghost" },
         }),
@@ -362,15 +334,15 @@ const introDialogue = [
     text: "Okay...",
     choices: [
       {
-        text: "You: Are you a friendly ghost?",
+        text: "Are you a friendly ghost?",
         action: () => ({
           newDialogue: { text: "I am, but there are others here..." },
         }),
       },
       {
-        text: "You: Should I run away screaming?",
+        text: "Should I run away screaming?",
         action: () => ({
-          newDialogue: { text: "Not from me..." },
+          newDialogue: { text: "Not from me" },
         }),
       },
     ],
@@ -379,7 +351,7 @@ const introDialogue = [
     text: "It's very cold outside.",
     choices: [
       {
-        text: "You: Can I stay a while?",
+        text: "Can I stay a while?",
         action: () => ({
           newDialogue: {
             text: "That depends, will you help me with something?",
@@ -387,7 +359,7 @@ const introDialogue = [
         }),
       },
       {
-        text: "You: Is it safe for me here?",
+        text: "Is it safe for me here?",
         action: () => ({
           newDialogue: {
             text: "I can keep you safe, if you help me with something.",
@@ -397,21 +369,21 @@ const introDialogue = [
     ],
   },
   {
-    text: "I need help finding out why I am stuck here in this house...",
+    text: "What do you need help with?",
     choices: [
       {
-        text: "You: But I scare easily...",
+        text: "I scare easily",
         action: () => ({
           newDialogue: {
-            text: "You’ll be fine.",
+            text: "You’ll be fine",
           },
         }),
       },
       {
-        text: "You: I can help you.",
+        text: "I can help you",
         action: () => ({
           newDialogue: {
-            text: "Thank you.",
+            text: "Thank you",
           },
         }),
       },
@@ -563,11 +535,11 @@ const miniGame3 = async () => {
 
 // This function displays the lastquiz mini game
 const miniGame2 = () => {
-  let loadedPlayerData1 = loadPlayerData();
+  let loadedPlayerData = loadPlayerData();
   if (
-    !loadedPlayerData1.hangmanClueObtained &&
-    !loadedPlayerData1.memoryClubObtained &&
-    !loadedPlayerData1.quizClueObtained
+    !loadedPlayerData.hangmanClueObtained &&
+    !loadedPlayerData.memoryClubObtained &&
+    !loadedPlayerData.quizClueObtained
   ) {
     // alert("You need to complete the three games first!");
     return;
@@ -588,7 +560,6 @@ const miniGame4 = () => {
  * to displays the clicked mini game
  */
 const displayMiniGames = (id) => {
-  showConsoleStatus();
   if (id == "door1") {
     miniGame1();
   } else if (id == "door2") {
