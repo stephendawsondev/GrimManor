@@ -8,7 +8,6 @@ import { initLastQuizGame } from "./minigames/lastquiz.js";
 import { showDialogueAsync } from "./dialogue.js";
 import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
 
-// import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
 // let loadedPlayerData = loadPlayerData();
 
 // const landingEnter = document?.getElementById("landing-enter");
@@ -44,12 +43,29 @@ const loadPlayerSettings = () => {
   }
 };
 
-let url_audios_deploy = "../../";
+const showConsoleStatus = () => {
+  // const loadedPlayerData2 = loadPlayerData();
+  // if (loadedPlayerData2) {
+  //   console.log(
+  //     "-landingPageComplete: " + loadedPlayerData2?.landingPageComplete
+  //   );
+  //   console.log(
+  //     "hangmanClueObtained: " + loadedPlayerData2?.hangmanClueObtained
+  //   );
+  //   console.log("memoryClueObtained: " + loadedPlayerData2?.memoryClueObtained);
+  //   console.log("quizClueObtained: " + loadedPlayerData2?.quizClueObtained);
+  //   console.log("backDoorOpened: " + loadedPlayerData2?.backDoorOpened);
+  // } else {
+  //   console.log("No player data found.");
+  // }
+};
 
-if (currentPath.includes("github")) {
-  url_audios_deploy = "https://stephendawsondev.github.io/GrimManor/";
+if (currentPath.includes("landing.html")) {
+  userAllowsSounds = false;
+  userAllowsMusic = false;
+} else {
+  loadPlayerSettings();
 }
-
 // Audio code
 const classicScareAudio = new Audio(
   url_audios_deploy + "assets/audio/classic-scare.mp3"
