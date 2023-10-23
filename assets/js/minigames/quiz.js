@@ -124,7 +124,7 @@ function updateScore() {
 function displayScore() {
   // This function displays the score
   scoreCard.classList.remove("d-none");
-  if (score >= 4) {
+  if (score >= 3) {
     giftCard.classList.remove("d-none");
   } else {
     failureText.classList.remove("d-none");
@@ -181,8 +181,12 @@ async function handlePlay() {
     },
   ];
 
-  gameContainer.classList.add("quiz-table");
+  const quizContainer = document.getElementById("game-container");
+  quizContainer.classList.add("quiz-foreground");
+
   await showDialogueAsync(dialogue, true);
+  quizContainer.classList.remove("quiz-foreground");
+  quizContainer.classList.add("quiz-container");
   document.getElementById("quiz-game").classList.add("active");
   displayQuestion(questions[currentQuestionIndex]);
   playButton.classList.add("d-none");
