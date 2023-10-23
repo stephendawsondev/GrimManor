@@ -278,7 +278,7 @@ window.addEventListener("beforeunload", function (event) {
   loadedPlayerData = loadPlayerData();
   savePlayerData({
     ...loadedPlayerData,
-    landingPageComplete: true,
+    landingPageComplete: false,
   });
   // }
 });
