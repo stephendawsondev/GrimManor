@@ -182,6 +182,8 @@ async function handlePlay() {
   const quizContainer = document.getElementById("game-container");
   quizContainer.classList.add("quiz-foreground");
   await showDialogueAsync(dialogue, true);
+  quizContainer.classList.remove("quiz-foreground");
+  quizContainer.classList.add("quiz-container");
   document.getElementById("quiz-game").classList.add("active");
   displayQuestion(questions[currentQuestionIndex]);
   playButton.classList.add("d-none");
