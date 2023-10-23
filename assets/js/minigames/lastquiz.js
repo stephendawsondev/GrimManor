@@ -101,7 +101,7 @@ async function gameLastQuiz_over() {
     button.removeEventListener("click", () => {});
   });
   document.getElementById("game-lastquiz").classList.remove("active");
-  // console.log("gameLastQuiz_over", score);
+  console.log("gameLastQuiz_over", score);
 
   if (score === 3) {
     const dialogue = [
