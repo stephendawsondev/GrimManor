@@ -248,6 +248,25 @@ function moveBackground(direction) {
   backgroundImage.style.marginLeft = left + "px";
 }
 
+// Show the landing page
+let loadedPlayerData = loadPlayerData();
+if (!loadedPlayerData.landingPageComplete) {
+  loadedPlayerData = loadPlayerData();
+  savePlayerData({
+    ...loadedPlayerData,
+    landingPageComplete: true,
+  });
+
+  // alert(loadedPlayerData.landingPageComplete);
+  location.href = "landing.html";
+  // document.getElementById("landing-page").style.display = "block";
+  // document.getElementById("landing-enter").addEventListener("click", (e) => {
+  //   e.preventDefault();
+  //   savePlayerData({ ...loadedPlayerData, landingPageComplete: true });
+  //   document.getElementById("landing-page").style.display = "none";
+  // });
+}
+
 // Hangman minigame code
 const gameContainer = document.getElementById("game-container");
 
