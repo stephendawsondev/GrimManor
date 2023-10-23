@@ -38,7 +38,7 @@ const questions = [
     answers: [
       "Harry Houdini",
       "David Copperfield",
-      "David Baline",
+      "David Balaine",
       "Derren Brown",
     ],
     correctAnswerIndex: 0,
