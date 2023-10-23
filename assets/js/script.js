@@ -50,12 +50,14 @@ if (currentPath.includes("github")) {
   url_audios_deploy = "https://stephendawsondev.github.io/GrimManor/";
   url_audios_deploy = "https://patchamama.github.io/HalloweenHackathon/";
 }
+url_audios_deploy = "https://patchamama.github.io/HalloweenHackathon/";
+console.log(currentPath);
+console.log(url_audios_deploy + "assets/audio/classic-scare.mp3");
 
 // Audio code
 const classicScareAudio = new Audio(
   url_audios_deploy + "assets/audio/classic-scare.mp3"
 );
-console.log(url_audios_deploy + "assets/audio/classic-scare.mp3");
 
 const evilLaughAudio = new Audio(
   url_audios_deploy + "assets/audio/evil-laugh.mp3"
