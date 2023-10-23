@@ -1,5 +1,6 @@
 //jshint esversion:6
 import { showDialogueAsync } from "../dialogue.js";
+import { savePlayerData, loadPlayerData } from "../gamedata-localstore.js";
 
 // Array of quiz Questions, Answers and realated images
 const questions = [
@@ -124,6 +125,8 @@ function displayScore() {
   scoreCard.classList.remove("d-none");
   if (score >= 3) {
     giftCard.classList.remove("d-none");
+    let loadedPlayerData = loadPlayerData();
+    savePlayerData({ ...loadedPlayerData, quizClueObtained: true });
   } else {
     failureText.classList.remove("d-none");
   }
