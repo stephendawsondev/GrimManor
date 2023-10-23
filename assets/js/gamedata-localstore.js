@@ -85,16 +85,16 @@ function loadPlayerData() {
 // // Save player data
 // savePlayerData(playerName, playerScore, gamesPlayed);
 
-let loadedPlayerData = loadPlayerData();
-if (loadedPlayerData) {
-  console.log("landingPageComplete: " + loadedPlayerData?.landingPageComplete);
-  console.log("hangmanClueObtained: " + loadedPlayerData?.hangmanClueObtained);
-  console.log("memoryClueObtained: " + loadedPlayerData?.memoryClueObtained);
-  console.log("quizClueObtained: " + loadedPlayerData?.quizClueObtained);
-  console.log("backDoorOpened: " + loadedPlayerData?.backDoorOpened);
-} else {
-  console.log("No player data found.");
-}
+// let loadedPlayerData = loadPlayerData();
+// if (loadedPlayerData) {
+//   console.log("landingPageComplete: " + loadedPlayerData?.landingPageComplete);
+//   console.log("hangmanClueObtained: " + loadedPlayerData?.hangmanClueObtained);
+//   console.log("memoryClueObtained: " + loadedPlayerData?.memoryClueObtained);
+//   console.log("quizClueObtained: " + loadedPlayerData?.quizClueObtained);
+//   console.log("backDoorOpened: " + loadedPlayerData?.backDoorOpened);
+// } else {
+//   console.log("No player data found.");
+// }
 
 // let loadedPlayerData = loadPlayerData();
 // let loadedPlayerData = loadPlayerData(); savePlayerData({ ...loadedPlayerData, hangmanClueObtained: true });

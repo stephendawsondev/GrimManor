@@ -36,20 +36,20 @@ const loadPlayerSettings = () => {
 };
 
 const showConsoleStatus = () => {
-  const loadedPlayerData2 = loadPlayerData();
-  if (loadedPlayerData2) {
-    console.log(
-      "-landingPageComplete: " + loadedPlayerData2?.landingPageComplete
-    );
-    console.log(
-      "hangmanClueObtained: " + loadedPlayerData2?.hangmanClueObtained
-    );
-    console.log("memoryClueObtained: " + loadedPlayerData2?.memoryClueObtained);
-    console.log("quizClueObtained: " + loadedPlayerData2?.quizClueObtained);
-    console.log("backDoorOpened: " + loadedPlayerData2?.backDoorOpened);
-  } else {
-    console.log("No player data found.");
-  }
+  // const loadedPlayerData2 = loadPlayerData();
+  // if (loadedPlayerData2) {
+  //   console.log(
+  //     "-landingPageComplete: " + loadedPlayerData2?.landingPageComplete
+  //   );
+  //   console.log(
+  //     "hangmanClueObtained: " + loadedPlayerData2?.hangmanClueObtained
+  //   );
+  //   console.log("memoryClueObtained: " + loadedPlayerData2?.memoryClueObtained);
+  //   console.log("quizClueObtained: " + loadedPlayerData2?.quizClueObtained);
+  //   console.log("backDoorOpened: " + loadedPlayerData2?.backDoorOpened);
+  // } else {
+  //   console.log("No player data found.");
+  // }
 };
 
 if (currentPath.includes("landing.html")) {
