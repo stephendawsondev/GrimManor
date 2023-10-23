@@ -28,12 +28,21 @@ const currentPath = window.location.pathname;
 let userAllowsSounds, userAllowsMusic;
 
 const loadPlayerSettings = () => {
-  const loadedData = loadPlayerData();
-  if (loadedData) {
-    userAllowsSounds = loadedData.playerAllowsSound;
-    userAllowsMusic = loadedData.playerAllowsMusic;
-  }
+    if (currentPath.includes("landing.html")) {
+        userAllowsSounds = false;
+        userAllowsMusic = false;
+    } else {
+        const loadedData = loadPlayerData();
+        if (loadedData) {
+            userAllowsSounds = loadedData.playerAllowsSound;
+            userAllowsMusic = loadedData.playerAllowsMusic;
+        }
+        if (userAllowsMusic && userAllowsSound) {
+            loadPlayerSettings();
+        }
+    }
 };
+
 
 const showConsoleStatus = () => {
   // const loadedPlayerData2 = loadPlayerData();
@@ -58,7 +67,6 @@ if (currentPath.includes("landing.html")) {
 } else {
   loadPlayerSettings();
 }
-
 // Audio code
 const classicScareAudio = new Audio("../../assets/audio/classic-scare.mp3");
 const evilLaughAudio = new Audio("../../assets/audio/evil-laugh.mp3");
@@ -285,6 +293,7 @@ function moveBackground(direction) {
   backgroundImage.style.marginLeft = left + "px";
 }
 
+
 // Check if the webpage is being refreshed or reset
 window.addEventListener("beforeunload", function (event) {
   // event.preventDefault();
@@ -468,6 +477,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  // if user clicks outside of dialog and music isn't playing
+  // play dark ambient music
+
+  document.querySelector("dialog").addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
   // if esc key is pressed, loop through
   // minigames and remove active class
   window.addEventListener("keydown", (e) => {
