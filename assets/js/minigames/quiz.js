@@ -2,6 +2,8 @@
 import { showDialogueAsync } from "../dialogue.js";
 import { savePlayerData, loadPlayerData } from "../gamedata-localstore.js";
 
+const gameContainer = document.getElementById("game-container");
+
 // Array of quiz Questions, Answers and realated images
 const questions = [
   {
@@ -221,8 +223,8 @@ function handleConfirmEnd() {
 }
 
 function handleBackHome() {
-  // This function handles the back home button
-  window.location.href = "./index.html"; // Redirecting can be modified to suit the project
+  // This function handles the exit button to exit quiz
+  gameContainer.close();
 }
 
 //Event Listeners
