@@ -24,12 +24,10 @@
         src="assets/images/scary-mansion.webp"
         alt="scary mansion image"
       />
-      <button class="responsive-button move-up" id="move-up">up</button>
-      <button class="responsive-button move-right" id="move-right">
-        right
-      </button>
-      <button class="responsive-button move-left" id="move-left">left</button>
-      <button class="responsive-button move-down" id="move-down">down</button>
+      <button class="responsive-button move-up" id="move-up">↑</button>
+      <button class="responsive-button move-right" id="move-right">→</button>
+      <button class="responsive-button move-left" id="move-left">←</button>
+      <button class="responsive-button move-down" id="move-down">↓</button>
 
       <button id="button-debug">
         <img class="door-help" src="assets/images/golden-magic.png" />
@@ -41,7 +39,9 @@
       <button class="interactive" id="door2">
         <img class="door-help" src="assets/images/golden-magic.png" />
       </button>
-      <button class="interactive" id="door3"></button>
+      <button class="interactive" id="door3">
+        <img class="door-help" src="assets/images/golden-magic.png" />
+      </button>
       <button class="interactive" id="door4">
         <img class="door-help" src="assets/images/golden-magic.png" />
       </button>
@@ -304,7 +304,7 @@
       <!-- quiz -->
       <div class="minigame" id="quiz-game">
         <div class="text-center quiz-container">
-          <h2 class="mt-5">Halloween Quiz</h2>
+          <h2>Halloween Quiz</h2>
           <!-- play button -->
           <button id="play-button" class="btn btn-lg hvr-outline-in">
             Play
@@ -322,9 +322,7 @@
             <div class="card-body">
               <h5 id="result-text" class="card-title"></h5>
               <p id="correct-answer" class="card-text"></p>
-              <button id="next-button" class="btn btn-lg btn-warning">
-                Next
-              </button>
+              <button id="next-button" class="btn btn-lg btn-dark">Next</button>
             </div>
           </div>
           <!-- quiz score card -->
@@ -334,15 +332,16 @@
               <img
                 id="gift-card"
                 class="card-img-top d-none"
-                src="./assets/images/halloween-horror-pumkins.webp"
+                src="./assets/images/mansion-with-trees.webp"
+                alt="a spooky mansion with trees"
               />
               <p id="failure-text" class="card-text d-none">
-                Sorry, you didn't score high enough to win a gift card.
+                Sorry, you didn't score high enough to get to the next stage.
               </p>
-              <button id="play-again-button" class="btn btn-lg btn-warning">
+              <button id="play-again-button" class="btn btn-lg btn-dark">
                 Play Again
               </button>
-              <button id="end-quiz-button" class="btn btn-lg btn-warning">
+              <button id="end-quiz-button" class="btn btn-lg btn-dark">
                 End Quiz
               </button>
             </div>
@@ -361,19 +360,43 @@
         </div>
       </div>
       <!-- end of quiz game -->
+
+      <div class="minigame" id="game-lastquiz">
+        <div class="game-area-lastquiz">
+          <button id="a" class="button-lastquiz"></button>
+          <button id="b" class="button-lastquiz"></button>
+          <button id="c" class="button-lastquiz"></button>
+        </div>
+        <h5 id="question"></h5>
+        <p id="evaluation"></p>
+      </div>
     </dialog>
     <div id="dialogue-box" class="dialogue-box">
       <p id="dialogue-text" class="dialogue-text"></p>
       <div id="choices-container" class="choices-container"></div>
     </div>
-  </body>
+    <button
+      title="Toggle music"
+      id="music-button"
+      class="audio-button music-button"
+    >
+      <img id="music-icon" src="assets/images/music_on.webp" alt="music icon" />
+    </button>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script type="module" src="assets/js/gamedata-localstore.js"></script>
-  <!--
+    <button
+      title="Toggle sound"
+      id="sound-button"
+      class="audio-button sound-button"
+    >
+      <img id="sound-icon" src="assets/images/sound_on.webp" alt="sound icon" />
+    </button>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="assets/js/gamedata-localstore.js"></script>
+    <!--
   <script type="module" src="assets/js/minigames/quiz.js"></script>
   -->
-  <script type="module" src="assets/js/script.js"></script>
-  <script type="module" src="assets/js/minigames/memory-game.js"></script>
+    <script type="module" src="assets/js/script.js"></script>
+    <script type="module" src="assets/js/minigames/memory-game.js"></script>
+  </body>
 </html>

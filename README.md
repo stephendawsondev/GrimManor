@@ -1,17 +1,13 @@
-<h3>THIS TEMPLATE IS ONLY TO BE USED ON THE OCTOBER HACKATHON PROJECT</h3>
-<h4>Please do not use it for the course project work</h4>
-<br>
+
 <h1 align="center"><strong>🎃🎃🎃 Phantom Forge: A Halloween Hackathon 🎃🎃🎃</strong>
 
 </h1>
 
-<img src="https://res.cloudinary.com/djdefbnij/image/upload/v1695815394/October-banner_alm4vx.jpg" alt="PhantomForgeBanner" width="1200"/>
+<img src="assets/readme-images/man-in-mansion.png" alt="ghost in mansion" width="1200"/>
 
 # SUBMISSION
 
 ## Deployment
-
-#### _(please note, your team must also include the deployed links in the usual submission in Hackapp)_
 
 The project is deployed and can be accessed at [https://stephendawsondev.github.io/GrimManor/landing.html](https://stephendawsondev.github.io/GrimManor/landing.html).
 
@@ -82,7 +78,7 @@ If we were to take this website further, we would add more mini-games to upstair
 <li>CSS</li>
 <li>JavaScript</li>
 <li>Bootstrap 4</li>
-<li>jQuery</li>
+<li>Hover.css</li>
 </ul>
 We leveraged the browser APIs for locale storage and audio (for music/sounds).
 
@@ -104,5 +100,5 @@ We leveraged the browser APIs for locale storage and audio (for music/sounds).
 <li><b>Armando Urquiola Cabrera - Front-end development</b> <p> GitHub = patchamama <a href="https://www.linkedin.com/in/urquioladev/">LinkedIn</a></li>
 <li><b>Stephen Dawson - Scrum Master, Front-end development</b> <p> GitHub = stephendawsondev <a href="https://www.linkedin.com/in/sdstephendawson/">LinkedIn</a></li>
 <li><b>Emma Lamont - Storytelling, documentation, presentation</b> <p> GitHub = elamont174 <a href="https://www.linkedin.com/in/emma-lamont/">LinkedIn</a></li>
-<li><b>Jorgen Lovbakke - Front-end development</b> <p> GitHub = JL-14 <a href="">LinkedIn</a></li>
+<li><b>Jorgen Lovbakke - Front-end development</b> <p> GitHub = JL-14 <a href="https://www.linkedin.com/in/jorgen-lovbakke/">LinkedIn</a></li>
 </ul>

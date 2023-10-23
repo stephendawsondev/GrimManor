@@ -1,4 +1,6 @@
 import { showDialogueAsync } from "../dialogue.js";
+import { savePlayerData, loadPlayerData } from "../gamedata-localstore.js";
+let loadedPlayerData = loadPlayerData();
 
 const guessedLetters = [];
 const gameContainer = document.getElementById("game-container");
@@ -127,7 +129,7 @@ const checkGameStatus = async (phraseArr) => {
   if (letterSpans.length === revealedSpans.length) {
     const winDialogue = [
       {
-        text: "The man who owned this house hung himself many years ago... they say his spirit still haunts these halls but I have never seen him",
+        text: "They say the young man’s fiancée married another man…",
         choices: [
           {
             text: "Thank you... I'll be going...",
@@ -139,6 +141,10 @@ const checkGameStatus = async (phraseArr) => {
               for (const minigame of minigames) {
                 minigame.classList.remove("active");
               }
+              savePlayerData({
+                ...loadedPlayerData,
+                hangmanClueObtained: true,
+              });
               gameContainer.close();
             },
           },
@@ -204,6 +210,7 @@ const resetGame = () => {
 const runHangmanGame = async () => {
   // if esc key is pressed, loop through
   // minigames and remove active class
+
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       const minigames = document.querySelectorAll(".minigame");

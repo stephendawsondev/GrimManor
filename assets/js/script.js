@@ -4,8 +4,60 @@
 import { runHangmanGame } from "./minigames/hangman.js";
 import { startMemoryGame } from "./minigames/memory-game.js";
 import { handlePlay } from "./minigames/quiz.js";
-
+import { initLastQuizGame } from "./minigames/lastquiz.js";
 import { showDialogueAsync } from "./dialogue.js";
+import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
+// import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
+// let loadedPlayerData = loadPlayerData();
+
+// const landingEnter = document?.getElementById("landing-enter");
+// landingEnter?.addEventListener("click", (e) => {
+//   e.preventDefault();
+
+//   savePlayerData({ ...loadedPlayerData, firstTimePlaying: false });
+//   // window.location.href = "index.html";
+// });
+
+// if (loadedPlayerData.firstTimePlaying) {
+//   window.location.href = "landing.html";
+// }
+
+// Get the current pathname
+const currentPath = window.location.pathname;
+
+let userAllowsSounds, userAllowsMusic;
+
+const loadPlayerSettings = () => {
+  const loadedData = loadPlayerData();
+  if (loadedData) {
+    userAllowsSounds = loadedData.playerAllowsSound;
+    userAllowsMusic = loadedData.playerAllowsMusic;
+  }
+};
+
+if (currentPath.includes("landing.html")) {
+  userAllowsSounds = false;
+  userAllowsMusic = false;
+} else {
+  loadPlayerSettings();
+}
+
+// Audio code
+const classicScareAudio = new Audio("../../assets/audio/classic-scare.mp3");
+const evilLaughAudio = new Audio("../../assets/audio/evil-laugh.mp3");
+const ghostScreamAudio = new Audio("../../assets/audio/ghost-scream.mp3");
+const highPitchedScreamAudio = new Audio(
+  "../../assets/audio/high-pitched-scream.mp3"
+);
+const spookyGhostWindAudio = new Audio(
+  "../../assets/audio/spooky-ghost-wind.mp3"
+);
+const stairsAudio = new Audio("../../assets/audio/stairs.mp3");
+const thunderstormAudio = new Audio("../../assets/audio/thunderstorm.mp3");
+const windAndDreadAudio = new Audio("../../assets/audio/wind-and-dread.mp3");
+const darkAmbientMusicAudio = new Audio(
+  "../../assets/audio/dark-ambient-music.mp3"
+);
 
 const doorOpenAudio = new Audio("../../assets/audio/door-creak-open.mp3");
 const doorShutAudio = new Audio("../../assets/audio/door-shut.mp3");
@@ -26,13 +78,15 @@ if (DEBUT) {
     e.target.title = "X is " + x + " and Y is " + y;
   };
 }
-const buttonDebug = document.getElementById("button-debug");
-buttonDebug.addEventListener("click", function () {
-  const buttons = document.querySelectorAll(".interactive");
-  buttons.forEach((button) => {
-    button.classList.toggle("show");
+const buttonDebug = document?.getElementById("button-debug");
+if (buttonDebug) {
+  buttonDebug.addEventListener("click", function () {
+    const buttons = document.querySelectorAll(".interactive");
+    buttons.forEach((button) => {
+      button.classList.toggle("show");
+    });
   });
-});
+}
 
 // Select all buttons with the "interactive" class
 const interactiveButtons = document.querySelectorAll(".interactive");
@@ -99,7 +153,33 @@ document.addEventListener("keydown", function (event) {
   });
   if (newColliding && !inColliding) {
     inColliding = true;
-    buttonColliding.click();
+    let loadedPlayerData = loadPlayerData();
+    if (buttonColliding.id == "door2") {
+      if (
+        loadedPlayerData.hangmanClueObtained &&
+        loadedPlayerData.memoryClubObtained &&
+        loadedPlayerData.quizClueObtained
+      ) {
+        buttonColliding.click();
+      }
+    } else {
+      if (
+        buttonColliding.id == "door1" &&
+        !loadedPlayerData.hangmanClueObtained
+      ) {
+        buttonColliding.click();
+      } else if (
+        buttonColliding.id == "door3" &&
+        !loadedPlayerData.memoryClubObtained
+      ) {
+        buttonColliding.click();
+      } else if (
+        buttonColliding.id == "door4" &&
+        !loadedPlayerData.quizClueObtained
+      ) {
+        buttonColliding.click();
+      }
+    }
   } else if (!newColliding) {
     inColliding = false;
   }
@@ -170,13 +250,13 @@ function moveBackground(direction) {
       break;
   }
 
-  console.log(direction, top, left);
-  console.log(
-    containerHeight,
-    imageHeight,
-    top - step,
-    containerHeight - imageHeight
-  );
+  // console.log(direction, top, left);
+  // console.log(
+  //   containerHeight,
+  //   imageHeight,
+  //   top - step,
+  //   containerHeight - imageHeight
+  // );
   // Update the position of the buttons interactives to follow the background image
   updateButtonsPos(
     top - backgroundImage.offsetTop,
@@ -186,6 +266,25 @@ function moveBackground(direction) {
   //backgroundImage.style.left = left + "px";
   backgroundImage.style.marginTop = top + "px";
   backgroundImage.style.marginLeft = left + "px";
+}
+
+// Show the landing page
+let loadedPlayerData = loadPlayerData();
+if (!loadedPlayerData.landingPageComplete) {
+  loadedPlayerData = loadPlayerData();
+  savePlayerData({
+    ...loadedPlayerData,
+    landingPageComplete: true,
+  });
+
+  // alert(loadedPlayerData.landingPageComplete);
+  location.href = "landing.html";
+  // document.getElementById("landing-page").style.display = "block";
+  // document.getElementById("landing-enter").addEventListener("click", (e) => {
+  //   e.preventDefault();
+  //   savePlayerData({ ...loadedPlayerData, landingPageComplete: true });
+  //   document.getElementById("landing-page").style.display = "none";
+  // });
 }
 
 // Hangman minigame code
@@ -247,7 +346,6 @@ const introDialogue = [
       },
     ],
   },
-  { text: "Please..." },
   {
     text: "What do you need help with?",
     choices: [
@@ -269,7 +367,6 @@ const introDialogue = [
       },
     ],
   },
-  { text: "Please..." },
   {
     text: "I have been trapped in this house for centuries.. able only to be seen by the human realm on Halloween...",
   },
@@ -282,6 +379,60 @@ const introDialogue = [
 ];
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const musicButton = document.getElementById("music-button");
+  const soundButton = document.getElementById("sound-button");
+  const musicIcon = document.getElementById("music-icon");
+  const soundIcon = document.getElementById("sound-icon");
+
+  musicButton.addEventListener("click", () => {
+    userAllowsMusic = !userAllowsMusic;
+    if (userAllowsMusic) {
+      musicIcon.src = "assets/images/music_on.webp";
+      if (currentPath.includes("landing.html") && userAllowsMusic) {
+        thunderstormAudio.play();
+        // loop audio
+        thunderstormAudio.addEventListener("ended", () => {
+          thunderstormAudio.play();
+        });
+      }
+    } else {
+      musicIcon.src = "assets/images/music_off.webp";
+      if (currentPath.includes("landing.html") && userAllowsMusic) {
+        thunderstormAudio.pause();
+      }
+    }
+    savePlayerData({ ...loadedPlayerData, playerAllowsMusic: userAllowsMusic });
+  });
+
+  soundButton.addEventListener("click", () => {
+    userAllowsSounds = !userAllowsSounds;
+    if (userAllowsSounds) {
+      soundIcon.src = "assets/images/sound_on.webp";
+    } else {
+      soundIcon.src = "assets/images/sound_off.webp";
+    }
+    savePlayerData({
+      ...loadedPlayerData,
+      playerAllowsSound: userAllowsSounds,
+    });
+  });
+
+  if (currentPath.includes("/landing.html")) return;
+
+  if (userAllowsMusic) {
+    darkAmbientMusicAudio.play();
+    // loop audio
+    darkAmbientMusicAudio.addEventListener("ended", () => {
+      darkAmbientMusicAudio.play();
+    });
+  }
+
+  // if user clicks outside of dialog and music isn't playing
+  // play dark ambient music
+
+  document.querySelector("dialog").addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
   // if esc key is pressed, loop through
   // minigames and remove active class
   window.addEventListener("keydown", (e) => {
@@ -290,12 +441,29 @@ document.addEventListener("DOMContentLoaded", async () => {
       for (const minigame of minigames) {
         minigame.classList.remove("active");
       }
+      gameContainer.className = "";
       gameContainer.close();
     }
   });
-  const ghost = document.querySelector(".ghost-image");
-  ghost.classList.add("active");
+  const ghost = document?.querySelector(".ghost-image");
+  if (ghost) {
+    ghost.classList.add("active");
+  }
+
+  // loop through 'interactive' and disable
+  const interactiveButtons = document.querySelectorAll(".interactive");
+  for (const button of interactiveButtons) {
+    button.disabled = true;
+    button.classList.add("disabled");
+    button.setAttribute("aria-disabled", "true");
+  }
   await showDialogueAsync(introDialogue);
+  // loop through 'interactive' and enable
+  for (const button of interactiveButtons) {
+    button.disabled = false;
+    button.classList.remove("disabled");
+    button.setAttribute("aria-disabled", "false");
+  }
   ghost.classList.remove("active");
 });
 
@@ -305,11 +473,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 const miniGame1 = async () => {
   // play door open audio
 
-  doorOpenAudio.play();
-  setTimeout(() => {
-    doorShutAudio.play();
-  }, 1300);
-  creepyWhistlyMusicAudio.play();
+  if (userAllowsSounds) {
+    doorOpenAudio.play();
+    setTimeout(() => {
+      doorShutAudio.play();
+    }, 1300);
+  }
+  if (userAllowsMusic) {
+    creepyWhistlyMusicAudio.play();
+  }
 
   await gameContainer.showModal();
 
@@ -318,11 +490,10 @@ const miniGame1 = async () => {
 // (window.location.href = "game1.html");
 
 // This function displays the second mini game
-const miniGame2 = async () => {
+const miniGame3 = async () => {
   gameContainer.showModal();
   gameContainer.classList.add("boy-ghost");
   const dialogue = [
-    {},
     {
       text: "You walk to the stairs, where a young boy is sitting and playing a card game. His clothing is old, from another time. ",
     },
@@ -340,8 +511,23 @@ const miniGame2 = async () => {
   startMemoryGame();
 };
 
+// This function displays the lastquiz mini game
+const miniGame2 = () => {
+  let loadedPlayerData = loadPlayerData();
+  if (
+    !loadedPlayerData.hangmanClueObtained &&
+    !loadedPlayerData.memoryClubObtained &&
+    !loadedPlayerData.quizClueObtained
+  ) {
+    // alert("You need to complete the three games first!");
+    return;
+  }
+  gameContainer.showModal();
+  initLastQuizGame();
+};
+
 // This function displays the third mini game
-const miniGame3 = () => {
+const miniGame4 = () => {
   gameContainer.showModal();
   handlePlay();
 };
@@ -357,8 +543,8 @@ const displayMiniGames = (id) => {
   } else if (id == "door2") {
     miniGame2();
   } else if (id == "door3") {
-    // miniGame3();
-  } else if (id == "door4") {
     miniGame3();
+  } else if (id == "door4") {
+    miniGame4();
   }
 };

@@ -1,6 +1,8 @@
 //jshint esversion:6
 import { showDialogueAsync } from "../dialogue.js";
 
+const gameContainer = document.getElementById("game-container");
+
 // Array of quiz Questions, Answers and realated images
 const questions = [
   {
@@ -122,7 +124,7 @@ function updateScore() {
 function displayScore() {
   // This function displays the score
   scoreCard.classList.remove("d-none");
-  if (score >= 4) {
+  if (score >= 3) {
     giftCard.classList.remove("d-none");
   } else {
     failureText.classList.remove("d-none");
@@ -161,8 +163,30 @@ function handleAnswer(answerIndex) {
 }
 
 // Functions called on button eventlistening
-function handlePlay() {
+async function handlePlay() {
   // This function handles the play button
+
+  const dialogue = [
+    {
+      text: "Welcome to the Halloween quiz Hahaa!",
+    },
+    {
+      text: "What is your purpose here?",
+    },
+    {
+      text: "What happened to the young man who used to live here? He says he is only able to walk the mortal plane on Halloween",
+    },
+    {
+      text: "We don’t know how he ended up there... but we can show you his burial place. All you have to do is answer our questions first...",
+    },
+  ];
+
+  const quizContainer = document.getElementById("game-container");
+  quizContainer.classList.add("quiz-foreground");
+
+  await showDialogueAsync(dialogue, true);
+  quizContainer.classList.remove("quiz-foreground");
+  quizContainer.classList.add("quiz-container");
   document.getElementById("quiz-game").classList.add("active");
   displayQuestion(questions[currentQuestionIndex]);
   playButton.classList.add("d-none");
@@ -182,9 +206,10 @@ function handlePlayAgain() {
 
 function handleEndQuiz() {
   /* This function handles the end quiz functionality
-   *  and displays the end game card
+   *  and displays the end game card with clue for the final stage quiz
    */
-  endText.textContent = "Comfirm you want to end the quiz?";
+  endText.textContent =
+    "The young man is buried under the trees next to the mansion";
   questionCard.classList.add("d-none");
   resultCard.classList.add("d-none");
   scoreCard.classList.add("d-none");
@@ -193,7 +218,7 @@ function handleEndQuiz() {
 
 function handleConfirmEnd() {
   // This function confirms end of quiz with a message
-  endText.textContent = "Thanks for playing!";
+  endText.textContent = "I wish you well in the next stage!";
   endCard.classList.remove("d-none");
 }
 
@@ -203,11 +228,11 @@ function handleBackHome() {
 }
 
 //Event Listeners
-playButton.addEventListener("click", handlePlay);
-nextButton.addEventListener("click", handleNext);
-playAgainButton.addEventListener("click", handlePlayAgain);
-endQuizButton.addEventListener("click", handleEndQuiz);
-endCard.addEventListener("click", handleConfirmEnd);
-backButton.addEventListener("click", handleBackHome);
+playButton?.addEventListener("click", handlePlay);
+nextButton?.addEventListener("click", handleNext);
+playAgainButton?.addEventListener("click", handlePlayAgain);
+endQuizButton?.addEventListener("click", handleEndQuiz);
+endCard?.addEventListener("click", handleConfirmEnd);
+backButton?.addEventListener("click", handleBackHome);
 
 export { handlePlay };

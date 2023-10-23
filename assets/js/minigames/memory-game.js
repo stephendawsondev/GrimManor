@@ -1,4 +1,7 @@
 import { showDialogueAsync } from "../dialogue.js";
+import { savePlayerData, loadPlayerData } from "../gamedata-localstore.js";
+let loadedPlayerData = loadPlayerData();
+
 const cards = document.querySelectorAll(".memory-card");
 
 let hasFlippedCard = false;
@@ -38,17 +41,20 @@ async function disableCards() {
   if (matchedPairs === totalPairs) {
     document.getElementById("memory-game").classList.remove("active");
     const dialogue = [
-      {},
       {
         text: "In his high child’s voice, the boy says:",
       },
       {
-        text: "“They say the young man’s fiancée married another man...”",
+        text: "“The man who owned this house hung himself many years ago…”",
+      },
+      {
+        text: "“They say his spirit still haunts these halls but I have never seen him...”",
       },
     ];
     await showDialogueAsync(dialogue, true);
     const gameContainer = document.getElementById("game-container");
     gameContainer.classList.remove("boy-ghost");
+    savePlayerData({ ...loadedPlayerData, memoryClueObtained: true });
     gameContainer.close();
   }
 
