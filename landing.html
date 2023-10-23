@@ -9,6 +9,19 @@
   </head>
   <body>
     <script>
+      let keystore = "userData-halloween";
+      // Function to save player data to LocalStorage
+      function savePlayerData(playerData) {
+        // Convert the object to a JSON string
+        const playerDataJSON = JSON.stringify(playerData);
+
+        // Store the JSON string in LocalStorage
+        localStorage.setItem(keystore, playerDataJSON);
+      }
+      savePlayerData({
+        landingPageComplete: true,
+      });
+
       // Listen for enter key press
       window.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
@@ -83,7 +96,5 @@
         alt="sound icon"
       />
     </button>
-
-    <script type="module" src="assets/js/script.js"></script>
   </body>
 </html>

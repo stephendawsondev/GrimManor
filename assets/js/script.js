@@ -268,6 +268,28 @@ function moveBackground(direction) {
   backgroundImage.style.marginLeft = left + "px";
 }
 
+// Check if the webpage is being refreshed or reset
+window.addEventListener("beforeunload", function (event) {
+  // event.preventDefault();
+  event.returnValue = "";
+  // const confirmation = window.confirm("Do you want to restart the game?");
+  // if (confirmation) {
+  localStorage.clear();
+  loadedPlayerData = loadPlayerData();
+  savePlayerData({
+    ...loadedPlayerData,
+    landingPageComplete: false,
+  });
+  // }
+});
+
+// function handleBeforeUnload(event) {
+//   event.preventDefault();
+//   localStorage.clear();
+//   window.removeEventListener("beforeunload", handleBeforeUnload);
+// }
+// window.addEventListener("beforeunload", handleBeforeUnload);
+
 // Show the landing page
 let loadedPlayerData = loadPlayerData();
 if (!loadedPlayerData.landingPageComplete) {
