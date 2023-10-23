@@ -61,7 +61,7 @@ img {
 }
 
 .show {
-  opacity: 1 !important;
+  opacity: 0 !important;
 }
 
 .door-help {
@@ -80,7 +80,7 @@ img {
 
 .interactive {
   background-color: transparent;
-  opacity: 0;
+  opacity: 1;
   pointer-events: all;
   border: none;
 }
