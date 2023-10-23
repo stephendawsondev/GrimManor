@@ -7,7 +7,7 @@ import { handlePlay } from "./minigames/quiz.js";
 import { initLastQuizGame } from "./minigames/lastquiz.js";
 import { showDialogueAsync } from "./dialogue.js";
 import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
-// import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
+
 // let loadedPlayerData = loadPlayerData();
 
 // const landingEnter = document?.getElementById("landing-enter");
@@ -32,6 +32,23 @@ const loadPlayerSettings = () => {
   if (loadedData) {
     userAllowsSounds = loadedData.playerAllowsSound;
     userAllowsMusic = loadedData.playerAllowsMusic;
+  }
+};
+
+const showConsoleStatus = () => {
+  const loadedPlayerData2 = loadPlayerData();
+  if (loadedPlayerData2) {
+    console.log(
+      "-landingPageComplete: " + loadedPlayerData2?.landingPageComplete
+    );
+    console.log(
+      "hangmanClueObtained: " + loadedPlayerData2?.hangmanClueObtained
+    );
+    console.log("memoryClueObtained: " + loadedPlayerData2?.memoryClueObtained);
+    console.log("quizClueObtained: " + loadedPlayerData2?.quizClueObtained);
+    console.log("backDoorOpened: " + loadedPlayerData2?.backDoorOpened);
+  } else {
+    console.log("No player data found.");
   }
 };
 
@@ -275,11 +292,12 @@ window.addEventListener("beforeunload", function (event) {
   // const confirmation = window.confirm("Do you want to restart the game?");
   // if (confirmation) {
   localStorage.clear();
-  loadedPlayerData = loadPlayerData();
+  let loadedPlayerData = loadPlayerData();
   savePlayerData({
     ...loadedPlayerData,
-    landingPageComplete: true,
+    landingPageComplete: false,
   });
+
   // }
 });
 
@@ -298,6 +316,7 @@ if (!loadedPlayerData.landingPageComplete) {
     ...loadedPlayerData,
     landingPageComplete: true,
   });
+  showConsoleStatus();
 
   // alert(loadedPlayerData.landingPageComplete);
   location.href = "landing.html";
@@ -529,11 +548,11 @@ const miniGame3 = async () => {
 
 // This function displays the lastquiz mini game
 const miniGame2 = () => {
-  let loadedPlayerData = loadPlayerData();
+  let loadedPlayerData1 = loadPlayerData();
   if (
-    !loadedPlayerData.hangmanClueObtained &&
-    !loadedPlayerData.memoryClubObtained &&
-    !loadedPlayerData.quizClueObtained
+    !loadedPlayerData1.hangmanClueObtained &&
+    !loadedPlayerData1.memoryClubObtained &&
+    !loadedPlayerData1.quizClueObtained
   ) {
     // alert("You need to complete the three games first!");
     return;
@@ -554,6 +573,7 @@ const miniGame4 = () => {
  * to displays the clicked mini game
  */
 const displayMiniGames = (id) => {
+  showConsoleStatus();
   if (id == "door1") {
     miniGame1();
   } else if (id == "door2") {

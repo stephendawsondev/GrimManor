@@ -85,13 +85,13 @@ function loadPlayerData() {
 // // Save player data
 // savePlayerData(playerName, playerScore, gamesPlayed);
 
-if (loadPlayerData()) {
-  let loadedPlayerData = loadPlayerData();
-  console.log("landingPageComplete: " + loadedPlayerData.landingPageComplete);
-  console.log("hangmanClueObtained: " + loadedPlayerData.hangmanClueObtained);
-  console.log("memoryClueObtained: " + loadedPlayerData.memoryClueObtained);
-  console.log("quizClueObtained: " + loadedPlayerData.quizClueObtained);
-  console.log("backDoorOpened: " + loadedPlayerData.backDoorOpened);
+let loadedPlayerData = loadPlayerData();
+if (loadedPlayerData) {
+  console.log("landingPageComplete: " + loadedPlayerData?.landingPageComplete);
+  console.log("hangmanClueObtained: " + loadedPlayerData?.hangmanClueObtained);
+  console.log("memoryClueObtained: " + loadedPlayerData?.memoryClueObtained);
+  console.log("quizClueObtained: " + loadedPlayerData?.quizClueObtained);
+  console.log("backDoorOpened: " + loadedPlayerData?.backDoorOpened);
 } else {
   console.log("No player data found.");
 }
@@ -103,7 +103,7 @@ if (loadPlayerData()) {
 // let loadedPlayerData = loadPlayerData(); savePlayerData({ ...loadedPlayerData, backDoorOpened: true });
 
 // // Load player data later
-let loadedPlayerData = loadPlayerData();
+// let loadedPlayerData = loadPlayerData();
 
 if (false) {
   // Reset player data?
