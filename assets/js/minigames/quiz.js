@@ -122,7 +122,7 @@ function updateScore() {
 function displayScore() {
   // This function displays the score
   scoreCard.classList.remove("d-none");
-  if (score >= 4) {
+  if (score >= 3) {
     giftCard.classList.remove("d-none");
   } else {
     failureText.classList.remove("d-none");
