@@ -169,9 +169,6 @@ async function handlePlay() {
       text: "Welcome to the Halloween quiz Hahaa!",
     },
     {
-      text: "What is your purpose here?",
-    },
-    {
       text: "What happened to the young man who used to live here? He says he is only able to walk the mortal plane on Halloween",
     },
     {
