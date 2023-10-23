@@ -38,8 +38,9 @@ const darkAmbientMusicAudio = new Audio(
   "../../assets/audio/dark-ambient-music.mp3"
 );
 
-let userAllowsSounds = true;
-let userAllowsMusic = true;
+const loadedPlayerData = loadPlayerData();
+let userAllowsSounds = loadedPlayerData.playerAllowsSound || true;
+let userAllowsMusic = loadedPlayerData.playerAllowsMusic || true;
 
 const doorOpenAudio = new Audio("../../assets/audio/door-creak-open.mp3");
 const doorShutAudio = new Audio("../../assets/audio/door-shut.mp3");
@@ -60,13 +61,15 @@ if (DEBUT) {
     e.target.title = "X is " + x + " and Y is " + y;
   };
 }
-const buttonDebug = document.getElementById("button-debug");
-buttonDebug.addEventListener("click", function () {
-  const buttons = document.querySelectorAll(".interactive");
-  buttons.forEach((button) => {
-    button.classList.toggle("show");
+const buttonDebug = document?.getElementById("button-debug");
+if (buttonDebug) {
+  buttonDebug.addEventListener("click", function () {
+    const buttons = document.querySelectorAll(".interactive");
+    buttons.forEach((button) => {
+      button.classList.toggle("show");
+    });
   });
-});
+}
 
 // Select all buttons with the "interactive" class
 const interactiveButtons = document.querySelectorAll(".interactive");
@@ -340,6 +343,39 @@ const introDialogue = [
 ];
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const musicButton = document.getElementById("music-button");
+  const soundButton = document.getElementById("sound-button");
+  const musicIcon = document.getElementById("music-icon");
+  const soundIcon = document.getElementById("sound-icon");
+
+  musicButton.addEventListener("click", () => {
+    userAllowsMusic = !userAllowsMusic;
+    if (userAllowsMusic) {
+      musicIcon.src = "assets/images/music_on.webp";
+      darkAmbientMusicAudio.play();
+    } else {
+      musicIcon.src = "assets/images/music_off.webp";
+      darkAmbientMusicAudio.pause();
+    }
+    savePlayerData({ ...loadedPlayerData, playerAllowsMusic: userAllowsMusic });
+  });
+
+  soundButton.addEventListener("click", () => {
+    userAllowsSounds = !userAllowsSounds;
+    if (userAllowsSounds) {
+      soundIcon.src = "assets/images/sound_on.webp";
+    } else {
+      soundIcon.src = "assets/images/sound_off.webp";
+    }
+    savePlayerData({
+      ...loadedPlayerData,
+      playerAllowsSound: userAllowsSounds,
+    });
+  });
+
+  if (window.location.href == "landing.html" && userAllowsMusic) {
+    thunderstormAudio.play();
+  }
   // if esc key is pressed, loop through
   // minigames and remove active class
   window.addEventListener("keydown", (e) => {
@@ -352,8 +388,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       gameContainer.close();
     }
   });
-  const ghost = document.querySelector(".ghost-image");
-  ghost.classList.add("active");
+  const ghost = document?.querySelector(".ghost-image");
+  if (ghost) {
+    ghost.classList.add("active");
+  }
+
   // loop through 'interactive' and disable
   const interactiveButtons = document.querySelectorAll(".interactive");
   for (const button of interactiveButtons) {
