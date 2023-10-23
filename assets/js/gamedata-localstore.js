@@ -34,6 +34,7 @@ function loadPlayerData() {
     return {
       playerName: "Adams",
       firstTimePlaying: true,
+      landingPageComplete: false,
       storyComplete: false,
       hangmanClueObtained: false,
       memoryClueObtained: false,
@@ -54,11 +55,9 @@ function loadPlayerData() {
 // // Save player data
 // savePlayerData(playerName, playerScore, gamesPlayed);
 
-// // Load player data later
-const loadedPlayerData = loadPlayerData();
-
 if (loadPlayerData()) {
   let loadedPlayerData = loadPlayerData();
+  console.log("landingPageComplete: " + loadedPlayerData.landingPageComplete);
   console.log("hangmanClueObtained: " + loadedPlayerData.hangmanClueObtained);
   console.log("memoryClueObtained: " + loadedPlayerData.memoryClueObtained);
   console.log("quizClueObtained: " + loadedPlayerData.quizClueObtained);
@@ -71,5 +70,19 @@ if (loadPlayerData()) {
 // let loadedPlayerData = loadPlayerData(); savePlayerData({ ...loadedPlayerData, hangmanClueObtained: true });
 // let loadedPlayerData = loadPlayerData(); savePlayerData({ ...loadedPlayerData, memoryClueObtained: true });
 // let loadedPlayerData = loadPlayerData(); savePlayerData({ ...loadedPlayerData, quizClueObtained: true });
+
+// // Load player data later
+let loadedPlayerData = loadPlayerData();
+
+if (false) {
+  savePlayerData({
+    ...loadedPlayerData,
+    landingPageComplete: false,
+    hangmanClueObtained: false,
+    memoryClueObtained: false,
+    quizClueObtained: false,
+    backDoorOpened: false,
+  });
+}
 
 export { savePlayerData, loadPlayerData };
