@@ -21,6 +21,27 @@ import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
 // if (loadedPlayerData.firstTimePlaying) {
 //   window.location.href = "landing.html";
 // }
+
+// Get the current pathname
+const currentPath = window.location.pathname;
+
+let userAllowsSounds, userAllowsMusic;
+
+const loadPlayerSettings = () => {
+  const loadedData = loadPlayerData();
+  if (loadedData) {
+    userAllowsSounds = loadedData.playerAllowsSound;
+    userAllowsMusic = loadedData.playerAllowsMusic;
+  }
+};
+
+if (currentPath.includes("landing.html")) {
+  userAllowsSounds = false;
+  userAllowsMusic = false;
+} else {
+  loadPlayerSettings();
+}
+
 // Audio code
 const classicScareAudio = new Audio("../../assets/audio/classic-scare.mp3");
 const evilLaughAudio = new Audio("../../assets/audio/evil-laugh.mp3");
@@ -37,10 +58,6 @@ const windAndDreadAudio = new Audio("../../assets/audio/wind-and-dread.mp3");
 const darkAmbientMusicAudio = new Audio(
   "../../assets/audio/dark-ambient-music.mp3"
 );
-
-const loadedPlayerData = loadPlayerData();
-let userAllowsSounds = loadedPlayerData.playerAllowsSound || true;
-let userAllowsMusic = loadedPlayerData.playerAllowsMusic || true;
 
 const doorOpenAudio = new Audio("../../assets/audio/door-creak-open.mp3");
 const doorShutAudio = new Audio("../../assets/audio/door-shut.mp3");
@@ -352,10 +369,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     userAllowsMusic = !userAllowsMusic;
     if (userAllowsMusic) {
       musicIcon.src = "assets/images/music_on.webp";
-      darkAmbientMusicAudio.play();
+      if (currentPath.includes("landing.html") && userAllowsMusic) {
+        thunderstormAudio.play();
+        // loop audio
+        thunderstormAudio.addEventListener("ended", () => {
+          thunderstormAudio.play();
+        });
+      }
     } else {
       musicIcon.src = "assets/images/music_off.webp";
-      darkAmbientMusicAudio.pause();
+      if (currentPath.includes("landing.html") && userAllowsMusic) {
+        thunderstormAudio.pause();
+      }
     }
     savePlayerData({ ...loadedPlayerData, playerAllowsMusic: userAllowsMusic });
   });
@@ -373,9 +398,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
-  if (window.location.href == "landing.html" && userAllowsMusic) {
-    thunderstormAudio.play();
-  }
+  if (currentPath.includes("/landing.html")) return;
   // if esc key is pressed, loop through
   // minigames and remove active class
   window.addEventListener("keydown", (e) => {
