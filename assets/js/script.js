@@ -28,19 +28,20 @@ const currentPath = window.location.pathname;
 let userAllowsSounds, userAllowsMusic;
 
 const loadPlayerSettings = () => {
-  const loadedData = loadPlayerData();
-  if (loadedData) {
-    userAllowsSounds = loadedData.playerAllowsSound;
-    userAllowsMusic = loadedData.playerAllowsMusic;
-  }
+    if (currentPath.includes("landing.html")) {
+        userAllowsSounds = false;
+        userAllowsMusic = false;
+    } else {
+        const loadedData = loadPlayerData();
+        if (loadedData) {
+            userAllowsSounds = loadedData.playerAllowsSound;
+            userAllowsMusic = loadedData.playerAllowsMusic;
+        }
+        if (userAllowsMusic && userAllowsSound) {
+            loadPlayerSettings();
+        }
+    }
 };
-
-if (currentPath.includes("landing.html")) {
-  userAllowsSounds = false;
-  userAllowsMusic = false;
-} else {
-  loadPlayerSettings();
-}
 
 // Audio code
 const classicScareAudio = new Audio("../../assets/audio/classic-scare.mp3");
@@ -268,28 +269,6 @@ function moveBackground(direction) {
   backgroundImage.style.marginLeft = left + "px";
 }
 
-// Check if the webpage is being refreshed or reset
-window.addEventListener("beforeunload", function (event) {
-  // event.preventDefault();
-  event.returnValue = "";
-  // const confirmation = window.confirm("Do you want to restart the game?");
-  // if (confirmation) {
-  localStorage.clear();
-  loadedPlayerData = loadPlayerData();
-  savePlayerData({
-    ...loadedPlayerData,
-    landingPageComplete: false,
-  });
-  // }
-});
-
-// function handleBeforeUnload(event) {
-//   event.preventDefault();
-//   localStorage.clear();
-//   window.removeEventListener("beforeunload", handleBeforeUnload);
-// }
-// window.addEventListener("beforeunload", handleBeforeUnload);
-
 // Show the landing page
 let loadedPlayerData = loadPlayerData();
 if (!loadedPlayerData.landingPageComplete) {
@@ -449,6 +428,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  // if user clicks outside of dialog and music isn't playing
+  // play dark ambient music
+
+  document.querySelector("dialog").addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
   // if esc key is pressed, loop through
   // minigames and remove active class
   window.addEventListener("keydown", (e) => {
