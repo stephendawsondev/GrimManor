@@ -41,12 +41,14 @@ async function disableCards() {
   if (matchedPairs === totalPairs) {
     document.getElementById("memory-game").classList.remove("active");
     const dialogue = [
-      {},
       {
         text: "In his high child’s voice, the boy says:",
       },
       {
-        text: "“They say the young man’s fiancée married another man...”",
+        text: "“The man who owned this house hung himself many years ago…”",
+      },
+      {
+        text: "“They say his spirit still haunts these halls but I have never seen him...”",
       },
     ];
     await showDialogueAsync(dialogue, true);

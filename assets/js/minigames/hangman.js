@@ -129,7 +129,7 @@ const checkGameStatus = async (phraseArr) => {
   if (letterSpans.length === revealedSpans.length) {
     const winDialogue = [
       {
-        text: "The man who owned this house hung himself many years ago... they say his spirit still haunts these halls but I have never seen him",
+        text: "They say the young man’s fiancée married another man…",
         choices: [
           {
             text: "Thank you... I'll be going...",
