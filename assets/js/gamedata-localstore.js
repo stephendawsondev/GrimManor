@@ -72,11 +72,13 @@ if (loadPlayerData()) {
 // let loadedPlayerData = loadPlayerData(); savePlayerData({ ...loadedPlayerData, hangmanClueObtained: true });
 // let loadedPlayerData = loadPlayerData(); savePlayerData({ ...loadedPlayerData, memoryClueObtained: true });
 // let loadedPlayerData = loadPlayerData(); savePlayerData({ ...loadedPlayerData, quizClueObtained: true });
+// let loadedPlayerData = loadPlayerData(); savePlayerData({ ...loadedPlayerData, backDoorOpened: true });
 
 // // Load player data later
 let loadedPlayerData = loadPlayerData();
 
 if (false) {
+  // Reset player data?
   savePlayerData({
     ...loadedPlayerData,
     landingPageComplete: false,
