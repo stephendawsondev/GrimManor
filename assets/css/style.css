@@ -77,15 +77,30 @@ img {
 /* Maison container css */
 
 #mansion-container {
+  position: relative;
   float: left;
-  height: 1024px;
+  height: 100vh;
   overflow: hidden;
   position: relative;
-  width: 1792px;
+  min-width: 1792px;
+  width: 100%;
+}
+
+#mansion-container #background-image {
+  width: 100%;
+  height: 100%;
+}
+
+.overlay-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .responsive-button {
-  display: hidden;
+  display: none;
 }
 
 .show {
@@ -115,32 +130,32 @@ img {
 
 #door1 {
   position: absolute;
-  top: 590px;
-  left: 420px;
+  top: 60%;
+  left: 23%;
   width: 120px;
   height: 310px;
 }
 
 #door2 {
   position: absolute;
-  top: 600px;
-  left: 740px;
+  top: 60%;
+  left: 42%;
   width: 100px;
   height: 210px;
 }
 
 #door3 {
   position: absolute;
-  top: 578px;
-  left: 1083px;
+  top: 55%;
+  left: 60%;
   width: 58px;
   height: 170px;
 }
 
 #door4 {
   position: absolute;
-  top: 587px;
-  left: 1354px;
+  top: 60%;
+  left: 77%;
   width: 110px;
   height: 320px;
 }
