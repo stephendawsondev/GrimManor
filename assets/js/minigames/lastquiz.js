@@ -2,6 +2,7 @@ import { savePlayerData, loadPlayerData } from "../gamedata-localstore.js";
 import { showDialogueAsync } from "../dialogue.js";
 const gameContainer = document.getElementById("game-container");
 const lastquizContainer = document.getElementById("game-lastquiz");
+let DEBUG = true;
 
 const lastquiz = {
   form1: {
@@ -42,7 +43,7 @@ let score = 0;
 
 function nextQuestion() {
   number_test++;
-  console.log("nextQuestion", number_test);
+  // console.log("nextQuestion", number_test);
   if (number_test === 4) {
     gameLastQuiz_over();
     // return;
@@ -95,8 +96,6 @@ quizButtons.forEach((button) => {
   });
 });
 
-nextQuestion();
-
 async function gameLastQuiz_over() {
   quizButtons.forEach((button) => {
     button.removeEventListener("click", () => {});
@@ -104,20 +103,34 @@ async function gameLastQuiz_over() {
   document.getElementById("game-lastquiz").classList.remove("active");
   console.log("gameLastQuiz_over", score);
 
-  const dialogue = [
-    {
-      text: "That’s right I remember now… She said she loved me… But she betrayed me.",
-    },
-    {
-      text: "I have wandered these halls for centuries filled with pain and anger but the memories left me long ago.",
-    },
-    {
-      text: "Thank you for your assistance, I feel that I can move on now. I am forever in your debt!",
-    },
-  ];
+  if (score === 3) {
+    const dialogue = [
+      {
+        text: "That’s right I remember now… She said she loved me… But she betrayed me.",
+      },
+      {
+        text: "I have wandered these halls for centuries filled with pain and anger but the memories left me long ago.",
+      },
+      {
+        text: "Thank you for your assistance, I feel that I can move on now. I am forever in your debt!",
+      },
+    ];
 
-  gameContainer.classList.add("lastquiz-table");
-  await showDialogueAsync(dialogue, true);
+    let loadedPlayerData = loadPlayerData();
+    savePlayerData({ ...loadedPlayerData, backDoorOpened: true });
+    gameContainer.classList.add("lastquiz-table");
+    await showDialogueAsync(dialogue, true);
+
+    // Next step in the game
+  } else {
+    const dialogue = [
+      {
+        text: "Unfortunately you have missed some clues. Come back here and try again.",
+      },
+    ];
+    gameContainer.classList.add("lastquiz-table");
+    await showDialogueAsync(dialogue, true);
+  }
 
   const minigames = document.querySelectorAll(".minigame");
   for (const minigame of minigames) {
@@ -127,30 +140,33 @@ async function gameLastQuiz_over() {
 }
 
 async function initLastQuizGame() {
-  let loadedPlayerData = loadPlayerData();
-  if (
-    !loadedPlayerData.hangmanClueObtained &&
-    !loadedPlayerData.memoryClubObtained &&
-    !loadedPlayerData.quizClueObtained
-  ) {
-    return;
-  } else {
-    score = 0;
-    number_test = 0;
-    // const gameLastQuizElement = document.getElementById("game-lastquiz");
-    // gameLastQuizElement.style.display = "block";
-    const dialogue = [
-      {
-        text: "Have you managed to discover what happened to me?",
-      },
-    ];
+  // let loadedPlayerData = loadPlayerData();
+  // alert("initLastQuizGame", DEBUG);
+  // if (
+  //   (!loadedPlayerData.hangmanClueObtained &&
+  //     !loadedPlayerData.memoryClubObtained &&
+  //     !loadedPlayerData.quizClueObtained) ||
+  //   !DEBUG
+  // ) {
+  //   return;
+  // } else {
+  score = 0;
+  number_test = 0;
+  // const gameLastQuizElement = document.getElementById("game-lastquiz");
+  // gameLastQuizElement.style.display = "block";
+  const dialogue = [
+    {
+      text: "Have you managed to discover what happened to me?",
+    },
+  ];
 
-    gameContainer.classList.add("lastquiz-table");
-    await showDialogueAsync(dialogue, true);
-    document.getElementById("game-lastquiz").classList.add("active");
+  gameContainer.classList.add("lastquiz-table");
+  await showDialogueAsync(dialogue, true);
+  document.getElementById("game-lastquiz").classList.add("active");
 
-    lastquizContainer.classList.add("active");
-  }
+  lastquizContainer.classList.add("active");
+  nextQuestion();
+  // }
 }
 
 //initLastQuizGame();
