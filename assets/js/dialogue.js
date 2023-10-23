@@ -24,8 +24,9 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
 
     dialogueQueue = dialogue;
     dialogueIndex = 0;
-
     let isDialogueReady = false;
+    let isChoiceMade = true;
+
     const updateDialogue = () => {
       isDialogueReady = false;
       if (dialogueIndex < dialogueQueue.length) {
@@ -38,12 +39,13 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
         choicesContainer.innerHTML = "";
 
         if (dialogueQueue[dialogueIndex].choices) {
+          isChoiceMade = false;
           for (const choice of dialogueQueue[dialogueIndex].choices) {
             const choiceButton = document.createElement("button");
             choiceButton.innerText = choice.text;
             choiceButton.addEventListener("click", (event) => {
               event.stopPropagation();
-              // your existing code
+              isChoiceMade = true;
               if (choice.action) {
                 const actionResult = choice.action();
                 if (actionResult && actionResult.newDialogue) {
@@ -59,10 +61,17 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
             });
             choicesContainer.appendChild(choiceButton);
           }
+        } else {
+          isChoiceMade = true;
         }
+
         setTimeout(() => {
           isDialogueReady = true;
-          window.addEventListener("click", continueDialogue, { once: true });
+          if (isChoiceMade) {
+            dialogueBox.addEventListener("click", continueDialogue, {
+              once: true,
+            });
+          }
         }, 0);
       } else {
         dialogueBox.classList.remove("active");
@@ -71,8 +80,7 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
     };
 
     const continueDialogue = () => {
-      if (isDialogueReady) {
-        // Check if dialogue is ready
+      if (isDialogueReady && isChoiceMade) {
         dialogueIndex++;
         updateDialogue();
       }
