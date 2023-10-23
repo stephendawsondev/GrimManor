@@ -228,11 +228,11 @@ function handleBackHome() {
 }
 
 //Event Listeners
-playButton.addEventListener("click", handlePlay);
-nextButton.addEventListener("click", handleNext);
-playAgainButton.addEventListener("click", handlePlayAgain);
-endQuizButton.addEventListener("click", handleEndQuiz);
-endCard.addEventListener("click", handleConfirmEnd);
-backButton.addEventListener("click", handleBackHome);
+playButton?.addEventListener("click", handlePlay);
+nextButton?.addEventListener("click", handleNext);
+playAgainButton?.addEventListener("click", handlePlayAgain);
+endQuizButton?.addEventListener("click", handleEndQuiz);
+endCard?.addEventListener("click", handleConfirmEnd);
+backButton?.addEventListener("click", handleBackHome);
 
 export { handlePlay };

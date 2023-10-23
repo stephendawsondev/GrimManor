@@ -40,6 +40,8 @@ function loadPlayerData() {
       memoryClueObtained: false,
       quizClueObtained: false,
       backDoorOpened: false,
+      playerAllowsMusic: true,
+      playerAllowsSound: true,
     };
   }
 }

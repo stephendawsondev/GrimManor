@@ -322,9 +322,7 @@
             <div class="card-body">
               <h5 id="result-text" class="card-title"></h5>
               <p id="correct-answer" class="card-text"></p>
-              <button id="next-button" class="btn btn-lg btn-dark">
-                Next
-              </button>
+              <button id="next-button" class="btn btn-lg btn-dark">Next</button>
             </div>
           </div>
           <!-- quiz score card -->
@@ -377,14 +375,28 @@
       <p id="dialogue-text" class="dialogue-text"></p>
       <div id="choices-container" class="choices-container"></div>
     </div>
-  </body>
+    <button
+      title="Toggle music"
+      id="music-button"
+      class="audio-button music-button"
+    >
+      <img id="music-icon" src="assets/images/music_on.webp" alt="music icon" />
+    </button>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script type="module" src="assets/js/gamedata-localstore.js"></script>
-  <!--
+    <button
+      title="Toggle sound"
+      id="sound-button"
+      class="audio-button sound-button"
+    >
+      <img id="sound-icon" src="assets/images/sound_on.webp" alt="sound icon" />
+    </button>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="assets/js/gamedata-localstore.js"></script>
+    <!--
   <script type="module" src="assets/js/minigames/quiz.js"></script>
   -->
-  <script type="module" src="assets/js/script.js"></script>
-  <script type="module" src="assets/js/minigames/memory-game.js"></script>
+    <script type="module" src="assets/js/script.js"></script>
+    <script type="module" src="assets/js/minigames/memory-game.js"></script>
+  </body>
 </html>
