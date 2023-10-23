@@ -224,6 +224,11 @@ function handleConfirmEnd() {
 
 function handleBackHome() {
   // This function handles the exit button to exit quiz
+  const minigames = document.querySelectorAll(".minigame");
+  for (const minigame of minigames) {
+    minigame.classList.remove("active");
+  }
+
   gameContainer.close();
 }
 
