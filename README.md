@@ -57,7 +57,16 @@ For the minigames, we made sure that these work on both mobile and desktop, so t
 
 
 <p><i>Future improvements</i></p>
-If we were to take this website further, we would add more mini-games to upstairs doors and windows. The paintings and skylights, when clicked, would produce jumpscares where ghosts popped out. Apparitions of the pale young man would appear at random to give more of an eerie feel. Local storage would be utilised more so that, instead of an exit quiz which you had to click on, when you completed all of the mini-games the game would automatically generate the exit questions allowing you to be freed from the house. The games would then be replayable but with more general answers rather than story specific answers.  
+If we were to take this website further, we would add more mini-games to upstairs doors and windows. The paintings and skylights, when clicked, would produce jumpscares where ghosts popped out. Apparitions of the pale young man would appear at random to give more of an eerie feel. Local storage would be utilised more so that, instead of an exit quiz which you had to click on, when you completed all of the mini-games the game would automatically generate the exit questions allowing you to be freed from the house. The games would then be replayable but with more general answers rather than story specific answers. 
+We would make the website more accessible to screen readers by using aria-labels and incorporating text to speech technology. 
+
+<p><i>Planning</i><p>
+We used agile methodologies on Github to plan our project. We did this by:
+<ul>
+<li><b>Appointing a Scrum Master</b> Stephen acted as Scrum Master and lead the project management.</li>
+<li><b>Setting up daily meetings</b> We met twice a day to ensure that we were all up to date on tasks and able to support each other.</li>
+<li><b>Using a Git Hub Project Board</b> We created user stories to help keep us up to date on tasks </li>
+<li><b>Frequent testing</b> We deployed our project on Friday and frequently tested our project to ensure that bugs were being addressed quickly</li> 
 
 - ➡️ Target Audience
 
@@ -68,6 +77,7 @@ If we were to take this website further, we would add more mini-games to upstair
 - ➡️ Benefits
 
 <p>The user experiences enjoyment of the spooky story through interactive mini-games. When they have collected all the clues, they can solve the mystery and have a sense of completion to the game. 
+
 
 
 ## Tech
