@@ -1,8 +1,6 @@
 //jshint esversion:6
 import { showDialogueAsync } from "../dialogue.js";
 
-const gameContainer = document.getElementById("game-container");
-
 // Array of quiz Questions, Answers and realated images
 const questions = [
   {
