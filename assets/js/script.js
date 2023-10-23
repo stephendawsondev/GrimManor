@@ -7,7 +7,7 @@ import { handlePlay } from "./minigames/quiz.js";
 import { initLastQuizGame } from "./minigames/lastquiz.js";
 import { showDialogueAsync } from "./dialogue.js";
 import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
-
+// import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
 // let loadedPlayerData = loadPlayerData();
 
 // const landingEnter = document?.getElementById("landing-enter");
@@ -43,30 +43,6 @@ const loadPlayerSettings = () => {
     }
 };
 
-
-const showConsoleStatus = () => {
-  // const loadedPlayerData2 = loadPlayerData();
-  // if (loadedPlayerData2) {
-  //   console.log(
-  //     "-landingPageComplete: " + loadedPlayerData2?.landingPageComplete
-  //   );
-  //   console.log(
-  //     "hangmanClueObtained: " + loadedPlayerData2?.hangmanClueObtained
-  //   );
-  //   console.log("memoryClueObtained: " + loadedPlayerData2?.memoryClueObtained);
-  //   console.log("quizClueObtained: " + loadedPlayerData2?.quizClueObtained);
-  //   console.log("backDoorOpened: " + loadedPlayerData2?.backDoorOpened);
-  // } else {
-  //   console.log("No player data found.");
-  // }
-};
-
-if (currentPath.includes("landing.html")) {
-  userAllowsSounds = false;
-  userAllowsMusic = false;
-} else {
-  loadPlayerSettings();
-}
 // Audio code
 const classicScareAudio = new Audio("../../assets/audio/classic-scare.mp3");
 const evilLaughAudio = new Audio("../../assets/audio/evil-laugh.mp3");
@@ -293,30 +269,6 @@ function moveBackground(direction) {
   backgroundImage.style.marginLeft = left + "px";
 }
 
-
-// Check if the webpage is being refreshed or reset
-window.addEventListener("beforeunload", function (event) {
-  // event.preventDefault();
-  event.returnValue = "";
-  // const confirmation = window.confirm("Do you want to restart the game?");
-  // if (confirmation) {
-  localStorage.clear();
-  let loadedPlayerData = loadPlayerData();
-  savePlayerData({
-    ...loadedPlayerData,
-    landingPageComplete: false,
-  });
-
-  // }
-});
-
-// function handleBeforeUnload(event) {
-//   event.preventDefault();
-//   localStorage.clear();
-//   window.removeEventListener("beforeunload", handleBeforeUnload);
-// }
-// window.addEventListener("beforeunload", handleBeforeUnload);
-
 // Show the landing page
 let loadedPlayerData = loadPlayerData();
 if (!loadedPlayerData.landingPageComplete) {
@@ -325,7 +277,6 @@ if (!loadedPlayerData.landingPageComplete) {
     ...loadedPlayerData,
     landingPageComplete: true,
   });
-  showConsoleStatus();
 
   // alert(loadedPlayerData.landingPageComplete);
   location.href = "landing.html";
@@ -563,11 +514,11 @@ const miniGame3 = async () => {
 
 // This function displays the lastquiz mini game
 const miniGame2 = () => {
-  let loadedPlayerData1 = loadPlayerData();
+  let loadedPlayerData = loadPlayerData();
   if (
-    !loadedPlayerData1.hangmanClueObtained &&
-    !loadedPlayerData1.memoryClubObtained &&
-    !loadedPlayerData1.quizClueObtained
+    !loadedPlayerData.hangmanClueObtained &&
+    !loadedPlayerData.memoryClubObtained &&
+    !loadedPlayerData.quizClueObtained
   ) {
     // alert("You need to complete the three games first!");
     return;
@@ -588,7 +539,6 @@ const miniGame4 = () => {
  * to displays the clicked mini game
  */
 const displayMiniGames = (id) => {
-  showConsoleStatus();
   if (id == "door1") {
     miniGame1();
   } else if (id == "door2") {
