@@ -507,7 +507,7 @@ section #haunted-mansion {
 /* quiz container styles */
 .quiz-container {
   position: relative;
-  height: 82vh;
+  height: 100%;
   width: 100%;
   background-color: black;
   background: url(../images/halloween-horror-pumkins.webp) no-repeat center
