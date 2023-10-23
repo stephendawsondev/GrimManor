@@ -4,9 +4,23 @@
 import { runHangmanGame } from "./minigames/hangman.js";
 import { startMemoryGame } from "./minigames/memory-game.js";
 import { handlePlay } from "./minigames/quiz.js";
-
+import { initLastQuizGame } from "./minigames/lastquiz.js";
 import { showDialogueAsync } from "./dialogue.js";
+import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
+// import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
+// let loadedPlayerData = loadPlayerData();
 
+// const landingEnter = document?.getElementById("landing-enter");
+// landingEnter?.addEventListener("click", (e) => {
+//   e.preventDefault();
+
+//   savePlayerData({ ...loadedPlayerData, firstTimePlaying: false });
+//   // window.location.href = "index.html";
+// });
+
+// if (loadedPlayerData.firstTimePlaying) {
+//   window.location.href = "landing.html";
+// }
 // Audio code
 const classicScareAudio = new Audio("../../assets/audio/classic-scare.mp3");
 const evilLaughAudio = new Audio("../../assets/audio/evil-laugh.mp3");
@@ -119,7 +133,33 @@ document.addEventListener("keydown", function (event) {
   });
   if (newColliding && !inColliding) {
     inColliding = true;
-    buttonColliding.click();
+    let loadedPlayerData = loadPlayerData();
+    if (buttonColliding.id == "door2") {
+      if (
+        loadedPlayerData.hangmanClueObtained &&
+        loadedPlayerData.memoryClubObtained &&
+        loadedPlayerData.quizClueObtained
+      ) {
+        buttonColliding.click();
+      }
+    } else {
+      if (
+        buttonColliding.id == "door1" &&
+        !loadedPlayerData.hangmanClueObtained
+      ) {
+        buttonColliding.click();
+      } else if (
+        buttonColliding.id == "door3" &&
+        !loadedPlayerData.memoryClubObtained
+      ) {
+        buttonColliding.click();
+      } else if (
+        buttonColliding.id == "door4" &&
+        !loadedPlayerData.quizClueObtained
+      ) {
+        buttonColliding.click();
+      }
+    }
   } else if (!newColliding) {
     inColliding = false;
   }
@@ -190,13 +230,13 @@ function moveBackground(direction) {
       break;
   }
 
-  console.log(direction, top, left);
-  console.log(
-    containerHeight,
-    imageHeight,
-    top - step,
-    containerHeight - imageHeight
-  );
+  // console.log(direction, top, left);
+  // console.log(
+  //   containerHeight,
+  //   imageHeight,
+  //   top - step,
+  //   containerHeight - imageHeight
+  // );
   // Update the position of the buttons interactives to follow the background image
   updateButtonsPos(
     top - backgroundImage.offsetTop,
@@ -267,7 +307,6 @@ const introDialogue = [
       },
     ],
   },
-  { text: "Please..." },
   {
     text: "What do you need help with?",
     choices: [
@@ -289,7 +328,6 @@ const introDialogue = [
       },
     ],
   },
-  { text: "Please..." },
   {
     text: "I have been trapped in this house for centuries.. able only to be seen by the human realm on Halloween...",
   },
@@ -310,12 +348,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       for (const minigame of minigames) {
         minigame.classList.remove("active");
       }
+      gameContainer.className = "";
       gameContainer.close();
     }
   });
   const ghost = document.querySelector(".ghost-image");
   ghost.classList.add("active");
+  // loop through 'interactive' and disable
+  const interactiveButtons = document.querySelectorAll(".interactive");
+  for (const button of interactiveButtons) {
+    button.disabled = true;
+    button.classList.add("disabled");
+    button.setAttribute("aria-disabled", "true");
+  }
   await showDialogueAsync(introDialogue);
+  // loop through 'interactive' and enable
+  for (const button of interactiveButtons) {
+    button.disabled = false;
+    button.classList.remove("disabled");
+    button.setAttribute("aria-disabled", "false");
+  }
   ghost.classList.remove("active");
 });
 
@@ -342,11 +394,10 @@ const miniGame1 = async () => {
 // (window.location.href = "game1.html");
 
 // This function displays the second mini game
-const miniGame2 = async () => {
+const miniGame3 = async () => {
   gameContainer.showModal();
   gameContainer.classList.add("boy-ghost");
   const dialogue = [
-    {},
     {
       text: "You walk to the stairs, where a young boy is sitting and playing a card game. His clothing is old, from another time. ",
     },
@@ -364,8 +415,23 @@ const miniGame2 = async () => {
   startMemoryGame();
 };
 
+// This function displays the lastquiz mini game
+const miniGame2 = () => {
+  let loadedPlayerData = loadPlayerData();
+  if (
+    !loadedPlayerData.hangmanClueObtained &&
+    !loadedPlayerData.memoryClubObtained &&
+    !loadedPlayerData.quizClueObtained
+  ) {
+    // alert("You need to complete the three games first!");
+    return;
+  }
+  gameContainer.showModal();
+  initLastQuizGame();
+};
+
 // This function displays the third mini game
-const miniGame3 = () => {
+const miniGame4 = () => {
   gameContainer.showModal();
   handlePlay();
 };
@@ -381,8 +447,8 @@ const displayMiniGames = (id) => {
   } else if (id == "door2") {
     miniGame2();
   } else if (id == "door3") {
-    // miniGame3();
-  } else if (id == "door4") {
     miniGame3();
+  } else if (id == "door4") {
+    miniGame4();
   }
 };

@@ -1,6 +1,8 @@
 //jshint esversion:6
 import { showDialogueAsync } from "../dialogue.js";
 
+const gameContainer = document.getElementById("game-container");
+
 // Array of quiz Questions, Answers and realated images
 const questions = [
   {
@@ -181,6 +183,7 @@ async function handlePlay() {
 
   const quizContainer = document.getElementById("game-container");
   quizContainer.classList.add("quiz-foreground");
+
   await showDialogueAsync(dialogue, true);
   quizContainer.classList.remove("quiz-foreground");
   quizContainer.classList.add("quiz-container");
