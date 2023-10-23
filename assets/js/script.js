@@ -8,6 +8,7 @@ import { initLastQuizGame } from "./minigames/lastquiz.js";
 import { showDialogueAsync } from "./dialogue.js";
 import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
 
+// import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
 // let loadedPlayerData = loadPlayerData();
 
 // const landingEnter = document?.getElementById("landing-enter");
@@ -28,66 +29,62 @@ const currentPath = window.location.pathname;
 let userAllowsSounds, userAllowsMusic;
 
 const loadPlayerSettings = () => {
-    if (currentPath.includes("landing.html")) {
-        userAllowsSounds = false;
-        userAllowsMusic = false;
-    } else {
-        const loadedData = loadPlayerData();
-        if (loadedData) {
-            userAllowsSounds = loadedData.playerAllowsSound;
-            userAllowsMusic = loadedData.playerAllowsMusic;
-        }
-        if (userAllowsMusic && userAllowsSound) {
-            loadPlayerSettings();
-        }
+  if (currentPath.includes("landing.html")) {
+    userAllowsSounds = false;
+    userAllowsMusic = false;
+  } else {
+    const loadedData = loadPlayerData();
+    if (loadedData) {
+      userAllowsSounds = loadedData.playerAllowsSound;
+      userAllowsMusic = loadedData.playerAllowsMusic;
     }
+    if (userAllowsMusic && userAllowsSound) {
+      loadPlayerSettings();
+    }
+  }
 };
 
+let url_audios_deploy = "../../";
 
-const showConsoleStatus = () => {
-  // const loadedPlayerData2 = loadPlayerData();
-  // if (loadedPlayerData2) {
-  //   console.log(
-  //     "-landingPageComplete: " + loadedPlayerData2?.landingPageComplete
-  //   );
-  //   console.log(
-  //     "hangmanClueObtained: " + loadedPlayerData2?.hangmanClueObtained
-  //   );
-  //   console.log("memoryClueObtained: " + loadedPlayerData2?.memoryClueObtained);
-  //   console.log("quizClueObtained: " + loadedPlayerData2?.quizClueObtained);
-  //   console.log("backDoorOpened: " + loadedPlayerData2?.backDoorOpened);
-  // } else {
-  //   console.log("No player data found.");
-  // }
-};
-
-if (currentPath.includes("landing.html")) {
-  userAllowsSounds = false;
-  userAllowsMusic = false;
-} else {
-  loadPlayerSettings();
+if (currentPath.includes("github")) {
+  url_audios_deploy = "https://stephendawsondev.github.io/GrimManor/";
 }
+
 // Audio code
-const classicScareAudio = new Audio("../../assets/audio/classic-scare.mp3");
-const evilLaughAudio = new Audio("../../assets/audio/evil-laugh.mp3");
-const ghostScreamAudio = new Audio("../../assets/audio/ghost-scream.mp3");
+const classicScareAudio = new Audio(
+  url_audios_deploy + "assets/audio/classic-scare.mp3"
+);
+const evilLaughAudio = new Audio(
+  url_audios_deploy + "assets/audio/evil-laugh.mp3"
+);
+const ghostScreamAudio = new Audio(
+  url_audios_deploy + "assets/audio/ghost-scream.mp3"
+);
 const highPitchedScreamAudio = new Audio(
-  "../../assets/audio/high-pitched-scream.mp3"
+  url_audios_deploy + "assets/audio/high-pitched-scream.mp3"
 );
 const spookyGhostWindAudio = new Audio(
-  "../../assets/audio/spooky-ghost-wind.mp3"
+  url_audios_deploy + "assets/audio/spooky-ghost-wind.mp3"
 );
-const stairsAudio = new Audio("../../assets/audio/stairs.mp3");
-const thunderstormAudio = new Audio("../../assets/audio/thunderstorm.mp3");
-const windAndDreadAudio = new Audio("../../assets/audio/wind-and-dread.mp3");
+const stairsAudio = new Audio(url_audios_deploy + "assets/audio/stairs.mp3");
+const thunderstormAudio = new Audio(
+  url_audios_deploy + "assets/audio/thunderstorm.mp3"
+);
+const windAndDreadAudio = new Audio(
+  url_audios_deploy + "assets/audio/wind-and-dread.mp3"
+);
 const darkAmbientMusicAudio = new Audio(
-  "../../assets/audio/dark-ambient-music.mp3"
+  url_audios_deploy + "assets/audio/dark-ambient-music.mp3"
 );
 
-const doorOpenAudio = new Audio("../../assets/audio/door-creak-open.mp3");
-const doorShutAudio = new Audio("../../assets/audio/door-shut.mp3");
+const doorOpenAudio = new Audio(
+  url_audios_deploy + "assets/audio/door-creak-open.mp3"
+);
+const doorShutAudio = new Audio(
+  url_audios_deploy + "assets/audio/door-shut.mp3"
+);
 const creepyWhistlyMusicAudio = new Audio(
-  "../../assets/audio/creepy-whistly-music.mp3"
+  url_audios_deploy + "assets/audio/creepy-whistly-music.mp3"
 );
 // Mansion interaction code
 const backgroundImage = document.getElementById("background-image"); // Select the background image
@@ -293,30 +290,6 @@ function moveBackground(direction) {
   backgroundImage.style.marginLeft = left + "px";
 }
 
-
-// Check if the webpage is being refreshed or reset
-window.addEventListener("beforeunload", function (event) {
-  // event.preventDefault();
-  event.returnValue = "";
-  // const confirmation = window.confirm("Do you want to restart the game?");
-  // if (confirmation) {
-  localStorage.clear();
-  let loadedPlayerData = loadPlayerData();
-  savePlayerData({
-    ...loadedPlayerData,
-    landingPageComplete: false,
-  });
-
-  // }
-});
-
-// function handleBeforeUnload(event) {
-//   event.preventDefault();
-//   localStorage.clear();
-//   window.removeEventListener("beforeunload", handleBeforeUnload);
-// }
-// window.addEventListener("beforeunload", handleBeforeUnload);
-
 // Show the landing page
 let loadedPlayerData = loadPlayerData();
 if (!loadedPlayerData.landingPageComplete) {
@@ -325,7 +298,6 @@ if (!loadedPlayerData.landingPageComplete) {
     ...loadedPlayerData,
     landingPageComplete: true,
   });
-  showConsoleStatus();
 
   // alert(loadedPlayerData.landingPageComplete);
   location.href = "landing.html";
@@ -563,11 +535,11 @@ const miniGame3 = async () => {
 
 // This function displays the lastquiz mini game
 const miniGame2 = () => {
-  let loadedPlayerData1 = loadPlayerData();
+  let loadedPlayerData = loadPlayerData();
   if (
-    !loadedPlayerData1.hangmanClueObtained &&
-    !loadedPlayerData1.memoryClubObtained &&
-    !loadedPlayerData1.quizClueObtained
+    !loadedPlayerData.hangmanClueObtained &&
+    !loadedPlayerData.memoryClubObtained &&
+    !loadedPlayerData.quizClueObtained
   ) {
     // alert("You need to complete the three games first!");
     return;
@@ -588,7 +560,6 @@ const miniGame4 = () => {
  * to displays the clicked mini game
  */
 const displayMiniGames = (id) => {
-  showConsoleStatus();
   if (id == "door1") {
     miniGame1();
   } else if (id == "door2") {
