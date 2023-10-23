@@ -449,12 +449,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // if user clicks outside of dialog and music isn't playing
-  // play dark ambient music
-
-  document.querySelector("dialog").addEventListener("click", function (event) {
-    event.stopPropagation();
-  });
   // if esc key is pressed, loop through
   // minigames and remove active class
   window.addEventListener("keydown", (e) => {
