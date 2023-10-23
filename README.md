@@ -95,7 +95,6 @@ We leveraged the browser APIs for locale storage and audio (for music/sounds).
 <li><a href-"https://fonts.google.com/">Google Fonts</a> for base font ‘Risque’</li>
 <li><a href="https://obsproject.com/welcome">OBS</a> for screen recording software</li>
 <li><a href="https://www.istockphoto.com/">iStock photos</a> for memory minigame images</li>
-
 </ul>
 
 ## The Team 

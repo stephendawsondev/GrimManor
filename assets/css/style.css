@@ -13,6 +13,7 @@ body,
 html {
   height: 100%;
   margin: 0;
+  /* background-image: url("../../assets/images/scary-mansion.webp"); */
 }
 
 body {
@@ -23,6 +24,28 @@ img {
   pointer-events: none;
 }
 
+.audio-button {
+  position: fixed;
+  border: none;
+  top: 5px;
+  left: 5px;
+  z-index: 5;
+  background-color: transparent;
+  opacity: 0.5;
+  pointer-events: all;
+}
+
+.music-button {
+  top: 5px;
+  left: 5px;
+  z-index: 6;
+}
+
+.sound-button {
+  top: 5px;
+  left: 50px;
+  z-index: 6;
+}
 /* Maison container css */
 
 #mansion-container {
@@ -38,7 +61,7 @@ img {
 }
 
 .show {
-  opacity: 1 !important;
+  opacity: 0 !important;
 }
 
 .door-help {
@@ -57,7 +80,7 @@ img {
 
 .interactive {
   background-color: transparent;
-  opacity: 0;
+  opacity: 1;
   pointer-events: all;
   border: none;
 }
@@ -80,8 +103,8 @@ img {
 
 #door3 {
   position: absolute;
-  top: 364px;
-  left: 964px;
+  top: 578px;
+  left: 1083px;
   width: 58px;
   height: 170px;
 }
@@ -98,10 +121,19 @@ img {
   position: absolute;
   z-index: 1;
   transition: opacity 2s ease-in-out;
-  bottom: 20%;
+  bottom: 10%;
   left: 61%;
   width: 100px;
   display: none;
+}
+
+@media (min-width: 1792px) {
+  #button-debug {
+    top: 0;
+    position: fixed;
+    left: 1720px;
+    width: 50px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -452,11 +484,18 @@ section #haunted-mansion {
 
 @media screen and (min-width: 768px) {
   #memory-game {
-    width: 50%;
+    width: 80%;
+    height: 90%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 
   .memory-card {
     width: calc(22% - 10px);
+  }
+  .memory-card {
+    max-height: 300px;
   }
 }
 
@@ -478,15 +517,17 @@ section #haunted-mansion {
 
 /* button styles */
 .btn {
-  background-color: #ff6600;
+  background-color: #fafafa;
   color: black;
   font-weight: bold;
+  font-size: 120%;
   margin: 5px;
 }
 
 .btn:hover {
-  background-color: #ff8533;
-  color: black;
+  background-color: #1a2227;
+  color: #fafafa;
+  font-size: 125%;
 }
 
 /* play button styles*/
@@ -505,25 +546,80 @@ section #haunted-mansion {
 /* quiz container styles */
 .quiz-container {
   position: relative;
-  height: 82vh;
+  height: 100%;
   width: 100%;
   background-color: black;
   background: url(../images/halloween-horror-pumkins.webp) no-repeat center
     center;
   background-size: cover;
   color: #fafafa;
-  animation-name: container-zoom;
-  animation-duration: 4s;
-  animation-fill-mode: forwards;
 }
 
-/* quiz container image zoom animation */
-@keyframes container-zoom {
-  from {
-    transform: scale(1);
-  }
+/* dialogue background style */
+.quiz-foreground {
+  background-color: #36454f;
+  background: url(../../assets/images/horror-eat-up.webp) no-repeat center
+    center;
+  background-size: cover;
+}
 
-  to {
-    transform: scale(1.1);
-  }
+/* lastquiz game css */
+#game-lastquiz {
+  /* display: none; */
+}
+
+.game-area-lastquiz {
+  padding: 120px;
+}
+
+.button-lastquiz {
+  background-color: #080300;
+  border: none;
+  color: #ebdddd;
+  padding: 20px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 20px;
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  opacity: 0.8;
+}
+
+#question,
+#evaluation {
+  text-align: center;
+}
+
+#question {
+  font-size: 25px;
+  color: #fff;
+  margin: 20px;
+  background-color: #080300;
+  opacity: 0.5;
+  padding: 10px;
+}
+
+.game-area-lastquiz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  position: relative;
+}
+
+.lastquiz-table {
+  background: url("../../assets/images/lastquiz.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.quiz-table {
+  background: url("../../assets/images/tree-now.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

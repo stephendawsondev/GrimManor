@@ -25,7 +25,9 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
     dialogueQueue = dialogue;
     dialogueIndex = 0;
 
+    let isDialogueReady = false;
     const updateDialogue = () => {
+      isDialogueReady = false;
       if (dialogueIndex < dialogueQueue.length) {
         dialogueBox.classList.add("active");
         const dialogueText = dialogueBox.querySelector("#dialogue-text");
@@ -39,11 +41,17 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
           for (const choice of dialogueQueue[dialogueIndex].choices) {
             const choiceButton = document.createElement("button");
             choiceButton.innerText = choice.text;
-            choiceButton.addEventListener("click", () => {
+            choiceButton.addEventListener("click", (event) => {
+              event.stopPropagation();
+              // your existing code
               if (choice.action) {
                 const actionResult = choice.action();
                 if (actionResult && actionResult.newDialogue) {
-                  dialogueQueue[dialogueIndex + 1] = actionResult.newDialogue;
+                  dialogueQueue.splice(
+                    dialogueIndex + 1,
+                    0,
+                    actionResult.newDialogue
+                  );
                 }
               }
               dialogueIndex++;
@@ -51,9 +59,11 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
             });
             choicesContainer.appendChild(choiceButton);
           }
-        } else {
-          window.addEventListener("click", continueDialogue, { once: true });
         }
+        setTimeout(() => {
+          isDialogueReady = true;
+          window.addEventListener("click", continueDialogue, { once: true });
+        }, 0);
       } else {
         dialogueBox.classList.remove("active");
         resolve();
@@ -61,8 +71,11 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
     };
 
     const continueDialogue = () => {
-      dialogueIndex++;
-      updateDialogue();
+      if (isDialogueReady) {
+        // Check if dialogue is ready
+        dialogueIndex++;
+        updateDialogue();
+      }
     };
 
     updateDialogue();
