@@ -1,3 +1,4 @@
+import { showDialogueAsync } from "../dialogue.js";
 const cards = document.querySelectorAll(".memory-card");
 
 let hasFlippedCard = false;
@@ -10,7 +11,6 @@ const totalPairs = cards.length / 2;
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
-  alert("Memory game 2");
 
   this.classList.add("flip");
 
@@ -30,18 +30,26 @@ function checkForMatch() {
   isMatch ? disableCards() : unflipCards();
 }
 
-function disableCards() {
+async function disableCards() {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
 
   matchedPairs++;
   if (matchedPairs === totalPairs) {
-    // All cards have been matched, show end-of-game screen here
-    const winImage = document.getElementById("win-image");
-    winImage.style.display = "block";
-    setTimeout(() => {
-      winImage.style.display = "none";
-    }, 3000);
+    document.getElementById("memory-game").classList.remove("active");
+    const dialogue = [
+      {},
+      {
+        text: "In his high child’s voice, the boy says:",
+      },
+      {
+        text: "“They say the young man’s fiancée married another man...”",
+      },
+    ];
+    await showDialogueAsync(dialogue, true);
+    const gameContainer = document.getElementById("game-container");
+    gameContainer.classList.remove("boy-ghost");
+    gameContainer.close();
   }
 
   resetBoard();

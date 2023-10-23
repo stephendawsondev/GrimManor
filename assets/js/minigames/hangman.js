@@ -133,6 +133,12 @@ const checkGameStatus = async (phraseArr) => {
             text: "Thank you... I'll be going...",
             action: () => {
               gameContainer.classList.remove("wooden-table");
+              gameContainer.classList.remove("old-woman");
+              // loop through minigames and remove active class
+              const minigames = document.querySelectorAll(".minigame");
+              for (const minigame of minigames) {
+                minigame.classList.remove("active");
+              }
               gameContainer.close();
             },
           },
@@ -156,6 +162,11 @@ const checkGameStatus = async (phraseArr) => {
             text: "Close",
             action: () => {
               gameContainer.classList.remove("old-woman");
+              // loop through minigames and remove active class
+              const minigames = document.querySelectorAll(".minigame");
+              for (const minigame of minigames) {
+                minigame.classList.remove("active");
+              }
               gameContainer.close();
             },
           },
@@ -191,6 +202,17 @@ const resetGame = () => {
 };
 
 const runHangmanGame = async () => {
+  // if esc key is pressed, loop through
+  // minigames and remove active class
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const minigames = document.querySelectorAll(".minigame");
+      for (const minigame of minigames) {
+        minigame.classList.remove("active");
+      }
+      gameContainer.close();
+    }
+  });
   // reset the game
   resetGame();
 

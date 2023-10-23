@@ -13,7 +13,7 @@
 
 #### _(please note, your team must also include the deployed links in the usual submission in Hackapp)_
 
-The project is deployed and can be accessed at [http://your-deployed-link.com](http://your-deployed-link.com).
+The project is deployed and can be accessed at [https://stephendawsondev.github.io/GrimManor/landing.html](https://stephendawsondev.github.io/GrimManor/landing.html).
 
 ## Criteria
 
@@ -25,40 +25,16 @@ In this section, we will briefly discuss how our team addressed the applicable c
 - 🎃 Project is well planned using Github Projects
 - 🎃 Overall project focus is realistic and has a sense of completeness
 
-# ABOUT SUBMISSION
-
-## Intro
-
-One or two paragraphs providing an overview of our project
-
-## Goal
-
-The goal section provides a concise summary of the main objective or purpose of the project or software described in this README. It addresses the following aspects:
-
-- ➡️ Problem Statement
-- ➡️ Objective(s)
-- ➡️ Target Audience
-- ➡️ Benefits
-
-## Tech
-
-In the tech section, we provide information about the technology stack, dependencies, and any technical details related to the project.
-
-## Credits
-
-In the credits section, we provide information about the sources used
-
 <h1>GRIM REPOS GRIM MANOR PROJECT</h1>
+
 ## Intro
 
 <p>You are presented with the image of a dark mansion on a rain-soaked night. Text invites you to seek refuge and enter. </p>
 <p>Once indoors, a gloomy corridor with multiple doors greets you and a young, pale man appears. Your challenge is to complete a series of minigames to find clues as to what happened to the young man.</p>
-<p>When you have completed the minigames, the clues you have gathered will tell the story of what happened to the young man and you will have completed the game!</p>
+<p>When you have completed the minigames, the clues you have gathered will tell the story of what happened to the young man, you can complete the exit quiz and you will have completed the game!</p>
 
 
 ## Goal
-
-<p>The goal section provides a concise summary of the main objective or purpose of the project or software described in this README. It addresses the following aspects:</p>
 
 - ➡️ Problem Statement
 
@@ -80,6 +56,12 @@ Create a website which fits the theme of Halloween; is responsive and accessible
 <p>On tablet/mobile screens, simply shrinking the image would make it too small and give a poor user experience so users will be able to pan left and right within the mansion to be able to see the doors and then access the mini-games in the same way. </p>  
 
 <p><i>Responsiveness</i></p>
+<p> In this project, we made the decision to display the full-sized image on both mobile and desktop for the main game. On mobile, it means that the user needs to pan the screen, which creates the feeling that they are looking around the house.
+For the minigames, we made sure that these work on both mobile and desktop, so they are resized appropriately.</p>
+
+
+<p><i>Future improvements</i></p>
+If we were to take this website further, we would add more mini-games to upstairs doors and windows. The paintings and skylights, when clicked, would produce jumpscares where ghosts popped out. Music would be added and apparitions of the pale young man would appear at random to give more of an eerie feel. Local storage would be utilised more so that, instead of an exit quiz which you had to click on, when you completed all of the mini-games the game would automatically generate the exit questions allowing you to be freed from the house. The games would then be replayable but with more general answers rather than story specific answers.  
 
 - ➡️ Target Audience
 
@@ -89,9 +71,20 @@ Create a website which fits the theme of Halloween; is responsive and accessible
 
 - ➡️ Benefits
 
+<p>The user experiences enjoyment of the spooky story through interactive mini-games. When they have collected all the clues, they can solve the mystery and have a sense of completion to the game. 
+
+
 ## Tech
 
-In the tech section, we provide information about the technology stack, dependencies, and any technical details related to the project.
+<p> We used:
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+<li>Bootstrap 4</li>
+<li>jQuery</li>
+</ul>
+We leveraged the browser APIs for locale storage and audio (for music/sounds).
 
 ## Credits
 <ul>
@@ -101,11 +94,13 @@ In the tech section, we provide information about the technology stack, dependen
 <li><a href="https://Freesound.org">Freesound.org</a> for audio clips</li>
 <li><a href-"https://fonts.google.com/">Google Fonts</a> for base font ‘Risque’</li>
 <li><a href="https://obsproject.com/welcome">OBS</a> for screen recording software</li>
+<li><a href="https://www.istockphoto.com/">iStock photos</a> for memory minigame images</li>
+
 </ul>
 
 ## The Team 
 <ul>
-<li><b>Samuel Anderson - Front-end development</b> <p> GitHub = samuelandersoncodes <a href="">LinkedIn</a></li>
+<li><b>Samuel Anderson - Front-end development</b> <p> GitHub = samuelandersoncodes <a href="https://www.linkedin.com/in/samuel-anderson-codes/">LinkedIn</a></li>
 <li><b>Armando Urquiola Cabrera - Front-end development</b> <p> GitHub = patchamama <a href="https://www.linkedin.com/in/urquioladev/">LinkedIn</a></li>
 <li><b>Stephen Dawson - Scrum Master, Front-end development</b> <p> GitHub = stephendawsondev <a href="https://www.linkedin.com/in/sdstephendawson/">LinkedIn</a></li>
 <li><b>Emma Lamont - Storytelling, documentation, presentation</b> <p> GitHub = elamont174 <a href="https://www.linkedin.com/in/emma-lamont/">LinkedIn</a></li>
