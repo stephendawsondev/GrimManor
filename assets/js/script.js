@@ -399,6 +399,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   if (currentPath.includes("/landing.html")) return;
+
+  if (userAllowsMusic) {
+    darkAmbientMusicAudio.play();
+    // loop audio
+    darkAmbientMusicAudio.addEventListener("ended", () => {
+      darkAmbientMusicAudio.play();
+    });
+  }
+
+  // if user clicks outside of dialog and music isn't playing
+  // play dark ambient music
+
+  document.querySelector("dialog").addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
   // if esc key is pressed, loop through
   // minigames and remove active class
   window.addEventListener("keydown", (e) => {
