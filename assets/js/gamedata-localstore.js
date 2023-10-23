@@ -28,6 +28,34 @@ function loadPlayerData() {
   // If there is saved data, parse it back into an object
   if (playerDataJSON) {
     const playerData = JSON.parse(playerDataJSON);
+    playerData.firstTimePlaying = true
+      ? playerData.firstTimePlaying === undefined
+      : playerData.firstTimePlaying;
+    playerData.landingPageComplete = false
+      ? playerData.landingPageComplete === undefined
+      : playerData.landingPageComplete;
+    playerData.storyComplete = false
+      ? playerData.storyComplete === undefined
+      : playerData.storyComplete;
+    playerData.hangmanClueObtained = false
+      ? playerData.hangmanClueObtained === undefined
+      : playerData.hangmanClueObtained;
+    playerData.memoryClueObtained = false
+      ? playerData.memoryClueObtained === undefined
+      : playerData.memoryClueObtained;
+    playerData.quizClueObtained = false
+      ? playerData.quizClueObtained === undefined
+      : playerData.quizClueObtained;
+    playerData.backDoorOpened = false
+      ? playerData.backDoorOpened === undefined
+      : playerData.backDoorOpened;
+    playerData.playerAllowsMusic = true
+      ? playerData.playerAllowsMusic === undefined
+      : playerData.playerAllowsMusic;
+    playerData.playerAllowsSound = true
+      ? playerData.playerAllowsSound === undefined
+      : playerData.playerAllowsSound;
+
     return playerData;
   } else {
     //return null; // No player data found in LocalStorage
