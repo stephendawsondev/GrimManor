@@ -6,29 +6,29 @@ let DEBUG = true;
 
 const lastquiz = {
   form1: {
-    question: "What is your name?",
+    question: "How did I die?",
     answers: {
-      a: "Was poisoned",
-      b: "Hung self",
-      c: "Stabbed by a rival",
+      a: "You were poisoned by your fiancée",
+      b: "You hung yourself",
+      c: "You were stabbed by your fiancée's lover",
     },
     correctAnswer: "b",
   },
   form2: {
-    question: "Why did I die?",
+    question: "Why?",
     answers: {
-      a: "Fiancé married someone else",
-      b: "Accidentally",
-      c: "Kissed another man's wife",
+      a: "My fiancée loved someone else",
+      b: "It was an accident",
+      c: "I had kissed another man's wife",
     },
     correctAnswer: "a",
   },
   form3: {
-    question: "Where is my body?",
+    question: "Where is my body now?",
     answers: {
-      a: "In the lake",
-      b: "Hidden in the attic",
-      c: "Buried under the trees next to the house",
+      a: "It was put in the lake",
+      b: "It was hidden in the attic",
+      c: "It was buried under the trees next to the house",
     },
     correctAnswer: "c",
   },
@@ -106,10 +106,10 @@ async function gameLastQuiz_over() {
   if (score === 3) {
     const dialogue = [
       {
-        text: "That’s right I remember now… She said she loved me… But she betrayed me.",
+        text: "That’s right I remember now… She said she loved me… But she did not.",
       },
       {
-        text: "I have wandered these halls for centuries filled with pain and anger but the memories left me long ago.",
+        text: "I have wandered these halls for centuries filled with pain and anger without knowing why, but my memories left me long ago.",
       },
       {
         text: "Thank you for your assistance, I feel that I can move on now. I am forever in your debt!",

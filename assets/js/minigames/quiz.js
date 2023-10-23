@@ -1,7 +1,6 @@
 //jshint esversion:6
 import { showDialogueAsync } from "../dialogue.js";
-
-const gameContainer = document.getElementById("game-container");
+import { savePlayerData, loadPlayerData } from "../gamedata-localstore.js";
 
 // Array of quiz Questions, Answers and realated images
 const questions = [
@@ -39,7 +38,7 @@ const questions = [
     answers: [
       "Harry Houdini",
       "David Copperfield",
-      "David Baline",
+      "David Blaine",
       "Derren Brown",
     ],
     correctAnswerIndex: 0,
@@ -126,6 +125,8 @@ function displayScore() {
   scoreCard.classList.remove("d-none");
   if (score >= 3) {
     giftCard.classList.remove("d-none");
+    let loadedPlayerData = loadPlayerData();
+    savePlayerData({ ...loadedPlayerData, quizClueObtained: true });
   } else {
     failureText.classList.remove("d-none");
   }
@@ -169,9 +170,6 @@ async function handlePlay() {
   const dialogue = [
     {
       text: "Welcome to the Halloween quiz Hahaa!",
-    },
-    {
-      text: "What is your purpose here?",
     },
     {
       text: "What happened to the young man who used to live here? He says he is only able to walk the mortal plane on Halloween",
