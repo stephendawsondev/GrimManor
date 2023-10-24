@@ -7,6 +7,7 @@ import { handlePlay } from "./minigames/quiz.js";
 import { initLastQuizGame } from "./minigames/lastquiz.js";
 import { showDialogueAsync } from "./dialogue.js";
 import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
+
 // import { savePlayerData, loadPlayerData } from "./gamedata-localstore.js";
 // let loadedPlayerData = loadPlayerData();
 
@@ -28,42 +29,67 @@ const currentPath = window.location.pathname;
 let userAllowsSounds, userAllowsMusic;
 
 const loadPlayerSettings = () => {
-    if (currentPath.includes("landing.html")) {
-        userAllowsSounds = false;
-        userAllowsMusic = false;
-    } else {
-        const loadedData = loadPlayerData();
-        if (loadedData) {
-            userAllowsSounds = loadedData.playerAllowsSound;
-            userAllowsMusic = loadedData.playerAllowsMusic;
-        }
-        if (userAllowsMusic && userAllowsSound) {
-            loadPlayerSettings();
-        }
+  if (currentPath.includes("landing.html")) {
+    userAllowsSounds = false;
+    userAllowsMusic = false;
+  } else {
+    const loadedData = loadPlayerData();
+    if (loadedData) {
+      userAllowsSounds = loadedData.playerAllowsSound;
+      userAllowsMusic = loadedData.playerAllowsMusic;
     }
+    if (userAllowsMusic && userAllowsSound) {
+      loadPlayerSettings();
+    }
+  }
 };
 
+let url_audios_deploy = "../../";
+
+if (currentPath.includes("github")) {
+  url_audios_deploy = "https://stephendawsondev.github.io/GrimManor/";
+  url_audios_deploy = "https://patchamama.github.io/HalloweenHackathon/";
+}
+url_audios_deploy = "https://patchamama.github.io/HalloweenHackathon/";
+console.log(currentPath);
+console.log(url_audios_deploy + "assets/audio/classic-scare.mp3");
+
 // Audio code
-const classicScareAudio = new Audio("../../assets/audio/classic-scare.mp3");
-const evilLaughAudio = new Audio("../../assets/audio/evil-laugh.mp3");
-const ghostScreamAudio = new Audio("../../assets/audio/ghost-scream.mp3");
-const highPitchedScreamAudio = new Audio(
-  "../../assets/audio/high-pitched-scream.mp3"
-);
-const spookyGhostWindAudio = new Audio(
-  "../../assets/audio/spooky-ghost-wind.mp3"
-);
-const stairsAudio = new Audio("../../assets/audio/stairs.mp3");
-const thunderstormAudio = new Audio("../../assets/audio/thunderstorm.mp3");
-const windAndDreadAudio = new Audio("../../assets/audio/wind-and-dread.mp3");
-const darkAmbientMusicAudio = new Audio(
-  "../../assets/audio/dark-ambient-music.mp3"
+const classicScareAudio = new Audio(
+  url_audios_deploy + "assets/audio/classic-scare.mp3"
 );
 
-const doorOpenAudio = new Audio("../../assets/audio/door-creak-open.mp3");
-const doorShutAudio = new Audio("../../assets/audio/door-shut.mp3");
+const evilLaughAudio = new Audio(
+  url_audios_deploy + "assets/audio/evil-laugh.mp3"
+);
+const ghostScreamAudio = new Audio(
+  url_audios_deploy + "assets/audio/ghost-scream.mp3"
+);
+const highPitchedScreamAudio = new Audio(
+  url_audios_deploy + "assets/audio/high-pitched-scream.mp3"
+);
+const spookyGhostWindAudio = new Audio(
+  url_audios_deploy + "assets/audio/spooky-ghost-wind.mp3"
+);
+const stairsAudio = new Audio(url_audios_deploy + "assets/audio/stairs.mp3");
+const thunderstormAudio = new Audio(
+  url_audios_deploy + "assets/audio/thunderstorm.mp3"
+);
+const windAndDreadAudio = new Audio(
+  url_audios_deploy + "assets/audio/wind-and-dread.mp3"
+);
+const darkAmbientMusicAudio = new Audio(
+  url_audios_deploy + "assets/audio/dark-ambient-music.mp3"
+);
+
+const doorOpenAudio = new Audio(
+  url_audios_deploy + "assets/audio/door-creak-open.mp3"
+);
+const doorShutAudio = new Audio(
+  url_audios_deploy + "assets/audio/door-shut.mp3"
+);
 const creepyWhistlyMusicAudio = new Audio(
-  "../../assets/audio/creepy-whistly-music.mp3"
+  url_audios_deploy + "assets/audio/creepy-whistly-music.mp3"
 );
 // Mansion interaction code
 const backgroundImage = document.getElementById("background-image"); // Select the background image
