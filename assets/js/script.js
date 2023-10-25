@@ -95,11 +95,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     mansionView.classList.add("in-play");
   }
 
+  const minigames = document.querySelectorAll(".minigame");
+  for (const minigame of minigames) {
+    minigame.classList.remove("active");
+  }
+
   // if esc key is pressed, loop through
   // minigames and remove active class
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-      const minigames = document.querySelectorAll(".minigame");
       for (const minigame of minigames) {
         minigame.classList.remove("active");
       }
@@ -359,10 +363,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // This function displays the lastquiz mini game
   const miniGame2 = async () => {
-    let loadedPlayerData = loadPlayerData();
+    loadedPlayerData = loadPlayerData();
     if (
       !loadedPlayerData.hangmanClueObtained ||
-      !loadedPlayerData.memoryClubObtained ||
+      !loadedPlayerData.memoryClueObtained ||
       !loadedPlayerData.quizClueObtained
     ) {
       // alert("You need to complete the three games first!");
@@ -374,6 +378,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (userAllowsSounds) {
       audioObj.door.play();
     }
+
     if (userAllowsMusic) {
       playMusicOnLoop(audioObj.creepyWhistlyMusic);
       audioObj.darkAmbientMusic.pause();
