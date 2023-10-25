@@ -57,6 +57,11 @@ function loadPlayerData() {
 // // Save player data
 // savePlayerData(playerName, playerScore, gamesPlayed);
 
+const updateLocalProperty = (property, value) => {
+  const currentData = loadPlayerData();
+  savePlayerData({ ...currentData, [property]: value });
+};
+
 if (loadPlayerData()) {
   let loadedPlayerData = loadPlayerData();
   console.log("landingPageComplete: " + loadedPlayerData.landingPageComplete);
@@ -77,16 +82,4 @@ if (loadPlayerData()) {
 // // Load player data later
 let loadedPlayerData = loadPlayerData();
 
-if (false) {
-  // Reset player data?
-  savePlayerData({
-    ...loadedPlayerData,
-    landingPageComplete: false,
-    hangmanClueObtained: false,
-    memoryClueObtained: false,
-    quizClueObtained: false,
-    backDoorOpened: false,
-  });
-}
-
-export { savePlayerData, loadPlayerData };
+export { savePlayerData, loadPlayerData, updateLocalProperty };
