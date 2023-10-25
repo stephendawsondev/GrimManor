@@ -20,22 +20,29 @@ import {
 import {
   introDialogue,
   returnedButIncomplete,
+  notEnoughCluesDialogue,
   memoryGameInitialDialgoue,
 } from "./utils/dialogues.js";
 
 // Get the current pathname
 const currentPath = window.location.pathname;
 
+let url_audios_deploy = "../..";
+
+if (currentPath.includes("github.io")) {
+  url_audios_deploy = "/GrimManor";
+}
+
 const setVideoSource = () => {
   const videoElement = document.querySelector("#haunted-mansion video");
   const windowWidth = window.innerWidth;
   // Set the source based on screen width if on the landing page
   if (windowWidth <= 600) {
-    videoElement.src = "../assets/images/haunted-mansion-mobile.webm";
+    videoElement.src = `${url_audios_deploy}/assets/images/haunted-mansion-mobile.webm`;
   } else if (windowWidth <= 1024) {
-    videoElement.src = "../assets/images/haunted-mansion-tablet.webm";
+    videoElement.src = `${url_audios_deploy}/assets/images/haunted-mansion-tablet.webm`;
   } else {
-    videoElement.src = "../assets/images/haunted-mansion.webm";
+    videoElement.src = `${url_audios_deploy}/assets/images/haunted-mansion.webm`;
   }
   // Explicitly tell the video element to load the new source
   videoElement.load();
@@ -51,18 +58,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   const backgroundImage = document.getElementById("background-image"); // Select the background image
   const moveButtons = document.querySelectorAll("button"); // Select all buttons with the "move" class
   const mansionView = document.getElementById("mansion-container"); // Select the container with the mansion image
-  const gameContainer = document.getElementById("game-container");
-  const interactiveButtons = document.querySelectorAll(".interactive");
+  const gameContainer = document.getElementById("game-container"); // Select the container for the minigames
+  const interactiveButtons = document.querySelectorAll(".interactive"); // Select all buttons (doors) with the "interactive" class
   const DEBUG = false;
 
   let loadedPlayerData = loadPlayerData();
-  const audioObj = loadAudio();
-  addAudioIconEventListeners();
+  const audioObj = loadAudio(url_audios_deploy);
+  addAudioIconEventListeners(url_audios_deploy);
 
   if (!loadedPlayerData.landingPageComplete) {
     const hauntedMansionView = document.getElementById("haunted-mansion");
     const enterButton = document.getElementById("landing-enter");
-    playMusicOnLoop(audioObj.thunderstorm);
+    if (userAllowsSounds) {
+      playMusicOnLoop(audioObj.thunderstorm);
+    }
     hauntedMansionView.classList.add("in-play");
     setVideoSource();
     // Listen for window resize
@@ -71,6 +80,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     enterButton.addEventListener("click", () => {
       hauntedMansionView.classList.remove("in-play");
       mansionView.classList.add("in-play");
+      if (userAllowsSounds) {
+        audioObj.thunderstorm.pause();
+      }
+      if (userAllowsMusic) {
+        playMusicOnLoop(audioObj.darkAmbientMusic);
+      }
       savePlayerData({
         ...loadedPlayerData,
         landingPageComplete: true,
@@ -79,6 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   } else {
     mansionView.classList.add("in-play");
   }
+
   // if esc key is pressed, loop through
   // minigames and remove active class
   window.addEventListener("keydown", (e) => {
@@ -89,6 +105,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       gameContainer.className = "";
       gameContainer.close();
+    }
+    if (userAllowsMusic) {
+      audioObj.creepyWhistlyMusic.pause();
+      playMusicOnLoop(audioObj.darkAmbientMusic);
     }
   });
   const ghost = document?.querySelector(".ghost-image");
@@ -309,10 +329,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     // play door open audio
 
     if (userAllowsSounds) {
-      playDoorAudio();
+      audioObj.door.play();
     }
     if (userAllowsMusic) {
-      creepyWhistlyMusicAudio.play();
+      playMusicOnLoop(audioObj.creepyWhistlyMusic);
+      audioObj.darkAmbientMusic.pause();
     }
 
     await gameContainer.showModal();
@@ -326,21 +347,36 @@ document.addEventListener("DOMContentLoaded", async () => {
     gameContainer.showModal();
     gameContainer.classList.add("boy-ghost");
 
+    if (userAllowsSounds) {
+      audioObj.stairs.play();
+    }
+    if (userAllowsMusic) {
+      playMusicOnLoop(audioObj.creepyWhistlyMusic);
+    }
     await showDialogueAsync(memoryGameInitialDialgoue, true);
     startMemoryGame();
-    playStairsAudio();
   };
 
   // This function displays the lastquiz mini game
-  const miniGame2 = () => {
+  const miniGame2 = async () => {
     let loadedPlayerData = loadPlayerData();
     if (
-      !loadedPlayerData.hangmanClueObtained &&
-      !loadedPlayerData.memoryClubObtained &&
+      !loadedPlayerData.hangmanClueObtained ||
+      !loadedPlayerData.memoryClubObtained ||
       !loadedPlayerData.quizClueObtained
     ) {
       // alert("You need to complete the three games first!");
+      ghost.classList.add("active");
+      await showDialogueAsync(notEnoughCluesDialogue);
+      ghost.classList.remove("active");
       return;
+    }
+    if (userAllowsSounds) {
+      audioObj.door.play();
+    }
+    if (userAllowsMusic) {
+      playMusicOnLoop(audioObj.creepyWhistlyMusic);
+      audioObj.darkAmbientMusic.pause();
     }
     gameContainer.showModal();
     initLastQuizGame();
@@ -348,6 +384,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // This function displays the third mini game
   const miniGame4 = () => {
+    if (userAllowsSounds) {
+      audioObj.door.play();
+    }
+    if (userAllowsMusic) {
+      playMusicOnLoop(audioObj.creepyWhistlyMusic);
+      audioObj.darkAmbientMusic.pause();
+    }
     gameContainer.showModal();
     handlePlay();
   };

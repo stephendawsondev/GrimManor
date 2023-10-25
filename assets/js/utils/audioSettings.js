@@ -17,12 +17,6 @@ const audioFiles = {
 
 let userAllowsSounds, userAllowsMusic;
 
-let url_audios_deploy = "../..";
-
-if (currentPath.includes("github.io")) {
-  url_audios_deploy = "https://stephendawsondev.github.io/GrimManor";
-}
-
 const loadPlayerSettings = () => {
   const loadedData = loadPlayerData();
   if (loadedData) {
@@ -39,47 +33,54 @@ const loadPlayerSettings = () => {
  * Loads the audio files
  * @returns {Object} audioObjects
  */
-const loadAudio = () => {
+const loadAudio = (url) => {
   const audioObjects = {};
 
   for (const [key, fileName] of Object.entries(audioFiles)) {
-    audioObjects[key] = new Audio(
-      `${url_audios_deploy}/assets/audio/${fileName}`
-    );
+    audioObjects[key] = new Audio(`${url}/assets/audio/${fileName}`);
   }
 
   return audioObjects;
 };
 
-const addAudioIconEventListeners = () => {
-  const musicButton = document.getElementById("music-button");
-  const soundButton = document.getElementById("sound-button");
+const addAudioIconEventListeners = (url) => {
+  // Load initial states from local storage
+  const loadedPlayerData = loadPlayerData();
+  userAllowsMusic = loadedPlayerData.playerAllowsMusic;
+  userAllowsSounds = loadedPlayerData.playerAllowsSound;
+
+  // Update icons based on initial state
   const musicIcon = document.getElementById("music-icon");
   const soundIcon = document.getElementById("sound-icon");
+  musicIcon.src = userAllowsMusic
+    ? `${url}/assets/images/music_on.webp`
+    : `${url}/assets/images/music_off.webp`;
+  soundIcon.src = userAllowsSounds
+    ? `${url}/assets/images/sound_on.webp`
+    : `${url}/assets/images/sound_off.webp`;
 
-  musicButton.addEventListener("click", () => {
+  // Add event listeners
+  const musicButton = document.getElementById("music-button");
+  const soundButton = document.getElementById("sound-button");
+
+  musicButton.addEventListener("click", (event) => {
+    event.stopPropagation();
     userAllowsMusic = !userAllowsMusic;
-    let loadedPlayerData = loadPlayerData();
     savePlayerData({ ...loadedPlayerData, playerAllowsMusic: userAllowsMusic });
-    if (userAllowsMusic) {
-      musicIcon.src = `${url_audios_deploy}/assets/images/music_on.webp`;
-    } else {
-      musicIcon.src = `${url_audios_deploy}/assets/images/music_off.webp`;
-    }
+    musicIcon.src = userAllowsMusic
+      ? `${url}/assets/images/music_on.webp`
+      : `${url}/assets/images/music_off.webp`;
   });
 
   soundButton.addEventListener("click", () => {
     userAllowsSounds = !userAllowsSounds;
-    let loadedPlayerData = loadPlayerData();
     savePlayerData({
       ...loadedPlayerData,
       playerAllowsSound: userAllowsSounds,
     });
-    if (userAllowsSounds) {
-      soundIcon.src = `${url_audios_deploy}/assets/images/sound_on.webp`;
-    } else {
-      soundIcon.src = `${url_audios_deploy}/assets/images/sound_off.webp`;
-    }
+    soundIcon.src = userAllowsSounds
+      ? `${url}/assets/images/sound_on.webp`
+      : `${url}/assets/images/sound_off.webp`;
   });
 };
 
