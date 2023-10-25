@@ -36,383 +36,412 @@
   </head>
 
   <body>
-    <div id="mansion-container">
-      <img
-        id="background-image"
-        src="assets/images/scary-mansion.webp"
-        alt="scary mansion image"
-      />
-      <div class="overlay-container">
-        <button class="responsive-button move-up" id="move-up">↑</button>
-        <button class="responsive-button move-right" id="move-right">→</button>
-        <button class="responsive-button move-left" id="move-left">←</button>
-        <button class="responsive-button move-down" id="move-down">↓</button>
-
-        <button id="button-debug">
-          <img class="door-help" src="assets/images/golden-magic.png" />
-        </button>
-
-        <button class="interactive" id="door1">
-          <img class="door-help" src="assets/images/golden-magic.png" />
-        </button>
-        <button class="interactive" id="door2">
-          <img class="door-help" src="assets/images/golden-magic.png" />
-        </button>
-        <button class="interactive" id="door3">
-          <img class="door-help" src="assets/images/golden-magic.png" />
-        </button>
-        <button class="interactive" id="door4">
-          <img class="door-help" src="assets/images/golden-magic.png" />
-        </button>
+    <main>
+      <section id="haunted-mansion" class="main-page">
+        <video
+          src="assets/images/haunted-mansion-mobile.mp4"
+          muted
+          autoplay
+          loop
+          class="landing-page-video"
+        ></video>
+        <div class="landing-text">
+          <p>Tuesday 31st October 2023…</p>
+          <p>All Hallows Eve...</p>
+          <p>A torrential, thunderous night…</p>
+          <p>You seek refuge at an old mansion.</p>
+          <button id="landing-enter">Enter...</button>
+        </div>
+      </section>
+      <section id="mansion-container" class="main-page">
         <img
-          src="assets/images/ghostly-man-image.png"
-          alt="male ghost in olden-day clothes"
-          class="ghost-image"
+          id="background-image"
+          src="assets/images/scary-mansion.webp"
+          alt="scary mansion image"
         />
-        <img id="guide" src="assets/images/guide.png" alt="Guide image" />
-      </div>
-    </div>
-
-    <dialog id="game-container">
-      <div class="minigame" id="hangman-game">
-        <canvas id="stickman">
-          Your browser does not support the hangman drawing.
-        </canvas>
-        <div class="hangman-phrase-container">
-          <div class="hangman-phrase"></div>
-        </div>
-        <div class="ouija-board-container">
-          <img
-            src="assets/images/ouija-board-blank.png"
-            alt="Ouija board with selectable letters"
-            class="ouija-board-image"
-          />
-          <div class="ouija-board-alphabet">
-            <div class="ouija-first-line">
-              <button class="ouija-board-alphabet-letter" aria-label="A">
-                A
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="B">
-                B
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="C">
-                C
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="D">
-                D
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="E">
-                E
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="F">
-                F
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="G">
-                G
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="H">
-                H
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="I">
-                I
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="J">
-                J
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="K">
-                K
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="L">
-                L
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="M">
-                M
-              </button>
-            </div>
-            <div class="ouija-second-line">
-              <button class="ouija-board-alphabet-letter" aria-label="N">
-                N
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="O">
-                O
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="P">
-                P
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="Q">
-                Q
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="R">
-                R
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="S">
-                S
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="T">
-                T
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="U">
-                U
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="V">
-                V
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="W">
-                W
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="X">
-                X
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="Y">
-                Y
-              </button>
-              <button class="ouija-board-alphabet-letter" aria-label="Z">
-                Z
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="minigame" id="memory-game">
-        <div class="memory-card" data-framework="death">
-          <img
-            class="front-face"
-            src="assets/images/death_color.png"
-            alt="Death"
-          />
-          <img
-            class="back-face"
-            src="assets/images/card_back.png"
-            alt="Back of Card"
-          />
-        </div>
-        <div class="memory-card" data-framework="death">
-          <img
-            class="front-face"
-            src="assets/images/death_color.png"
-            alt="Death"
-          />
-          <img
-            class="back-face"
-            src="assets/images/card_back.png"
-            alt="Back of Card"
-          />
-        </div>
-        <div class="memory-card" data-framework="fool">
-          <img
-            class="front-face"
-            src="assets/images/the_fool_color.png"
-            alt="The Fool"
-          />
-          <img
-            class="back-face"
-            src="assets/images/card_back.png"
-            alt="Back of Card"
-          />
-        </div>
-        <div class="memory-card" data-framework="fool">
-          <img
-            class="front-face"
-            src="assets/images/the_fool_color.png"
-            alt="The Fool"
-          />
-          <img
-            class="back-face"
-            src="assets/images/card_back.png"
-            alt="Back of Card"
-          />
-        </div>
-        <div class="memory-card" data-framework="hanged-man">
-          <img
-            class="front-face"
-            src="assets/images/the_hanged_man_color.png"
-            alt="The Hanged Man"
-          />
-          <img
-            class="back-face"
-            src="assets/images/card_back.png"
-            alt="Back of Card"
-          />
-        </div>
-        <div class="memory-card" data-framework="hanged-man">
-          <img
-            class="front-face"
-            src="assets/images/the_hanged_man_color.png"
-            alt="The Hanged Man"
-          />
-          <img
-            class="back-face"
-            src="assets/images/card_back.png"
-            alt="Back of Card"
-          />
-        </div>
-        <div class="memory-card" data-framework="justice">
-          <img
-            class="front-face"
-            src="assets/images/justice_color.png"
-            alt="Justice"
-          />
-          <img
-            class="back-face"
-            src="assets/images/card_back.png"
-            alt="Back of Card"
-          />
-        </div>
-        <div class="memory-card" data-framework="justice">
-          <img
-            class="front-face"
-            src="assets/images/justice_color.png"
-            alt="Justice"
-          />
-          <img
-            class="back-face"
-            src="assets/images/card_back.png"
-            alt="Back of Card"
-          />
-        </div>
-
-        <div class="memory-card" data-framework="hermit">
-          <img
-            class="front-face"
-            src="assets/images/the_hermit_color.png"
-            alt="The Hermit"
-          />
-          <img
-            class="back-face"
-            src="assets/images/card_back.png"
-            alt="Back of Card"
-          />
-        </div>
-        <div class="memory-card" data-framework="hermit">
-          <img
-            class="front-face"
-            src="assets/images/the_hermit_color.png"
-            alt="The Hermit"
-          />
-          <img
-            class="back-face"
-            src="assets/images/card_back.png"
-            alt="Back of Card"
-          />
-        </div>
-
-        <div class="memory-card" data-framework="moon">
-          <img
-            class="front-face"
-            src="assets/images/the_moon_color.png"
-            alt="The Moon"
-          />
-          <img
-            class="back-face"
-            src="assets/images/card_back.png"
-            alt="Back of Card"
-          />
-        </div>
-        <div class="memory-card" data-framework="moon">
-          <img
-            class="front-face"
-            src="assets/images/the_moon_color.png"
-            alt="The Moon"
-          />
-          <img
-            class="back-face"
-            src="assets/images/card_back.png"
-            alt="Back of Card"
-          />
-        </div>
-      </div>
-      <!-- quiz -->
-      <div class="minigame" id="quiz-game">
-        <div class="text-center quiz-container">
-          <h2>Halloween Quiz</h2>
-          <!-- play button -->
-          <button id="play-button" class="btn btn-lg hvr-outline-in">
-            Play
+        <div class="overlay-container">
+          <button class="responsive-button move-up" id="move-up">↑</button>
+          <button class="responsive-button move-right" id="move-right">
+            →
           </button>
-          <!-- quiz question card -->
-          <div id="question-card" class="card d-none">
-            <img id="question-image" class="card-img-top" src="" />
-            <div class="card-body">
-              <h5 id="question-text" class="card-title"></h5>
-              <div id="answer-buttons"></div>
-            </div>
-          </div>
-          <!-- quiz result card -->
-          <div id="result-card" class="card d-none">
-            <div class="card-body">
-              <h5 id="result-text" class="card-title"></h5>
-              <p id="correct-answer" class="card-text"></p>
-              <button id="next-button" class="btn btn-lg btn-dark">Next</button>
-            </div>
-          </div>
-          <!-- quiz score card -->
-          <div id="score-card" class="card d-none">
-            <div class="card-body">
-              <h5 id="score-text" class="card-title"></h5>
-              <img
-                id="gift-card"
-                class="card-img-top d-none"
-                src="./assets/images/mansion-with-trees.webp"
-                alt="a spooky mansion with trees"
-              />
-              <p id="failure-text" class="card-text d-none">
-                Sorry, you didn't score high enough to get to the next stage.
-              </p>
-              <button id="play-again-button" class="btn btn-lg btn-dark">
-                Play Again
-              </button>
-              <button id="end-quiz-button" class="btn btn-lg btn-dark">
-                End Quiz
-              </button>
-            </div>
-          </div>
-          <!-- end quiz card -->
-          <div>
-            <div id="end-card" class="card d-none">
-              <div class="card-body">
-                <h5 id="end-text" class="card-title"></h5>
-                <button id="home-button" class="btn btn-lg btn-danger hvr-pop">
-                  Exit
-                </button>
+          <button class="responsive-button move-left" id="move-left">←</button>
+          <button class="responsive-button move-down" id="move-down">↓</button>
+
+          <button id="button-debug">
+            <img class="door-help" src="assets/images/golden-magic.png" />
+          </button>
+
+          <button class="interactive" id="door1">
+            <img class="door-help" src="assets/images/golden-magic.png" />
+          </button>
+          <button class="interactive" id="door2">
+            <img class="door-help" src="assets/images/golden-magic.png" />
+          </button>
+          <button class="interactive" id="door3">
+            <img class="door-help" src="assets/images/golden-magic.png" />
+          </button>
+          <button class="interactive" id="door4">
+            <img class="door-help" src="assets/images/golden-magic.png" />
+          </button>
+          <img
+            src="assets/images/ghostly-man-image.png"
+            alt="male ghost in olden-day clothes"
+            class="ghost-image"
+          />
+          <img id="guide" src="assets/images/guide.png" alt="Guide image" />
+        </div>
+        <aside>
+          <dialog id="game-container">
+            <div class="minigame" id="hangman-game">
+              <canvas id="stickman">
+                Your browser does not support the hangman drawing.
+              </canvas>
+              <div class="hangman-phrase-container">
+                <div class="hangman-phrase"></div>
+              </div>
+              <div class="ouija-board-container">
+                <img
+                  src="assets/images/ouija-board-blank.png"
+                  alt="Ouija board with selectable letters"
+                  class="ouija-board-image"
+                />
+                <div class="ouija-board-alphabet">
+                  <div class="ouija-first-line">
+                    <button class="ouija-board-alphabet-letter" aria-label="A">
+                      A
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="B">
+                      B
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="C">
+                      C
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="D">
+                      D
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="E">
+                      E
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="F">
+                      F
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="G">
+                      G
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="H">
+                      H
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="I">
+                      I
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="J">
+                      J
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="K">
+                      K
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="L">
+                      L
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="M">
+                      M
+                    </button>
+                  </div>
+                  <div class="ouija-second-line">
+                    <button class="ouija-board-alphabet-letter" aria-label="N">
+                      N
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="O">
+                      O
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="P">
+                      P
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="Q">
+                      Q
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="R">
+                      R
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="S">
+                      S
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="T">
+                      T
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="U">
+                      U
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="V">
+                      V
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="W">
+                      W
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="X">
+                      X
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="Y">
+                      Y
+                    </button>
+                    <button class="ouija-board-alphabet-letter" aria-label="Z">
+                      Z
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <!-- end of quiz game -->
+            <div class="minigame" id="memory-game">
+              <div class="memory-card" data-framework="death">
+                <img
+                  class="front-face"
+                  src="assets/images/death_color.png"
+                  alt="Death"
+                />
+                <img
+                  class="back-face"
+                  src="assets/images/card_back.png"
+                  alt="Back of Card"
+                />
+              </div>
+              <div class="memory-card" data-framework="death">
+                <img
+                  class="front-face"
+                  src="assets/images/death_color.png"
+                  alt="Death"
+                />
+                <img
+                  class="back-face"
+                  src="assets/images/card_back.png"
+                  alt="Back of Card"
+                />
+              </div>
+              <div class="memory-card" data-framework="fool">
+                <img
+                  class="front-face"
+                  src="assets/images/the_fool_color.png"
+                  alt="The Fool"
+                />
+                <img
+                  class="back-face"
+                  src="assets/images/card_back.png"
+                  alt="Back of Card"
+                />
+              </div>
+              <div class="memory-card" data-framework="fool">
+                <img
+                  class="front-face"
+                  src="assets/images/the_fool_color.png"
+                  alt="The Fool"
+                />
+                <img
+                  class="back-face"
+                  src="assets/images/card_back.png"
+                  alt="Back of Card"
+                />
+              </div>
+              <div class="memory-card" data-framework="hanged-man">
+                <img
+                  class="front-face"
+                  src="assets/images/the_hanged_man_color.png"
+                  alt="The Hanged Man"
+                />
+                <img
+                  class="back-face"
+                  src="assets/images/card_back.png"
+                  alt="Back of Card"
+                />
+              </div>
+              <div class="memory-card" data-framework="hanged-man">
+                <img
+                  class="front-face"
+                  src="assets/images/the_hanged_man_color.png"
+                  alt="The Hanged Man"
+                />
+                <img
+                  class="back-face"
+                  src="assets/images/card_back.png"
+                  alt="Back of Card"
+                />
+              </div>
+              <div class="memory-card" data-framework="justice">
+                <img
+                  class="front-face"
+                  src="assets/images/justice_color.png"
+                  alt="Justice"
+                />
+                <img
+                  class="back-face"
+                  src="assets/images/card_back.png"
+                  alt="Back of Card"
+                />
+              </div>
+              <div class="memory-card" data-framework="justice">
+                <img
+                  class="front-face"
+                  src="assets/images/justice_color.png"
+                  alt="Justice"
+                />
+                <img
+                  class="back-face"
+                  src="assets/images/card_back.png"
+                  alt="Back of Card"
+                />
+              </div>
 
-      <div class="minigame" id="game-lastquiz">
-        <div class="game-area-lastquiz">
-          <button id="a" class="button-lastquiz"></button>
-          <button id="b" class="button-lastquiz"></button>
-          <button id="c" class="button-lastquiz"></button>
-        </div>
-        <h5 id="question"></h5>
-        <p id="evaluation"></p>
-      </div>
-    </dialog>
-    <div id="dialogue-box" class="dialogue-box" role="dialog">
-      <p id="dialogue-text" class="dialogue-text"></p>
-      <div id="choices-container" class="choices-container"></div>
-      <svg
-        width="40px"
-        height="40px"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        class="chevron-right"
-      >
-        <g>
-          <path
-            id="Vector"
-            d="M10 8L14 12L10 16"
-            stroke="#000000"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </g>
-      </svg>
-    </div>
+              <div class="memory-card" data-framework="hermit">
+                <img
+                  class="front-face"
+                  src="assets/images/the_hermit_color.png"
+                  alt="The Hermit"
+                />
+                <img
+                  class="back-face"
+                  src="assets/images/card_back.png"
+                  alt="Back of Card"
+                />
+              </div>
+              <div class="memory-card" data-framework="hermit">
+                <img
+                  class="front-face"
+                  src="assets/images/the_hermit_color.png"
+                  alt="The Hermit"
+                />
+                <img
+                  class="back-face"
+                  src="assets/images/card_back.png"
+                  alt="Back of Card"
+                />
+              </div>
+
+              <div class="memory-card" data-framework="moon">
+                <img
+                  class="front-face"
+                  src="assets/images/the_moon_color.png"
+                  alt="The Moon"
+                />
+                <img
+                  class="back-face"
+                  src="assets/images/card_back.png"
+                  alt="Back of Card"
+                />
+              </div>
+              <div class="memory-card" data-framework="moon">
+                <img
+                  class="front-face"
+                  src="assets/images/the_moon_color.png"
+                  alt="The Moon"
+                />
+                <img
+                  class="back-face"
+                  src="assets/images/card_back.png"
+                  alt="Back of Card"
+                />
+              </div>
+            </div>
+            <!-- quiz -->
+            <div class="minigame" id="quiz-game">
+              <div class="text-center quiz-container">
+                <h2>Halloween Quiz</h2>
+                <!-- play button -->
+                <button id="play-button" class="btn btn-lg hvr-outline-in">
+                  Play
+                </button>
+                <!-- quiz question card -->
+                <div id="question-card" class="card d-none">
+                  <img id="question-image" class="card-img-top" src="" />
+                  <div class="card-body">
+                    <h5 id="question-text" class="card-title"></h5>
+                    <div id="answer-buttons"></div>
+                  </div>
+                </div>
+                <!-- quiz result card -->
+                <div id="result-card" class="card d-none">
+                  <div class="card-body">
+                    <h5 id="result-text" class="card-title"></h5>
+                    <p id="correct-answer" class="card-text"></p>
+                    <button id="next-button" class="btn btn-lg btn-dark">
+                      Next
+                    </button>
+                  </div>
+                </div>
+                <!-- quiz score card -->
+                <div id="score-card" class="card d-none">
+                  <div class="card-body">
+                    <h5 id="score-text" class="card-title"></h5>
+                    <img
+                      id="gift-card"
+                      class="card-img-top d-none"
+                      src="./assets/images/mansion-with-trees.webp"
+                      alt="a spooky mansion with trees"
+                    />
+                    <p id="failure-text" class="card-text d-none">
+                      Sorry, you didn't score high enough to get to the next
+                      stage.
+                    </p>
+                    <button id="play-again-button" class="btn btn-lg btn-dark">
+                      Play Again
+                    </button>
+                    <button id="end-quiz-button" class="btn btn-lg btn-dark">
+                      End Quiz
+                    </button>
+                  </div>
+                </div>
+                <!-- end quiz card -->
+                <div>
+                  <div id="end-card" class="card d-none">
+                    <div class="card-body">
+                      <h5 id="end-text" class="card-title"></h5>
+                      <button
+                        id="home-button"
+                        class="btn btn-lg btn-danger hvr-pop"
+                      >
+                        Exit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end of quiz game -->
+
+            <div class="minigame" id="game-lastquiz">
+              <div class="game-area-lastquiz">
+                <button id="a" class="button-lastquiz"></button>
+                <button id="b" class="button-lastquiz"></button>
+                <button id="c" class="button-lastquiz"></button>
+              </div>
+              <h5 id="question"></h5>
+              <p id="evaluation"></p>
+            </div>
+          </dialog>
+        </aside>
+
+        <aside id="dialogue-box" class="dialogue-box" role="dialog">
+          <p id="dialogue-text" class="dialogue-text"></p>
+          <div id="choices-container" class="choices-container"></div>
+          <svg
+            width="40px"
+            height="40px"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            class="chevron-right"
+          >
+            <g>
+              <path
+                id="Vector"
+                d="M10 8L14 12L10 16"
+                stroke="#000000"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </svg>
+        </aside>
+      </section>
+    </main>
+
     <button
       title="Toggle music"
       id="music-button"
@@ -430,8 +459,6 @@
     </button>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script type="module" src="assets/js/gamedata-localstore.js"></script>
     <script type="module" src="assets/js/script.js"></script>
-    <script type="module" src="assets/js/minigames/memory-game.js"></script>
   </body>
 </html>
