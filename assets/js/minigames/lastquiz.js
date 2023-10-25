@@ -1,5 +1,5 @@
-import { savePlayerData, loadPlayerData } from "../gamedata-localstore.js";
-import { showDialogueAsync } from "../dialogue.js";
+import { savePlayerData, loadPlayerData } from "../utils/gamedataLocalstore.js";
+import { showDialogueAsync } from "../utils/dialogueGeneration.js";
 const gameContainer = document.getElementById("game-container");
 const lastquizContainer = document.getElementById("game-lastquiz");
 let DEBUG = true;
