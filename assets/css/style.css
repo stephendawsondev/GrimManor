@@ -234,7 +234,6 @@ img {
 }
 
 #game-container {
-  position: relative;
   width: 80%;
   margin: 0 auto;
   height: 90%;
@@ -615,7 +614,6 @@ section #haunted-mansion {
 
 /* quiz container styles */
 .quiz-container {
-  position: relative;
   height: 100%;
   width: 100%;
   background-color: black;
