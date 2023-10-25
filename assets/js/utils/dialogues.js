@@ -97,6 +97,95 @@ const returnedButIncomplete = [
 ];
 
 /**
+ * Final door dialogue
+ * @typedef {Object} Dialogue
+ */
+const notEnoughCluesDialogue = [
+  { text: "You haven't yet found all the clues... please keep trying..." },
+];
+
+/**
+ * The dialogue for the hangman game
+ * @typedef {Object} Dialogue
+ */
+const hangmanIntroDialogue = [
+  {
+    text: "You try the door on the left and enter a cluttered, dimly lit room.",
+  },
+  {
+    text: "The smell of damp and incense hangs heavy in the air.",
+  },
+  {
+    text: "A wizened old woman sits at a table in the centre of the room, surrounded my many dusty trinkets and books.",
+  },
+  { text: "In front of her she has a Ouija board..." },
+];
+
+/**
+ * The dialogue for the hangman game
+ * @typedef {Object} Dialogue
+ */
+const hangmanWinDialogue = [
+  {
+    text: "They say the young man’s fiancée married another man…",
+    choices: [
+      {
+        text: "Thank you... I'll be going...",
+        action: () => {
+          const gameContainer = document.getElementById("game-container");
+          gameContainer.classList.remove("wooden-table");
+          gameContainer.classList.remove("old-woman");
+          // loop through minigames and remove active class
+          const minigames = document.querySelectorAll(".minigame");
+          for (const minigame of minigames) {
+            minigame.classList.remove("active");
+          }
+          gameContainer.close();
+        },
+      },
+    ],
+  },
+];
+
+/**
+ * The dialogue for the hangman game
+ * @typedef {Object} Dialogue
+ */
+const hangmanLoseDialogue = [
+  {
+    text: "I'm sorry, dear... not this time...",
+    choices: [
+      {
+        text: "Close",
+        action: () => {
+          const gameContainer = document.getElementById("game-container");
+          gameContainer.classList.remove("old-woman");
+          // loop through minigames and remove active class
+          const minigames = document.querySelectorAll(".minigame");
+          for (const minigame of minigames) {
+            minigame.classList.remove("active");
+          }
+          gameContainer.close();
+        },
+      },
+    ],
+  },
+];
+
+/**
+ * The dialogue for the hangman game
+ * @typedef {Object} Dialogue
+ */
+const hangmanReturnDialogue = [
+  {
+    text: "Welcome back, dear... you already know the young man’s fiancée married another man…",
+  },
+  {
+    text: "But please, stay and chat...",
+  },
+];
+
+/**
  * The dialogue for the memory game
  * @typedef {Object} Dialogue
  */
@@ -133,7 +222,12 @@ const memoryGameEndDialgoue = [
 
 export {
   introDialogue,
+  returnedButIncomplete,
+  notEnoughCluesDialogue,
+  hangmanIntroDialogue,
+  hangmanWinDialogue,
+  hangmanLoseDialogue,
+  hangmanReturnDialogue,
   memoryGameInitialDialgoue,
   memoryGameEndDialgoue,
-  returnedButIncomplete,
 };

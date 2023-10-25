@@ -1,4 +1,3 @@
-
 <h1 align="center"><strong>🎃🎃🎃 Phantom Forge: A Halloween Hackathon 🎃🎃🎃</strong>
 
 </h1>
@@ -9,7 +8,7 @@
 
 ## Deployment
 
-The project is deployed and can be accessed at [https://stephendawsondev.github.io/GrimManor/landing.html](https://stephendawsondev.github.io/GrimManor/landing.html).
+The project is deployed and can be accessed at [https://stephendawsondev.github.io/GrimManor](https://stephendawsondev.github.io/GrimManor).
 
 ## Criteria
 
@@ -29,12 +28,11 @@ In this section, we will briefly discuss how our team addressed the applicable c
 <p>Once indoors, a gloomy corridor with multiple doors greets you and a young, pale man appears. Your challenge is to complete a series of minigames to find clues as to what happened to the young man.</p>
 <p>When you have completed the minigames, the clues you have gathered will tell the story of what happened to the young man, you can complete the exit quiz and you will have completed the game!</p>
 
-
 ## Goal
 
 - ➡️ Problem Statement
 
-Create a website which fits the theme of Halloween; is responsive and accessible for different screen sizes and has a positive user-experience. 
+Create a website which fits the theme of Halloween; is responsive and accessible for different screen sizes and has a positive user-experience.
 
 - ➡️ Objective(s)
 
@@ -49,16 +47,15 @@ Create a website which fits the theme of Halloween; is responsive and accessible
 <p>This was because we felt that it was in-keeping with the style of an old-time mansion whilst also being easily legible and interesting to look at.</p>  
 <p><i>Moving around</i></p>
 <p>On laptop/desktop, users will be able to click on the doors/stairs and access the mini-games. </p>
-<p>On tablet/mobile screens, simply shrinking the image would make it too small and give a poor user experience so users will be able to pan left and right within the mansion to be able to see the doors and then access the mini-games in the same way. </p>  
+<p>On tablet/mobile screens, simply shrinking the image would make it too small and give a poor user experience so users will be able to pan left and right within the mansion to be able to see the doors and then access the mini-games in the same way. </p>
 
 <p><i>Responsiveness</i></p>
 <p> In this project, we made the decision to display the full-sized image on both mobile and desktop for the main game. On mobile, it means that the user needs to pan the screen, which creates the feeling that they are looking around the house.
 For the minigames, we made sure that these work on both mobile and desktop, so they are resized appropriately.</p>
 
-
 <p><i>Future improvements</i></p>
-If we were to take this website further, we would add more mini-games to upstairs doors and windows. The paintings and skylights, when clicked, would produce jumpscares where ghosts popped out. Apparitions of the pale young man would appear at random to give more of an eerie feel. Local storage would be utilised more so that, instead of an exit quiz which you had to click on, when you completed all of the mini-games the game would automatically generate the exit questions allowing you to be freed from the house. The games would then be replayable but with more general answers rather than story specific answers. 
-We would make the website more accessible to screen readers by using aria-labels and incorporating text to speech technology. 
+If we were to take this website further, we would add more mini-games to upstairs doors and windows. The paintings and skylights, when clicked, would produce jumpscares where ghosts popped out. Apparitions of the pale young man would appear at random to give more of an eerie feel. Local storage would be utilised more so that, instead of an exit quiz which you had to click on, when you completed all of the mini-games the game would automatically generate the exit questions allowing you to be freed from the house. The games would then be replayable but with more general answers rather than story specific answers.
+We would make the website more accessible to screen readers by using aria-labels and incorporating text to speech technology.
 
 <p><i>Planning</i><p>
 We used agile methodologies on Github to plan our project. We did this by:
@@ -66,7 +63,7 @@ We used agile methodologies on Github to plan our project. We did this by:
 <li><b>Appointing a Scrum Master</b> Stephen acted as Scrum Master and lead the project management.</li>
 <li><b>Setting up daily meetings</b> We met twice a day to ensure that we were all up to date on tasks and able to support each other.</li>
 <li><b>Using a Git Hub Project Board</b> We created user stories to help keep us up to date on tasks </li>
-<li><b>Frequent testing</b> We deployed our project on Friday and frequently tested our project to ensure that bugs were being addressed quickly</li> 
+<li><b>Frequent testing</b> We deployed our project on Friday and frequently tested our project to ensure that bugs were being addressed quickly</li>
 
 - ➡️ Target Audience
 
@@ -76,9 +73,7 @@ We used agile methodologies on Github to plan our project. We did this by:
 
 - ➡️ Benefits
 
-<p>The user experiences enjoyment of the spooky story through interactive mini-games. When they have collected all the clues, they can solve the mystery and have a sense of completion to the game. 
-
-
+<p>The user experiences enjoyment of the spooky story through interactive mini-games. When they have collected all the clues, they can solve the mystery and have a sense of completion to the game.
 
 ## Tech
 
@@ -94,6 +89,7 @@ We used agile methodologies on Github to plan our project. We did this by:
 We leveraged the browser APIs for locale storage and audio (for music/sounds).
 
 ## Credits
+
 <ul>
 <li><a href="https://openai.com/dall-e-2">Dall-E</a> for AI generated images </li>
 <li><a href="https:/FontsBlogs.com">FontsBlogs.com for Ouija Font in Hangman game</li>
@@ -106,7 +102,8 @@ We leveraged the browser APIs for locale storage and audio (for music/sounds).
 
 </ul>
 
-## The Team 
+## The Team
+
 <ul>
 <li><b>Samuel Anderson - Front-end development</b> <p> GitHub = samuelandersoncodes <a href="https://www.linkedin.com/in/samuel-anderson-codes/">LinkedIn</a></li>
 <li><b>Armando Urquiola Cabrera - Front-end development</b> <p> GitHub = patchamama <a href="https://www.linkedin.com/in/urquioladev/">LinkedIn</a></li>

@@ -44,6 +44,13 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
     let isDialogueReady = false;
     let isChoiceMade = true;
 
+    const handleKeyPress = (event) => {
+      if (event.key === "Enter" && isDialogueReady && isChoiceMade) {
+        continueDialogue();
+        console.log("enter");
+      }
+    };
+
     const updateDialogue = () => {
       isDialogueReady = false;
       if (dialogueIndex < dialogueQueue.length) {
@@ -57,6 +64,7 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
 
         if (dialogueQueue[dialogueIndex].choices) {
           isChoiceMade = false;
+          document.addEventListener("keydown", handleKeyPress);
           for (const choice of dialogueQueue[dialogueIndex].choices) {
             document
               ?.querySelector(".chevron-right")
@@ -83,6 +91,7 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
           }
         } else {
           document.querySelector(".chevron-right").classList.add("display");
+          document.addEventListener("keydown", handleKeyPress);
           isChoiceMade = true;
         }
 
@@ -96,6 +105,7 @@ const showDialogueAsync = (dialogue, appendToContainer = false) => {
         }, 0);
       } else {
         dialogueBox.classList.remove("active");
+        document.removeEventListener("keydown", handleKeyPress);
         resolve();
       }
     };
