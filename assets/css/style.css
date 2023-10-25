@@ -13,7 +13,6 @@ body,
 html {
   height: 100%;
   margin: 0;
-  /* background-image: url("../../assets/images/scary-mansion.webp"); */
 }
 
 body {
@@ -22,6 +21,15 @@ body {
 
 img {
   pointer-events: none;
+}
+
+/* Display of landing page and index */
+.main-page {
+  display: none;
+}
+
+.main-page.in-play {
+  display: block;
 }
 
 .chevron-right {
@@ -297,9 +305,28 @@ section #haunted-mansion {
 }
 
 #landing-enter {
-  font-size: large;
+  font-size: 2rem;
+  display: block;
+  width: 100%;
+  text-align: center;
   font-family: inherit;
   color: #c9c1af;
+  background: transparent;
+  margin-top: 1em;
+  border: none;
+  animation: pulse 1.25s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @media screen and (min-width: 768px) {

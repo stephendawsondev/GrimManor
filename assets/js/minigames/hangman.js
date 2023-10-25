@@ -1,5 +1,5 @@
-import { showDialogueAsync } from "../dialogue.js";
-import { savePlayerData, loadPlayerData } from "../gamedata-localstore.js";
+import { showDialogueAsync } from "../utils/dialogueGeneration.js";
+import { savePlayerData, loadPlayerData } from "../utils/gamedataLocalstore.js";
 let loadedPlayerData = loadPlayerData();
 
 const guessedLetters = [];
