@@ -648,11 +648,6 @@ section #haunted-mansion {
   background-size: cover;
 }
 
-/* lastquiz game css */
-#game-lastquiz {
-  /* display: none; */
-}
-
 .game-area-lastquiz {
   padding: 120px;
 }
