@@ -302,6 +302,10 @@ img {
   object-fit: cover;
 }
 
+.landing-page-video {
+  background-color: #000;
+}
+
 section #haunted-mansion {
   position: relative;
 }
