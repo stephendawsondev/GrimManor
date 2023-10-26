@@ -34,7 +34,7 @@ if (window.location.href.includes("github.io")) {
 }
 
 const setVideoSource = () => {
-  const videoElement = document.querySelector("#haunted-mansion video");
+  const videoElement = document.querySelector("#haunted-mansion video source");
   const windowWidth = window.innerWidth;
   // Set the source based on screen width if on the landing page
   if (windowWidth <= 600) {
@@ -45,7 +45,7 @@ const setVideoSource = () => {
     videoElement.src = `${url_audios_deploy}/assets/images/haunted-mansion.webm`;
   }
   // Explicitly tell the video element to load the new source
-  videoElement.load();
+  videoElement.parentElement.load();
 };
 
 const playMusicOnLoop = (audio) => {

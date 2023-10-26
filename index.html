@@ -39,12 +39,18 @@
     <main>
       <section id="haunted-mansion" class="main-page">
         <video
-          src="assets/images/haunted-mansion-mobile.mp4"
           muted
           autoplay
           loop
+          playsinline
           class="landing-page-video"
-        ></video>
+          draggable="false"
+        >
+          <source
+            src="assets/images/haunted-mansion-mobile.mp4"
+            type="video/webm"
+          />
+        </video>
         <div class="landing-text">
           <p>Tuesday 31st October 2023…</p>
           <p>All Hallows Eve...</p>
