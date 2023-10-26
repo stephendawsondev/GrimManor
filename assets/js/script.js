@@ -29,7 +29,7 @@ const currentPath = window.location.pathname;
 
 let url_audios_deploy = "../..";
 
-if (currentPath.includes("github.io")) {
+if (window.location.href.includes("github.io")) {
   url_audios_deploy = "/GrimManor";
 }
 
